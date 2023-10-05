@@ -18,6 +18,9 @@ char    *ft_strcpy(char *dest, const char *src);
 char    *ft_strncpy(char *dest, const char *src, int len);
 char    *ft_strcat(char *dest, const char *src);
 char    *ft_strncat(char *dest, const char *src, int len);
+int     ft_strlcat(char *dest, const char *src, int len);
+char    *ft_strchr(char *str, int c);
+
 int     ft_atoi(const char *str);
 
 #endif
