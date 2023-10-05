@@ -1,14 +1,4 @@
-#include <stdio.h>
 #include "libft.h"
-
-char *ft_strrchr(char *str, int c);
-
-int main(void)
-{
-    char str[] = "hello";
-    char c = 'l';
-    printf("%s", ft_strrchr(str, c));
-}
 
 char *ft_strrchr(char *str, int c)
 {
