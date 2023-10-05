@@ -26,5 +26,12 @@ char    *ft_strnstr(char *str, char *substr, int len);
 int     ft_strcmp(const char *str1, const char *str2);
 int     ft_strncmp(const char *str1, const char *str2, int len);
 int     ft_atoi(const char *str);
+void    *ft_memset(void* dst, int c, size_t len);
+void    ft_bzero(void *dst, size_t n);
+void    *ft_memcpy(void* dst, const void* src, size_t len);
+void    *ft_memccpy(void* dst, const void* src, int c, size_t len);
+void    *ft_memmove(void *dst, const void *src, size_t len);
+void    *ft_memchr(void *src, int c, size_t size);
+int     ft_memcmp(const void *str1, const void *str2, size_t size);
 
 #endif
