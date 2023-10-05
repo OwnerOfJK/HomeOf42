@@ -22,7 +22,9 @@ int     ft_strlcat(char *dest, const char *src, int len);
 char    *ft_strchr(char *str, int c);
 char    *ft_strrchr(char *str, int c);
 char    *ft_strstr(char *str, char *substr);
-
+char    *ft_strnstr(char *str, char *substr, int len);
+int     ft_strcmp(const char *str1, const char *str2);
+int     ft_strncmp(const char *str1, const char *str2, int len);
 int     ft_atoi(const char *str);
 
 #endif
