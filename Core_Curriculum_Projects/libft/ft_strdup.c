@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_strdup(char *str)
+char *ft_strdup(const char *str)
 {
     int i = 0;
     int len = ft_strlen(str);
