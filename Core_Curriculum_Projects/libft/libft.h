@@ -41,11 +41,15 @@ void    ft_striteri(char *s, void (*f)(unsigned int, char *));
 void    ft_putchar(char c);
 void    ft_putstr(char *str);
 void    ft_putendl(char const *s);
-void    ft_putnbr(int nbr);
+void    ft_putnbr(int n);
 char    *ft_itoa(int n);
 int     ft_wordlen_delim(char *str, char delim); //extra
 int     ft_countwords_delim(char *str, char charset); //extra
 int     ft_checkchar(char c, char delim); //extra
 char    **ft_split(char *str, char *charset);
+void    ft_putchar_fd(char c, int fd);
+void    ft_putendl_fd(char const *s, int fd);
+void    ft_putnbr_fd(int n, int fd);
+void    ft_putstr_fd(char const *s, int fd);
 
 #endif
