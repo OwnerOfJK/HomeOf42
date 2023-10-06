@@ -1,6 +1,8 @@
 #ifndef LIBFT_HEADER
 #define LIBFT_HEADER
 
+#include <string.h>
+
 //Function Protoypes
 int     ft_isascii(int c);
 int     ft_isdigit(int c);
@@ -33,5 +35,13 @@ void    *ft_memccpy(void* dst, const void* src, int c, size_t len);
 void    *ft_memmove(void *dst, const void *src, size_t len);
 void    *ft_memchr(void *src, int c, size_t size);
 int     ft_memcmp(const void *str1, const void *str2, size_t size);
+void    ft_strclr(char *s);
+void    ft_striter(char *s, void (*f)(char *));
+void    ft_striteri(char *s, void (*f)(unsigned int, char *));
+void    ft_putchar(char c);
+void    ft_putstr(char *str);
+void    ft_putendl(char const *s);
+void    ft_putnbr(int nbr);
+
 
 #endif
