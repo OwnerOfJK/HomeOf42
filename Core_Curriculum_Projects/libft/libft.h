@@ -42,6 +42,10 @@ void    ft_putchar(char c);
 void    ft_putstr(char *str);
 void    ft_putendl(char const *s);
 void    ft_putnbr(int nbr);
-
+char    *ft_itoa(int n);
+int     ft_wordlen_delim(char *str, char delim); //extra
+int     ft_countwords_delim(char *str, char charset); //extra
+int     ft_checkchar(char c, char delim); //extra
+char    **ft_split(char *str, char *charset);
 
 #endif
