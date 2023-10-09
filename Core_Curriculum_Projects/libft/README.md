@@ -65,3 +65,4 @@
 50. **ft_countwords_delim**: Counts the amount of words in a string array, while each word is surrounded by a given delim.
 51. **ft_islowalpha**: Checks if a given char is a lower case letter.
 52. **ft_isupalpha**: Checks if a given char is an upper case letter.
+53. **ft_strlen_const**: Version of `ft_strlen` for const str.
