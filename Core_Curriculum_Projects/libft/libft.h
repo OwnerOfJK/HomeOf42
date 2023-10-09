@@ -15,6 +15,7 @@ int     ft_isupalpha(int c); //extrac
 int     ft_toupper(int c);
 int     ft_tolower(int c);
 int     ft_strlen(char *str);
+int     ft_strlen_const(char const *str);
 char    *ft_strdup(const char *str);
 char    *ft_strcpy(char *dest, const char *src);
 char    *ft_strncpy(char *dest, const char *src, int len);
@@ -56,5 +57,9 @@ void    ft_memdel(void **ap);
 char    *ft_strnew(size_t size);
 char    *ft_strmap(char const *s, char (*f)(char));
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int     ft_strequ(char const *s1, char const *s2);
+int     ft_strnequ(char const *s1, char const *s2, size_t n);
+char    *ft_strjoin(char const *s1, char const *s2);
+char    *ft_strtrim(char const *s);
 
 #endif
