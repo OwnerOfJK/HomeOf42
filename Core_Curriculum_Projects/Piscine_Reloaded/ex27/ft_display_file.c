@@ -6,14 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:08:21 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/08 20:08:25 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/08 20:12:45 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		yolo;
 	char	c;
