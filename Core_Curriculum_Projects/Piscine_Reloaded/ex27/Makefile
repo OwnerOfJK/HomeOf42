@@ -1,19 +1,15 @@
 NAME = ft_display_file
 
-SRCS = ft_display_file.c
-OBJS = $(SRCS:.c=.o)
+SRC = ./ft_display_file.c
+
+O = ./ft_display_file.o
 
 all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+	gcc -c -Werror -Wall -Wextra $(SRC)
+	gcc -o $(NAME) $(O)
 
 clean:
-	/bin/rm -f $(OBJS)
+	rm -rf $(O)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+	rm $(NAME)

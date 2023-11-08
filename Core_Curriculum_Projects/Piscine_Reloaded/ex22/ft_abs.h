@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkaller <jkaller@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:41:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/07 22:05:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/08 20:06:42 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
-
-# define ABS(Value) ((Value < 0) ? (-Value) : (Value))
-
+# define ABS(value) value >= 0 ? value : -value
 #endif
