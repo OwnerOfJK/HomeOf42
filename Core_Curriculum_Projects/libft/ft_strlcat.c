@@ -2,8 +2,8 @@
 
 int ft_strlcat(char *dest, const char *src, int len)
 {
-    int dest_len = ft_strlen(dest);
-    int src_len = ft_strlen(src);
+    int dest_len = ft_strlen_const(dest);
+    int src_len = ft_strlen_const(src);
     int to_copy = len - dest_len - 1;
     int i = 0;
 

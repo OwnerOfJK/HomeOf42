@@ -2,7 +2,7 @@
 
 void    *ft_memalloc(size_t size)
 {
-    int i = 0;
+    size_t i = 0;
     char *memory_area = malloc(size * sizeof(char));
     if (memory_area == NULL)
     {

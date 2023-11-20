@@ -2,7 +2,7 @@
 
 void *ft_memchr(void *src, int c, size_t size)
 {
-    int i = 0;
+    unsigned int i = 0;
     unsigned char *p = (unsigned char*)src;
 
     while (i < size)
