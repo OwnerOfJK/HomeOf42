@@ -6,17 +6,17 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:31 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:42:32 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:44:09 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void    ft_memdel(void **ap)
+void	ft_memdel(void **ap)
 {
-    if (ap != NULL && *ap != NULL)
-    {
-        free(*ap);
-        *ap = NULL;
-    }
+	if (ap != NULL && *ap != NULL)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

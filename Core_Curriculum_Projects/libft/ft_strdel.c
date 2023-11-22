@@ -6,17 +6,17 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:34 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:35 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:26:01 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void    ft_strdel(char **as)
+void	ft_strdel(char **as)
 {
-    if (as != NULL && *as != NULL)
-    {
-        free(*as);
-        *as = NULL;
-    }
+	if (as != NULL && *as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

@@ -6,24 +6,26 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:20 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:42:21 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:36:24 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void *ft_memchr(void *src, int c, size_t size)
+void	*ft_memchr(const void *src, int c, size_t size)
 {
-    unsigned int i = 0;
-    unsigned char *p = (unsigned char*)src;
+	size_t	i;
+	const char	*p;
 
-    while (i < size)
-    {
-        if (p[i] == c)
-        {
-            return (&p[i]);
-        }
-        i++;
-    }
-    return (0);
+	i = 0;
+	p = (const char *)src;
+	while (i < size)
+	{
+		if (p[i] == c)
+		{
+			return (void *)(&p[i]);
+		}
+		i++;
+	}
+	return (0);
 }

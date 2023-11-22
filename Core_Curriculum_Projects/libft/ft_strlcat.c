@@ -6,24 +6,35 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:52 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:53 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:06:08 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-int ft_strlcat(char *dest, const char *src, int len)
+int	ft_strlcat(char *dest, const char *src, int len)
 {
-    int dest_len = ft_strlen_const(dest);
-    int src_len = ft_strlen_const(src);
-    int to_copy = len - dest_len - 1;
-    int i = 0;
+	int	dest_len;
+	int	src_len;
+	int	total_len;
+	int	i;
 
-    while (src[i] != '\0' && i < to_copy)
-    {
-        dest[dest_len + i] = src[i];
-        i++;
-    }
-    dest[dest_len + i] = '\0';
-    return (dest_len + src_len);
+	dest_len = ft_strlen_const(dest);
+	src_len = ft_strlen_const(src);
+	total_len = dest_len + src_len;
+	i = 0;
+
+	if (len <= dest_len)
+		return (src_len + len);
+
+	while (src[i] != '\0' && dest_len + i < len - 1)
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	dest[dest_len + i] = '\0';
+
+	return (total_len);
 }

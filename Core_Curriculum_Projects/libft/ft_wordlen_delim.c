@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:44:52 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:44:53 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:35:50 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_wordlen_delim(char *str, char delim)
+int	ft_wordlen_delim(char *str, char delim)
 {
-    int i = 0;
-    while (str[i] != '\0' && str[i] != delim)
-    {
-        i++;
-    }
-    return (i);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0' && str[i] != delim)
+	{
+		i++;
+	}
+	return (i);
 }

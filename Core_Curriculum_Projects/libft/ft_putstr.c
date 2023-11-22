@@ -6,18 +6,20 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:08 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:51:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
-    int i = 0;
-    while(s[i] != '\0')
-    {
-        ft_putchar(s[i]);
-        i++;
-    }
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

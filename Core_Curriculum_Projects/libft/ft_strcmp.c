@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:25 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:25:48 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(const char *str1, const char *str2)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-    int i = 0;
-    while (str1[i] != '\0' && str2[i] != '\0' && str1[i] == str2[i])
-    {
-        i++;
-    }
-    return (str1[i] - str2[i]);
+	int	i;
+
+	i = 0;
+	while (str1[i] != '\0' && str2[i] != '\0' && str1[i] == str2[i])
+	{
+		i++;
+	}
+	return (str1[i] - str2[i]);
 }

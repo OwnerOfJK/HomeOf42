@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:57 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:58 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:37:21 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen_const(char const *str)
+int	ft_strlen_const(char const *str)
 {
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        i++;
-    }
-    return (i);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }

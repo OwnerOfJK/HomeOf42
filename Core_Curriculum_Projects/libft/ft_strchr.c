@@ -6,19 +6,23 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:18 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:19 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:12:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strchr(char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
-    while (*str != '\0')
-    {
-        if(*str == c)
-        {
-            return(str);
-        }
-        str++;
-    }
-    return (0);
+	while (*str != '\0')
+	{
+		if (*str == c)
+		{
+			return ((char *)str);
+		}
+		str++;
+	}
+	if (c == '\0')
+	{
+		return ((char *)str);
+	}
+	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:44:44 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:44:45 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:35:26 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    if (ft_isupalpha(c) == 1)
-    {
-        c += 32;
-    }
-    return (c);
+	if (ft_isupalpha(c) == 1)
+	{
+		c += 32;
+	}
+	return (c);
 }

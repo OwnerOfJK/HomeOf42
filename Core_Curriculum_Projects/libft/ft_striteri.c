@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:47 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:27:13 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-    unsigned int i = 0;
-    while (s[i] != '\0')
-    {
-        f(i, &s[i]);
-        i++;
-    }
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

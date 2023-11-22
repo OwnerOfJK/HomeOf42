@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:22 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:23 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:25:33 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_strclr(char *s)
+void	ft_strclr(char *s)
 {
-    int i = 0;
-    while (s[i] != '\0')
-    {
-        s[i] = '\0';
-        i++;
-    }
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		s[i] = '\0';
+		i++;
+	}
 }

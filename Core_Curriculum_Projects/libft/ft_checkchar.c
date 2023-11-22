@@ -6,18 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:41:30 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:41:31 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:15:30 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_checkchar(char c, char delim)
+int	ft_checkchar(char c, char delim)
 {
-    if (c == delim)
-    {
-        return (1);
-    }
-    else
-    {
-        return (0);
-    }
+	if (c == delim)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

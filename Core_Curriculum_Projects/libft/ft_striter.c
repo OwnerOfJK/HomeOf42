@@ -6,16 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:43 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 13:43:44 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:26:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-    int i = 0;
-    while (s[i] != '\0')
-    {
-        f(&s[i]);
-        i++;
-    }
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(&s[i]);
+		i++;
+	}
 }
