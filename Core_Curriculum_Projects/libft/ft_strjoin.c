@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:28:00 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 18:43:56 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		total_len;
 	char	*joined_str;
 
-	i = 0;
-	j = 0;
 	total_len = ft_strlen_const(s1) + ft_strlen_const(s2);
 	joined_str = (char *)malloc((total_len + 1) * sizeof(char));
 	if (joined_str == NULL)
 	{
 		return (0);
 	}
+	i = 0;
 	while (s1[i] != '\0')
 	{
 		joined_str[i] = s1[i];
 		i++;
 	}
+	j = 0;
 	while (s2[j] != '\0')
 	{
-		joined_str[i] = s2[j];
-		i++;
+		joined_str[i + j] = s2[j];
 		j++;
 	}
-	joined_str[i] = '\0';
+	joined_str[i + j] = '\0';
 	return (joined_str);
 }

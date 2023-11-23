@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:20 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 16:36:24 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 18:33:35 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *src, int c, size_t size)
 {
-	size_t	i;
+	size_t		i;
 	const char	*p;
 
 	i = 0;
@@ -23,7 +23,7 @@ void	*ft_memchr(const void *src, int c, size_t size)
 	{
 		if (p[i] == c)
 		{
-			return (void *)(&p[i]);
+			return ((void *)(&p[i]));
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:24 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 16:41:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 16:58:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_memcmp(const void *str1, const void *str2, size_t size)
 	p_str2 = (const unsigned char *)str2;
 	while (i < size)
 	{
-		if (p_str1[i] == p_str2[i])
+		if (p_str1[i] != p_str2[i])
 		{
-			return (p_str1[i] > p_str2[i]) - (p_str1[i] < p_str2[i]);
+			return (p_str1[i] - p_str2[i]);
 		}
 		i++;
 	}

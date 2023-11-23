@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:11 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:37:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 19:09:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,43 @@
 #include <stdio.h>
 #include "libft.h"
 
-char	**ft_split(char *str, char *charset)
+static char	*ft_word_dup(const char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
-	int		k;
-	int		word_count;
-	char	**string_array;
-	int		len;
+	int		index;
+	char	**split;
 
-
+	split = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !split)
+		return (0);
 	i = 0;
 	j = 0;
-	k = 0;
-	word_count = ft_countwords_delim(str, *charset);
-	string_array = (char **)malloc((word_count + 1) * sizeof(char*));
-	if (string_array == NULL)
+	index = -1;
+	while (i <= ft_strlen_const(s))
 	{
-		return (0);
-	}
-	while (str[i] != '\0')
-	{
-		while (ft_checkchar(str[i], *charset) == 1 && str[i] != '\0')
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen_const(s)) && index >= 0)
 		{
-			i++;
+			split[j++] = ft_word_dup(s, index, i);
+			index = -1;
 		}
-		if (str[i] != '\0')
-		{
-			len = ft_wordlen_delim(&str[i], *charset);
-			string_array[j] = (char *)malloc((len + 1) * sizeof(char));
-			if (string_array[j] == NULL)
-			{
-				return (NULL);
-			}
-			k = 0;
-			while (ft_checkchar(str[i], *charset) == 0 && str[i] != '\0')
-			{
-				string_array[j][k] = str[i];
-				k++;
-				i++;
-			}
-			string_array[j][k] = '\0';
-			j++;
-		}
+		i++;
 	}
-	string_array[j] = NULL;
-	return (string_array);
+	split[j] = 0;
+	return (split);
 }
-
-// int main(void)
-// {
-// 	int i = 0;
-// 	char **test_string_array;
-// 	int word_count = 0;
-// 	char delim = '-';
-// 	char str[] = "What-is----going-on";
-// 	word_count = ft_countwords_delim(str, '-');
-// 	test_string_array = ft_split(str, &delim);
-// 	if (test_string_array == NULL)
-// 	{
-// 		return (0);
-// 	}
-// 	printf("%d\n", word_count);
-// 	printf("%s\n", test_string_array[3]);
-// 	while (i < word_count)
-// 	{
-// 		free(test_string_array[i]);
-// 		i++;
-// 	}
-// 	free(test_string_array);
-// }

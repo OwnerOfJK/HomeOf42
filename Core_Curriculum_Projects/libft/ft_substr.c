@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wordlen_delim.c                                 :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:44:52 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:35:50 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/23 17:39:59 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/23 18:56:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_wordlen_delim(char *str, char delim)
-{
-	int	i;
+#include "libft.h"
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	i;
+
+	if (s == NULL)
+		return (NULL);
 	i = 0;
-	while (str[i] != '\0' && str[i] != delim)
+	if (ft_strlen_const(s) < start)
+		return (ft_strdup(""));
+	if (len > ft_strlen_const(s) - start)
+		len = ft_strlen_const(s) - start;
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[start] != '\0' && i < len)
 	{
+		str[i] = s[start];
+		start++;
 		i++;
 	}
-	return (i);
+	str[i] = '\0';
+	return (str);
 }

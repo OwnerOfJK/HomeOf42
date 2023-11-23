@@ -6,13 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:23:30 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 16:30:40 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 19:08:45 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_HEADER
-#define	LIBFT_HEADER
-#include <string.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <string.h>
 
 //Function Protoypes
 int		ft_isascii(int c);
@@ -55,10 +56,8 @@ void	ft_putstr(char *str);
 void	ft_putendl(char const *s);
 void	ft_putnbr(int n);
 char	*ft_itoa(int n);
-int		ft_wordlen_delim(char *str, char delim); //extra
-int		ft_countwords_delim(char *str, char charset); //extra
-int		ft_checkchar(char c, char delim); //extra
-char	**ft_split(char *str, char *charset);
+int		ft_count_words(const char *str, char c);
+char	**ft_split(char const *s, char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
@@ -68,10 +67,8 @@ void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);
 char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-//int     ft_strequ(char const *s1, char const *s2);
-//int     ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strtrim(char const *s);
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif

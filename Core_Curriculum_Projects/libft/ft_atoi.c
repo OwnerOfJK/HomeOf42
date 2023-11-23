@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:40:53 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 14:13:02 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 17:01:18 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,25 @@
 
 int	ft_atoi(const char *str)
 {
+	int	neg;
 	int	i;
-	int	sign_amount;
-	int	result;
+	int	num;
 
 	i = 0;
-	sign_amount = 0;
-	result = 0;
-	while (str[i] != '\0')
+	neg = 1;
+	num = 0;
+	while (ft_isspace(str[i]) == 1)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (ft_isspace(str[i]) == 1)
-			i++;
-		if (str[i] == '+')
-		{
-			if (sign_amount >= 1)
-				return (0);
-			sign_amount++;
-			i++;
-		}
 		if (str[i] == '-')
-		{
-			if (sign_amount >= 1)
-				return (0);
-			sign_amount++;
-			result *= -1;
-			i++;
-		}
-		if (ft_isdigit(str[i]) == 1)
-		{
-			result = result * 10 + (str[i] - 48);
-			i++;
-			if (ft_isdigit(str[i]) == 0)
-				return (result);
-		}
+			neg *= -1;
+		i++;
 	}
-	return (result);
+	while (ft_isdigit(str[i]) == 1)
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * neg);
 }

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:57 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 14:49:19 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 17:16:17 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_putnbr_fd(int n, int fd)
 		}
 		if (n > 9)
 		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
 		}
 		if (n < 10)
 		{

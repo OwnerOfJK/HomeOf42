@@ -6,46 +6,50 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:42:10 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:45:51 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 18:32:59 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+long int	get_digits(long long int n)
+{
+	long int	i;
+
+	i = 1;
+	if (n < 0)
+		n = -n;
+	while (n >= 10)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
 char	*ft_itoa(int n)
 {
-	int		counter;
-	int		temp_n;
-	char	*nbr;
-	char	*zero_str;
+	char			*str_num;
+	size_t			digits;
+	long long int	num;
 
-	counter = 0;
-	temp_n = n;
-	if (n == 0)
-	{
-		zero_str = (char *)malloc(2 * sizeof(char));
-		zero_str[0] = '0';
-		zero_str[1] = '\0';
-		return (zero_str);
-	}
-	while (temp_n != 0)
-	{
-		temp_n = temp_n / 10;
-		counter++;
-	}
-	nbr = (char *)malloc((counter + 1) * sizeof(char));
+	num = n;
+	digits = get_digits(n);
 	if (n < 0)
 	{
-		nbr[0] = '-';
-		counter++;
-		n = -n;
+		num *= -1;
+		digits++;
 	}
-	nbr[counter] = '\0';
-	while (n != 0)
+	str_num = (char *)malloc(sizeof(char) * (digits + 1));
+	if (str_num == NULL)
+		return (NULL);
+	str_num[digits] = 0;
+	while (digits--)
 	{
-		counter--;
-		nbr[counter] = (n % 10) + '0';
-		n = n / 10;
+		str_num[digits] = num % 10 + '0';
+		num = num / 10;
 	}
-	return (nbr);
+	if (n < 0)
+		str_num[0] = '-';
+	return (str_num);
 }
