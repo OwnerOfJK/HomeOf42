@@ -6,33 +6,38 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:39:59 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/23 18:56:19 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:44:00 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*newstr;
 	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
 	i = 0;
-	if (ft_strlen_const(s) < start)
-		return (ft_strdup(""));
-	if (len > ft_strlen_const(s) - start)
-		len = ft_strlen_const(s) - start;
-	str = malloc(len + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s[start] != '\0' && i < len)
+	if (start >= (unsigned int)ft_strlen(s))
 	{
-		str[i] = s[start];
-		start++;
-		i++;
+		newstr = malloc(sizeof(char));
+		if (!newstr)
+			return (NULL);
+		newstr[0] = '\0';
+		return (newstr);
 	}
-	str[i] = '\0';
-	return (str);
+	if ((size_t)ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	newstr = malloc(sizeof(char) * len + 1);
+	if (newstr == NULL)
+		return (NULL);
+	while (i < len && s[i] != '\0')
+	{
+		newstr[i] = s[start];
+		i++;
+		start++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
 }

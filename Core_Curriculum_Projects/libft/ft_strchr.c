@@ -6,23 +6,26 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:18 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 16:12:37 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:57:43 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *str, int c)
+#include <string.h>
+#include "libft.h"
+#include <stdio.h>
+
+char	*ft_strchr(const char *s, int c)
 {
-	while (*str != '\0')
+	int		i;
+
+	i = 0;
+	while (s[i])
 	{
-		if (*str == c)
-		{
-			return ((char *)str);
-		}
-		str++;
+		if (s[i] == (unsigned char)c)
+			return ((char *)(s + i));
+		i++;
 	}
-	if (c == '\0')
-	{
-		return ((char *)str);
-	}
+	if (s[i] == (unsigned char)c)
+		return ((char *)(s + i));
 	return (0);
 }

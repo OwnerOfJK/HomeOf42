@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:23:30 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/23 19:08:45 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 21:02:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,23 @@ int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
 int		ft_isalpha(int c);
-int		ft_islowalpha(int c); //extra
-int		ft_isupalpha(int c); //extrac
+int		ft_islowalpha(int c);
+int		ft_isupalpha(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		ft_strlen(char *str);
-int		ft_strlen_const(char const *str);
+size_t	ft_strlen(char const *str);
 char	*ft_strdup(const char *str);
-char	*ft_strcpy(char *dest, const char *src);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strncpy(char *dest, const char *src, int len);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, int len);
-int		ft_strlcat(char *dest, const char *src, int len);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strstr(char *str, char *substr);
-char	*ft_strnstr(char *str, char *substr, int len);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_strcmp(const char *str1, const char *str2);
-int		ft_strncmp(const char *str1, const char *str2, int len);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str);
 void	*ft_memset(void *dst, int c, size_t len);
 void	ft_bzero(void *dst, size_t n);
@@ -70,5 +69,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif

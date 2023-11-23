@@ -6,11 +6,11 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:44:00 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:29:08 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:39:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_strlen(char const *str)
 {
 	int	i;
 

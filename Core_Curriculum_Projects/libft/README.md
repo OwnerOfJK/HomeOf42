@@ -1,68 +1,63 @@
 ## Libft Function List (WIP)
 
-### Memory Functions
-1. **ft_memset**: Fill a block of memory with a specific value.
-2. **ft_bzero**: Set a block of memory to zero.
-3. **ft_memcpy**: Copy memory from one location to another.
-4. **ft_memccpy**: Copy memory until a specified character is found.
-5. **ft_memmove**: Copy memory, handling overlapping source and destination.
-6. **ft_memchr**: Search for a character in a block of memory.
-7. **ft_memcmp**: Compare two blocks of memory.
+### Character Classification
+1. **ft_isascii**: Checks if a character is a 7-bit unsigned char value.
+2. **ft_isdigit**: Checks if a character is a digit.
+3. **ft_isalnum**: Checks if a character is an alphanumeric character.
+4. **ft_isprint**: Checks if a character is a printable character, including space.
+5. **ft_isspace**: Checks if a character is a space character.
+6. **ft_isalpha**: Checks if a character is an alphabetic character.
+7. **ft_islowalpha**: Checks if a character is a lowercase alphabetic character.
+8. **ft_isupalpha**: Checks if a character is an uppercase alphabetic character.
+9. **ft_toupper**: Converts a lowercase letter to uppercase.
+10. **ft_tolower**: Converts an uppercase letter to lowercase.
 
 ### String Functions
-8. **ft_strlen**: Calculate the length of a string.
-9. **ft_strdup**: Duplicate a string.
-10. **ft_strcpy**: Copy a string to another location.
-11. **ft_strncpy**: Copy a string with a specified length.
-12. **ft_strcat**: Concatenate two strings.
-13. **ft_strncat**: Concatenate two strings with a specified length.
-14. **ft_strlcat**: Concatenate two strings with a size limit.
-15. **ft_strchr**: Find the first occurrence of a character in a string.
-16. **ft_strrchr**: Find the last occurrence of a character in a string.
-17. **ft_strstr**: Find the first occurrence of a substring in a string.
-18. **ft_strnstr**: Find the first occurrence of a substring with a specified length in a string.
-19. **ft_strcmp**: Compare two strings.
-20. **ft_strncmp**: Compare two strings up to a specified length.
-21. **ft_atoi**: Convert a string to an integer.
+1. **ft_strlen**: Calculates the length of a string.
+2. **ft_strdup**: Duplicates a string.
+3. **ft_strlcpy**: Copies a string with size limitation.
+4. **ft_strncpy**: Copies a string with length limitation.
+5. **ft_strcat**: Concatenates two strings.
+6. **ft_strncat**: Concatenates two strings with length limitation.
+7. **ft_strlcat**: Appends a string with size limitation.
+8. **ft_strchr**: Locates the first occurrence of a character in a string.
+9. **ft_strrchr**: Locates the last occurrence of a character in a string.
+10. **ft_strstr**: Finds the first occurrence of a substring in a string.
+11. **ft_strnstr**: Finds a substring in a string with length limitation.
+12. **ft_strcmp**: Compares two strings.
+13. **ft_strncmp**: Compares two strings with length limitation.
+14. **ft_atoi**: Converts a string to an integer.
 
-### Character Functions
-22. **ft_isalpha**: Check if a character is alphabetic.
-23. **ft_isdigit**: Check if a character is a digit.
-24. **ft_isalnum**: Check if a character is alphanumeric.
-25. **ft_isascii**: Check if a character is an ASCII character.
-26. **ft_isprint**: Check if a character is a printable character.
-27. **ft_toupper**: Convert a character to uppercase.
-28. **ft_tolower**: Convert a character to lowercase.
+### Memory Functions
+1. **ft_memset**: Fills memory with a constant byte.
+2. **ft_bzero**: Erases the data in a given number of bytes.
+3. **ft_memcpy**: Copies memory area.
+4. **ft_memccpy**: Copies memory until a certain character is found.
+5. **ft_memmove**: Copies memory, handling overlap.
+6. **ft_memchr**: Finds the first occurrence of a character in memory.
+7. **ft_memcmp**: Compares two memory regions.
 
-### Memory Allocation and Deallocation
-29. **ft_memalloc**: Allocate and initialize a block of memory.
-30. **ft_memdel**: Free memory and set the pointer to NULL.
-
-### String Manipulation
-31. **ft_strnew**: Allocate and initialize a new string.
-32. **ft_strdel**: Free a string and set the pointer to NULL.
-33. **ft_strclr**: Clear a string by setting all characters to '\0'.
-34. **ft_striter**: Apply a function to each character of a string.
-35. **ft_striteri**: Apply a function to each character of a string with its index.
-36. **ft_strmap**: Apply a function to each character of a string to create a new string.
-37. **ft_strmapi**: Apply a function to each character of a string with its index to create a new string.
-38. **ft_strequ**: Compare two strings lexicographically for equality.
-39. **ft_strnequ**: Compare two strings lexicographically for equality up to a specified length.
-40. **ft_strsub**: Create a substring from a string.
-41. **ft_strjoin**: Concatenate two strings and create a new one.
-42. **ft_strtrim**: Trim leading and trailing whitespace from a string.
-43. **ft_strsplit**: Split a string into an array of substrings.
-
-### Output Functions
-44. **ft_putchar**: Output a character to the standard output.
-45. **ft_putstr**: Output a string to the standard output.
-46. **ft_putendl**: Output a string followed by a newline to the standard output.
-47. **ft_putnbr**: Output an integer to the standard output.
-
-### Personal Functions
-48. **ft_checkchar**: Check if a char parameter is equal to another character.
-49. **ft_wordlen_delim**: Counts the lenght of a word that is surrounded by a given delim.
-50. **ft_countwords_delim**: Counts the amount of words in a string array, while each word is surrounded by a given delim.
-51. **ft_islowalpha**: Checks if a given char is a lower case letter.
-52. **ft_isupalpha**: Checks if a given char is an upper case letter.
-53. **ft_strlen_const**: Version of `ft_strlen` for const str.
+### Other Functions
+1. **ft_strclr**: Clears a string.
+2. **ft_striter**: Iterates through a string and applies a function to each character.
+3. **ft_striteri**: Iterates through a string and applies a function to each character (with index).
+4. **ft_putchar**: Outputs a character to the standard output.
+5. **ft_putstr**: Outputs a string to the standard output.
+6. **ft_putendl**: Outputs a string followed by a newline to the standard output.
+7. **ft_putnbr**: Outputs an integer to the standard output.
+8. **ft_itoa**: Converts an integer to a string.
+9. **ft_count_words**: Counts words in a string.
+10. **ft_split**: Splits a string into words.
+11. **ft_putchar_fd**: Outputs a character to a given file descriptor.
+12. **ft_putendl_fd**: Outputs a string followed by a newline to a given file descriptor.
+13. **ft_putnbr_fd**: Outputs an integer to a given file descriptor.
+14. **ft_putstr_fd**: Outputs a string to a given file descriptor.
+15. **ft_memalloc**: Allocates memory.
+16. **ft_memdel**: Frees memory.
+17. **ft_strnew**: Creates a new string of a specified size.
+18. **ft_strmap**: Applies a function to each character in a string.
+19. **ft_strmapi**: Applies a function to each character in a string (with index).
+20. **ft_strjoin**: Concatenates two strings.
+21. **ft_strtrim**: Trims leading and trailing characters from a string.
+22. **ft_substr**: Extracts a substring from a string.
+23. **ft_calloc**: Allocates memory for an array and initializes it.

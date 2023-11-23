@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:36 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:26:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 19:45:56 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *str)
 	char	*dup;
 
 	i = 0;
-	len = ft_strlen_const(str);
+	len = ft_strlen(str);
 	dup = (char *)malloc((len + 1) * sizeof(char));
 	if (dup == NULL)
 	{

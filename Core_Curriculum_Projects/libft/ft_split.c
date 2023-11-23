@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:43:11 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/23 19:09:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:06:49 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,53 @@
 #include <stdio.h>
 #include "libft.h"
 
-static char	*ft_word_dup(const char *str, int start, int finish)
+static void	free_arr_strs(char **arr_strs, size_t i)
 {
-	char	*word;
-	int		i;
+	while (0 < i)
+	{
+		i--;
+		free(arr_strs[i]);
+	}
+	free(arr_strs);
+}
 
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
+static char	**split(char const *s, char c, char **arr_strs, size_t i)
+{
+	int	word_len;
+
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			if (!ft_strchr(s, c))
+				word_len = ft_strlen(s);
+			else
+				word_len = ft_strchr(s, c) - s;
+			arr_strs[i] = ft_substr(s, 0, word_len);
+			if (arr_strs[i] == NULL)
+			{
+				free_arr_strs(arr_strs, i);
+				return (NULL);
+			}
+			i++;
+			s = s + word_len;
+		}
+	}
+	arr_strs[i] = NULL;
+	return (arr_strs);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		index;
-	char	**split;
+	size_t	i;
+	char	**arr_strs;
 
-	split = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !split)
-		return (0);
 	i = 0;
-	j = 0;
-	index = -1;
-	while (i <= ft_strlen_const(s))
-	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen_const(s)) && index >= 0)
-		{
-			split[j++] = ft_word_dup(s, index, i);
-			index = -1;
-		}
-		i++;
-	}
-	split[j] = 0;
-	return (split);
+	arr_strs = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !arr_strs)
+		return (0);
+	arr_strs = split(s, c, arr_strs, i);
+	return (arr_strs);
 }
