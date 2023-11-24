@@ -1,5 +1,7 @@
 ## Libft Function List (WIP)
 
+The below are all functions inside the libft.
+
 ### Character Classification
 1. **ft_isascii**: Checks if a character is a 7-bit unsigned char value.
 2. **ft_isdigit**: Checks if a character is a digit.
@@ -32,7 +34,6 @@
 1. **ft_memset**: Fills memory with a constant byte.
 2. **ft_bzero**: Erases the data in a given number of bytes.
 3. **ft_memcpy**: Copies memory area.
-4. **ft_memccpy**: Copies memory until a certain character is found.
 5. **ft_memmove**: Copies memory, handling overlap.
 6. **ft_memchr**: Finds the first occurrence of a character in memory.
 7. **ft_memcmp**: Compares two memory regions.

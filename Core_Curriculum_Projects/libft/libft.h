@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:23:30 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/23 21:02:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:11:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int		ft_atoi(const char *str);
 void	*ft_memset(void *dst, int c, size_t len);
 void	ft_bzero(void *dst, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t len);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memchr(const void *src, int c, size_t size);
 int		ft_memcmp(const void *str1, const void *str2, size_t size);
