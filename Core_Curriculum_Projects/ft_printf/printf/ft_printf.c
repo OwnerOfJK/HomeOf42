@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:58:02 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/26 22:25:39 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "libftprintf.h"
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 void	ft_putstr(char *s)
 {
@@ -72,9 +67,9 @@ int	print(char c, va_list args)
 	if (c == 'u')
 		return (0); //decimal (base 10) number
 	if (c == 'x')
-		ft_puthexa(va_arg(args, unsigned int), false);
+		ft_puthexa(va_arg(args, unsigned int), 1);
 	if (c == 'X')
-		ft_puthexa(va_arg(args, unsigned int), true);
+		ft_puthexa(va_arg(args, unsigned int), 0);
 	if (c == '%')
 		ft_putchar('%');
 	return (0);
@@ -92,7 +87,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			print(format[i + 1], args);
-			i += 2; //error here
+			i += 2;
 			if (format[i] == '\0')
 				return (0);
 		}
@@ -106,5 +101,5 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	ft_printf("I am number %d %s  %% ", 1, "this is a test");
+	ft_printf("I am number %d %s  %% %x %X", 1, "this is a test", 27, 27);
 }
