@@ -6,13 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:06:08 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/26 21:58:02 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "libftprintf.h"
 
 void	ft_putchar(char c)
 {
@@ -71,9 +72,9 @@ int	print(char c, va_list args)
 	if (c == 'u')
 		return (0); //decimal (base 10) number
 	if (c == 'x')
-		return (0); //decimal (base 10) number
+		ft_puthexa(va_arg(args, unsigned int), false);
 	if (c == 'X')
-		return (0); //decimal (base 10) number
+		ft_puthexa(va_arg(args, unsigned int), true);
 	if (c == '%')
 		ft_putchar('%');
 	return (0);

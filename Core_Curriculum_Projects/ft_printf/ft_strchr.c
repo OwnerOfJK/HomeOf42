@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 17:44:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:58:41 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/22 13:43:18 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/23 20:57:43 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include <string.h>
+#include "libft.h"
+#include <stdio.h>
 
-int	ft_printf(const char *format, ...);
-int	find_max(int n, ...);
-int	ft_puthexa(unsigned int nbr, bool upper_case);
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
 
-#endif
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (unsigned char)c)
+		return ((char *)(s + i));
+	return (0);
+}

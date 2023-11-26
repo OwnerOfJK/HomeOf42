@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 17:44:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:58:41 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/22 13:43:15 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/22 15:20:38 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-int	ft_printf(const char *format, ...);
-int	find_max(int n, ...);
-int	ft_puthexa(unsigned int nbr, bool upper_case);
+char	*ft_strcat(char *dest, const char *src)
+{
+	int	i;
+	int	j;
 
-#endif
+	i = 0;
+	j = ft_strlen(dest);
+	if (dest[j] != '\0')
+	{
+		return (0);
+	}
+	while (src[i] != '\0')
+	{
+		dest[j] = src[i];
+		i++;
+		j++;
+	}
+	dest[j] = '\0';
+	return (dest);
+}

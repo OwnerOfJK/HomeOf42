@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 17:44:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:58:41 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/22 13:41:39 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/22 14:20:24 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-int	ft_printf(const char *format, ...);
-int	find_max(int n, ...);
-int	ft_puthexa(unsigned int nbr, bool upper_case);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}

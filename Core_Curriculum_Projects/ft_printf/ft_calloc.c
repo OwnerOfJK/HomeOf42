@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 17:44:49 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 21:58:41 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/23 19:11:29 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/23 19:31:04 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
+#include <stdlib.h>
 
-int	ft_printf(const char *format, ...);
-int	find_max(int n, ...);
-int	ft_puthexa(unsigned int nbr, bool upper_case);
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
 
-#endif
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (ptr);
+	ft_bzero(ptr, size * count);
+	return (ptr);
+}
