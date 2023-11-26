@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 22:25:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/26 23:10:39 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,6 @@
 #include <stdio.h>
 #include "libftprintf.h"
 
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
-}
-
-void	ft_putnbr(int n)
-{
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-	}
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar('-');
-			n = -n;
-		}
-		if (n > 9)
-		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
-		}
-		if (n < 10)
-		{
-			ft_putchar(n + 48);
-		}
-	}
-}
-
 int	print(char c, va_list args)
 {
 	if (c == 'c')
@@ -59,11 +22,12 @@ int	print(char c, va_list args)
 	if (c == 's')
 		ft_putstr(va_arg(args, char *));
 	if (c == 'p')
-		return (0); //void * pointer argument
+		ft_putptr(va_arg(args, void *));
 	if (c == 'd')
-		ft_putnbr(va_arg(args, int));
+		//return (0);
+		ft_putdec(va_arg(args, double));
 	if (c == 'i')
-		return (0); //decimal (base 10) number
+		ft_putnbr(va_arg(args, int));
 	if (c == 'u')
 		return (0); //decimal (base 10) number
 	if (c == 'x')
@@ -101,5 +65,7 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	ft_printf("I am number %d %s  %% %x %X", 1, "this is a test", 27, 27);
+	int var = 10;
+	int *ptr = &var;
+	ft_printf("I am number %i %s  %% %x %X %p %d", 1, "this is a test", 27, 27, ptr, 2.7);
 }
