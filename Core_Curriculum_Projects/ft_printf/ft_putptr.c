@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:39:34 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 18:12:46 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 19:54:15 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 static int	put_ptr_char(unsigned long n)
 {
-	int count;
-	static const char digits[] = "0123456789abcdef";
+	int					count;
+	static const char	digits[] = "0123456789abcdef";
 
 	count = 0;
 	if (n >= 16)
@@ -30,15 +30,16 @@ static int	put_ptr_char(unsigned long n)
 
 int	ft_putptr(unsigned long n)
 {
-    int count = 0;
+	int	count;
 
-    if (n == 0)
-    {
-        count += ft_putstr("0x0");
-        return (count);
-    }
-    else
-        count += ft_putstr("0x");
-    count += put_ptr_char(n);
-    return count;
+	count = 0;
+	if (n == 0)
+	{
+		count += ft_putstr("(nil)");
+		return (count);
+	}
+	else
+		count += ft_putstr("0x");
+	count += put_ptr_char(n);
+	return (count);
 }

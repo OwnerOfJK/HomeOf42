@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:48:00 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 18:12:49 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 19:49:31 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	ft_putstr(char *s)
 
 	i = 0;
 	if (s == NULL)
-		return (-1);
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
 	while (s[i] != '\0')
 	{
 		ft_putchar(s[i]);

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 18:41:56 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 19:33:07 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,14 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			result += print(format[i + 1], args);
-			printf("\n result %d \n", result);
 			i += 2;
 			format_len -= 2;
 			if (format[i] == '\0')
-				break;
+				break ;
 		}
 		ft_putchar(format[i]);
 		i++;
 	}
 	i = 0;
-	printf("\n result %d \n", result);
 	return (result + format_len);
 }
