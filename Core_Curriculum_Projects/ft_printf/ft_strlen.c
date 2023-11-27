@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:44:40 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/23 19:45:56 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/27 18:20:02 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/27 18:20:15 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_strlen(char const *str)
 {
-	size_t	i;
-	size_t	len;
-	char	*str;
+	int	i;
 
-	if (s1 == NULL || set == NULL)
-		return (NULL);
 	i = 0;
-	while (s1[i] != '\0' && ft_strchr(set, s1[i]))
+	while (str[i] != '\0')
+	{
 		i++;
-	len = ft_strlen(s1 + i);
-	while (ft_strchr(set, s1[i + len]))
-		len--;
-	str = ft_substr(s1, i, len + 1);
-	if (str == NULL)
-		return (NULL);
-	return (str);
+	}
+	return (i);
 }

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdec.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 23:00:11 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 23:25:35 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/27 14:48:00 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/27 18:12:49 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putdec(double n)
+int	ft_putstr(char *s)
 {
-	if (n == -2147483648)
+	int	i;
+
+	i = 0;
+	if (s == NULL)
+		return (-1);
+	while (s[i] != '\0')
 	{
-		ft_putstr("-2147483648");
+		ft_putchar(s[i]);
+		i++;
 	}
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar('-');
-			n = -n;
-		}
-		if (n > 9)
-		{
-			ft_putnbr(n / 10);
-			//ft_putnbr(n % 10);
-		}
-		if (n < 10)
-		{
-			ft_putchar(n + 48);
-		}
-	}
+	return (i);
 }

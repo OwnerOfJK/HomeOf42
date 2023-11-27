@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:42:44 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 14:47:15 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/27 12:37:41 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/27 17:17:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libftprintf.h"
 
-void	ft_putchar(char c)
+int	ft_putunbr(long n, int base)
 {
-	write(1, &c, 1);
+	if (n < 0)
+		return (ft_putnbr((n + 1 + 4294967295), base));
+	else
+		return (ft_putnbr(n, base));
 }

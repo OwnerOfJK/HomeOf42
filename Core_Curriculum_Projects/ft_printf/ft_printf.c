@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 23:10:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 18:41:56 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,55 +17,57 @@
 
 int	print(char c, va_list args)
 {
+	int	count;
+
+	count = 0;
 	if (c == 'c')
-		ft_putchar(va_arg(args, int));
-	if (c == 's')
-		ft_putstr(va_arg(args, char *));
-	if (c == 'p')
-		ft_putptr(va_arg(args, void *));
-	if (c == 'd')
-		//return (0);
-		ft_putdec(va_arg(args, double));
-	if (c == 'i')
-		ft_putnbr(va_arg(args, int));
-	if (c == 'u')
-		return (0); //decimal (base 10) number
-	if (c == 'x')
-		ft_puthexa(va_arg(args, unsigned int), 1);
-	if (c == 'X')
-		ft_puthexa(va_arg(args, unsigned int), 0);
-	if (c == '%')
-		ft_putchar('%');
-	return (0);
+	{
+		count = ft_putchar(va_arg(args, int));
+		printf("Count for 'c': %d\n", count);
+	}
+	else if (c == 's')
+		count = ft_putstr(va_arg(args, char *));
+	else if (c == 'p')
+		count = ft_putptr((unsigned long)va_arg(args, void *), 16);
+	else if (c == 'i' || c == 'd')
+		count = ft_putnbr((long)va_arg(args, int), 10);
+	else if (c == 'u')
+		count = ft_putunbr((long)va_arg(args, int), 10);
+	else if (c == 'x')
+		count = ft_lower_puthexa((long)va_arg(args, unsigned int), 16);
+	else if (c == 'X')
+		count = ft_upper_puthexa((long)va_arg(args, unsigned int), 16);
+	else
+		count = ft_putchar(c);
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		i;
+	int		result;
+	int		format_len;
 
 	i = 0;
+	result = 0;
+	format_len = ft_strlen(format);
 	va_start(args, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			print(format[i + 1], args);
+			result += print(format[i + 1], args);
+			printf("\n result %d \n", result);
 			i += 2;
+			format_len -= 2;
 			if (format[i] == '\0')
-				return (0);
+				break;
 		}
 		ft_putchar(format[i]);
 		i++;
 	}
 	i = 0;
-	return (0);
-}
-
-
-int	main(void)
-{
-	int var = 10;
-	int *ptr = &var;
-	ft_printf("I am number %i %s  %% %x %X %p %d", 1, "this is a test", 27, 27, ptr, 2.7);
+	printf("\n result %d \n", result);
+	return (result + format_len);
 }

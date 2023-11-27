@@ -6,20 +6,25 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:29:50 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/26 23:08:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 18:20:24 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-void	ft_putchar(char c);
-int		ft_puthexa(unsigned int nbr, int upper_case);
-void	ft_putstr(char *s);
-int		ft_putptr(void *addr);
-void	ft_putdec(double n);
-void	ft_putnbr(int n);
-void	ft_putstr(char *s);
+# include <stdio.h>
 
+int		ft_printf(const char *format, ...);
+int		ft_putchar(char c);
+int		ft_lower_puthexa(long nbr, int base);
+int		ft_upper_puthexa(long nbr, int base);
+int		ft_putstr(char *s);
+int		ft_putptr(unsigned long n, unsigned int base);
+int		ft_putdec(double n);
+int		ft_putnbr(long n, int base);
+size_t	ft_getdigits(long n, int base);
+int		ft_putunbr(long n, int base);
+int		ft_strlen(char const *str);
 
 #endif

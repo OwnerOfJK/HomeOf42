@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_upper_puthexa.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:43:25 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:25:48 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/26 21:46:54 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/27 18:12:53 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *str1, const char *str2)
-{
-	int	i;
+#include "libftprintf.h"
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-	i = 0;
-	while (str1[i] != '\0' && str2[i] != '\0' && str1[i] == str2[i])
-	{
-		i++;
-	}
-	return (str1[i] - str2[i]);
+int	ft_upper_puthexa(long nbr, int base)
+{
+	static char	upper_digits[] = "0123456789ABCDEF";
+
+	if ((int)nbr >= base)
+		ft_upper_puthexa((nbr / base), base);
+	ft_putchar(upper_digits[nbr % base]);
+	return (ft_getdigits(nbr, base));
 }

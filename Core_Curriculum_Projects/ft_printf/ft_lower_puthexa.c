@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_lower_puthexa.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:44:16 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/22 15:32:02 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/27 12:28:40 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/27 18:11:17 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, const char *src, int len)
-{
-	int	i;
+#include "libftprintf.h"
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-	i = 0;
-	while (i < len)
-	{
-		if (src[i] != '\0')
-		{
-			dest[i] = src[i];
-		}
-		else
-		{
-			dest[i] = '\0';
-		}
-		i++;
-	}
-	return (dest);
+int	ft_lower_puthexa(long nbr, int base)
+{
+	static char	lower_digits[] = "0123456789abcdef";
+
+	if ((int)nbr >= base)
+		ft_lower_puthexa((nbr / base), base);
+	ft_putchar(lower_digits[nbr % base]);
+	return (ft_getdigits(nbr, base));
 }
