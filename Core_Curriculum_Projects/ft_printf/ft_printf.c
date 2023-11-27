@@ -27,13 +27,13 @@ int	print(char c, va_list args)
 	else if (c == 'p')
 		count = ft_putptr((unsigned long)va_arg(args, void *));
 	else if (c == 'i' || c == 'd')
-		count = ft_putnbr((long)va_arg(args, int));
+		count = ft_putnbr(va_arg(args, int));
 	else if (c == 'u')
-		count = ft_putunbr((long)va_arg(args, int));
+		count = ft_putunbr(va_arg(args, unsigned int));
 	else if (c == 'x')
-		count = ft_lower_puthexa((long)va_arg(args, unsigned int));
+		count = ft_lower_puthexa(va_arg(args, unsigned int));
 	else if (c == 'X')
-		count = ft_upper_puthexa((long)va_arg(args, unsigned int));
+		count = ft_upper_puthexa(va_arg(args, unsigned int));
 	else
 		count = ft_putchar(c);
 	return (count);

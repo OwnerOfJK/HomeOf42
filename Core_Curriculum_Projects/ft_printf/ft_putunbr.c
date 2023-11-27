@@ -18,12 +18,7 @@ int	ft_putunbr(unsigned long n)
 
 	count = 0;
 	if (n == 0)
-		count = ft_putchar("0");
-	if (n < 0)
-	{
-		count += 1;
-		return (0);
-	}
+		count = ft_putstr("0");
 	if (n >= 10)
 		count += ft_putunbr(n / 10);
 	count += ft_putchar('0' + (n % 10));
