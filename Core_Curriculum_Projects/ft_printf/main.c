@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:33:46 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 21:22:43 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:31:12 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ int	main(void)
 {
 	int	x;
 	int	j;
+  	int array[5] = { 1, 4, 5 };
+    size_t size = sizeof(array);
 
-	//x = ft_printf("mine: %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%% \n", 'A', "42", 42, 42 ,42 , 42, 42,'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	//j = printf("nine: %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%% \n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-
-	x = ft_printf("mine: %c", '0');
-	j = printf("nine: %c", '0');
+	x = ft_printf("mine: %c %zu %i \n", '0', size, 4);
+	j = printf("mine: %c %zu %i \n", '0', size, 4);
 	printf(" \n mine : %i \noriginal : %i \n", x, j);
 	return (0);
 }

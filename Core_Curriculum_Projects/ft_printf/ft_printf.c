@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:47:12 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 21:22:00 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:41:12 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int	print(char c, va_list args)
 		count = ft_lower_puthexa(va_arg(args, unsigned int));
 	else if (c == 'X')
 		count = ft_upper_puthexa(va_arg(args, unsigned int));
-	else
+	else if (c == '%')
 		count = ft_putchar(c);
+	else
+		count = ft_putchar(va_arg(args, int));
 	return (count);
 }
 
