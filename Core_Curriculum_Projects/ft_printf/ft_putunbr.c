@@ -12,10 +12,12 @@
 
 #include "libftprintf.h"
 
-int	ft_putunbr(long n, int base)
+int ft_putunbr(unsigned long n)
 {
-	if (n < 0)
-		return (ft_putnbr((n + 1 + 4294967295), base));
-	else
-		return (ft_putnbr(n, base));
+    int count = 0;
+
+    if (n >= 10)
+        count += ft_putunbr(n / 10);
+    count += ft_putchar('0' + (n % 10));
+    return count;
 }

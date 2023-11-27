@@ -14,20 +14,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void	put_ptr_char(unsigned long n, unsigned int base)
+static int	put_ptr_char(unsigned long n)
 {
-	static char	digits[] = "0123456789abcdef";
+	int count;
+	static const char digits[] = "0123456789abcdef";
 
-	if (n >= base)
-		put_ptr_char((n / base), base);
-	ft_putchar(digits[n % base]);
+	count = 0;
+	if (n >= 16)
+	{
+		count += put_ptr_char(n / 16);
+	}
+	count += ft_putchar(digits[n % 16]);
+	return (count);
 }
 
-int	ft_putptr(unsigned long n, unsigned int base)
+int	ft_putptr(unsigned long n)
 {
-	if (n == 0)
-		return (0);
-	ft_putstr("0x");
-	put_ptr_char(n, base);
-	return (ft_getdigits(n, base) + 2); //to be corrected
+    int count = 0;
+
+    if (n == 0)
+    {
+        count += ft_putstr("0x0");
+        return (count);
+    }
+    else
+        count += ft_putstr("0x");
+    count += put_ptr_char(n);
+    return count;
 }

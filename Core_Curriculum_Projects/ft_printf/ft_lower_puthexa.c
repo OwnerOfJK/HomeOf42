@@ -15,12 +15,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_lower_puthexa(long nbr, int base)
+int	ft_lower_puthexa(long nbr)
 {
-	static char	lower_digits[] = "0123456789abcdef";
+    int count;
+    static const char hex_digits[] = "0123456789abcdef";
 
-	if ((int)nbr >= base)
-		ft_lower_puthexa((nbr / base), base);
-	ft_putchar(lower_digits[nbr % base]);
-	return (ft_getdigits(nbr, base));
+    count = 0;
+    if (nbr < 16)
+        count += ft_putchar(hex_digits[nbr]);
+    else {
+        count += ft_lower_puthexa(nbr / 16);
+        count += ft_putchar(hex_digits[nbr % 16]);
+    }
+    return count;
 }

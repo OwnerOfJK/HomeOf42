@@ -21,22 +21,19 @@ int	print(char c, va_list args)
 
 	count = 0;
 	if (c == 'c')
-	{
 		count = ft_putchar(va_arg(args, int));
-		printf("Count for 'c': %d\n", count);
-	}
 	else if (c == 's')
 		count = ft_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		count = ft_putptr((unsigned long)va_arg(args, void *), 16);
+		count = ft_putptr((unsigned long)va_arg(args, void *));
 	else if (c == 'i' || c == 'd')
-		count = ft_putnbr((long)va_arg(args, int), 10);
+		count = ft_putnbr((long)va_arg(args, int));
 	else if (c == 'u')
-		count = ft_putunbr((long)va_arg(args, int), 10);
+		count = ft_putunbr((long)va_arg(args, int));
 	else if (c == 'x')
-		count = ft_lower_puthexa((long)va_arg(args, unsigned int), 16);
+		count = ft_lower_puthexa((long)va_arg(args, unsigned int));
 	else if (c == 'X')
-		count = ft_upper_puthexa((long)va_arg(args, unsigned int), 16);
+		count = ft_upper_puthexa((long)va_arg(args, unsigned int));
 	else
 		count = ft_putchar(c);
 	return (count);

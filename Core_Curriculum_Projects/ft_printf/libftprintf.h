@@ -17,14 +17,14 @@
 
 int		ft_printf(const char *format, ...);
 int		ft_putchar(char c);
-int		ft_lower_puthexa(long nbr, int base);
-int		ft_upper_puthexa(long nbr, int base);
+int		ft_lower_puthexa(long nbr);
+int		ft_upper_puthexa(long nbr);
 int		ft_putstr(char *s);
-int		ft_putptr(unsigned long n, unsigned int base);
+int		ft_putptr(unsigned long n);
 int		ft_putdec(double n);
-int		ft_putnbr(long n, int base);
-size_t	ft_getdigits(long n, int base);
-int		ft_putunbr(long n, int base);
+int		ft_putnbr(long n);
+size_t	ft_getdigits(long n);
+int		ft_putunbr(unsigned long n);
 int		ft_strlen(char const *str);
 
 #endif

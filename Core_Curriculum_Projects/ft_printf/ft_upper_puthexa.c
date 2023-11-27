@@ -15,12 +15,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_upper_puthexa(long nbr, int base)
+int	ft_upper_puthexa(long nbr)
 {
-	static char	upper_digits[] = "0123456789ABCDEF";
+    int count;
+    static const char hex_digits[] = "0123456789ABCDEF";
 
-	if ((int)nbr >= base)
-		ft_upper_puthexa((nbr / base), base);
-	ft_putchar(upper_digits[nbr % base]);
-	return (ft_getdigits(nbr, base));
+    count = 0;
+    if (nbr < 16) {
+        count += ft_putchar(hex_digits[nbr]);
+    } else {
+        count += ft_upper_puthexa(nbr / 16);
+        count += ft_putchar(hex_digits[nbr % 16]);
+    }
+    return count;
 }
