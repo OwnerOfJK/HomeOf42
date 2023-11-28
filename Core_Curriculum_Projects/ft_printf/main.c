@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:33:46 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/27 21:31:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/28 12:57:23 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ int	main(void)
 {
 	int	x;
 	int	j;
-  	int array[5] = { 1, 4, 5 };
-    size_t size = sizeof(array);
 
-	x = ft_printf("mine: %c %zu %i \n", '0', size, 4);
-	j = printf("mine: %c %zu %i \n", '0', size, 4);
+	x = ft_printf("mine: %s \n", "hi");
+	j = printf("nine: %s \n", "hi");
 	printf(" \n mine : %i \noriginal : %i \n", x, j);
 	return (0);
 }
