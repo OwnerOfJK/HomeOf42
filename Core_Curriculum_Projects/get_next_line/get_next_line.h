@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 12:37:41 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/28 14:54:51 by jkaller          ###   ########.fr       */
+/*   Created: 2023/11/28 13:19:20 by jkaller           #+#    #+#             */
+/*   Updated: 2023/11/28 13:30:10 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_putunbr(unsigned long n)
-{
-	int	count;
+char	*get_next_line(int fd);
 
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar('0' + (n % 10));
-	return (count);
-}
+#endefine
