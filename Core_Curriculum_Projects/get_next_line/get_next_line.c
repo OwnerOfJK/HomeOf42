@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:23 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/28 19:12:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/29 12:24:15 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,32 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "../libft/libft.h"
 
 char	*get_next_line(int fd)
 {
 	int		chars_read;
 	char	*buffer;
+	char	*next_line;
 	int		size;
 	int		i;
 
+	i = 0;
+	size = 0;
 	buffer = (char *)malloc(1 * sizeof(char));
+	next_line = (char *)malloc(size + 1 * sizeof(char));
 	fd = open("file.txt", O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	while ((chars_read = read(fd, buffer, 1)) != 0 && *buffer != '\n')
+	chars_read = read(fd, buffer, 1);
+	while (chars_read != 0 && buffer[i] != '\n')
 	{
-		buffer[chars_read] = '\0';
-		//printf("Those bytes are as follows: %c \n", buffer[i]);
-		// while (buffer[i] != '\n')
-		// {
-
-		// 	i++;
-		// }
-		printf("called read(%d, buffer, 50). returned that %d bytes were read.\n", fd, chars_read);
-		printf("Those bytes are as follows: %s \n", buffer);
-		buffer++;
+		next_line[size] = *buffer;
+		read(fd, buffer, 1);
+		size++;
 	}
-	// while (*buffer != '\n')
-	// 	size++;
+	buffer[chars_read] = '\0';
+	printf("%s \n", next_line);
 	return (buffer);
 }
 
@@ -48,6 +47,6 @@ int	main(void)
 {
 	int	fd;
 	get_next_line(fd);
-	get_next_line(fd);
+	//get_next_line(fd);
 	return (0);
 }
