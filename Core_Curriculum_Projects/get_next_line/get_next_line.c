@@ -21,7 +21,7 @@ char *concatenate_strings(char *str1, char *str2, size_t len1, size_t len2)
 {
     char *result;
 
-    result = malloc(len1 + len2 + 1);
+    result = (char *)malloc((len1 + len2 + 1) * sizeof(char));
     if (result == NULL)
     {
         free(str1);
@@ -37,54 +37,70 @@ char *concatenate_strings(char *str1, char *str2, size_t len1, size_t len2)
     return (result);
 }
 
-char *input_line(int fd, char *buffer)
+char *create_line(char *line, char *buffer, size_t *line_len, char **newline_pos)
+{
+    size_t part_len;
+
+    *newline_pos = ft_strchr(buffer, '\n');
+    if (*newline_pos) {
+        part_len = *newline_pos - buffer + 1;
+        line = concatenate_strings(line, buffer, *line_len, part_len);
+        return line;
+    } else {
+        part_len = ft_strlen(buffer);
+        line = concatenate_strings(line, buffer, *line_len, part_len);
+        if (!line) return NULL;
+        *line_len += part_len;
+        return line;
+    }
+}
+
+char *input_line(int fd, char *buffer, size_t *line_len)
 {
     char *line;
     ssize_t read_check;
     char *newline_pos;
-    size_t line_len;
-    size_t part_len;
 
-    line = NULL;
-    line_len = 0;
-    while (1)
-    {
+	line = NULL;
+    while (1) {
         read_check = read(fd, buffer, BUFFER_SIZE);
         if (read_check <= 0)
-            return (line_len ? line : NULL);
+			break;
         buffer[read_check] = '\0';
-        newline_pos = ft_strchr(buffer, '\n');
-        if (newline_pos)
-        {
-            part_len = newline_pos - buffer + 1;
-            line = concatenate_strings(line, buffer, line_len, part_len);
-            return (line);
-        }
-        else
-        {
-            line = concatenate_strings(line, buffer, line_len, read_check);
-            if (!line)
-                return (NULL);
-            line_len += read_check;
-        }
+        line = create_line(line, buffer, line_len, &newline_pos);
+        if (newline_pos || !line)
+			break;
     }
+	if (read_check <= 0 && *line_len == 0)
+		return (NULL);
+	else
+		return (line);
 }
 
 char *get_next_line(int fd)
 {
-    static char *buffer = NULL;
+    static char *buffer;
+    static size_t line_len;
+    char *line;
 
-    if (BUFFER_SIZE <= 0 || fd < 0)
+	buffer = NULL;
+	line_len = 0;
+    if (BUFFER_SIZE <= 0 || fd < 0) {
         return (NULL);
-    if (!buffer)
-        buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!buffer)
-        return (NULL);
-    char *line = input_line(fd, buffer);
-    if (!line)
-    {
+    }
+    if (buffer == NULL) {
+        buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+        if (buffer == NULL) 
+		{
+            return (NULL);
+        }
+    }
+    line = input_line(fd, buffer, &line_len);
+    if (line == NULL) 
+	{
         free(buffer);
         buffer = NULL;
+        line_len = 0;
     }
     return (line);
 }
