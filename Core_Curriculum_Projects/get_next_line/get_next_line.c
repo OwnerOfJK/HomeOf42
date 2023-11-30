@@ -17,77 +17,76 @@
 #include <stddef.h>
 #include "get_next_line.h"
 
-char	*concatenate_strings(char *str1, char *str2, size_t len1, size_t len2)
+char *concatenate_strings(char *str1, char *str2, size_t len1, size_t len2)
 {
-	char	*result;
+    char *result;
 
-	result = malloc(len1 + len2 + 1);
-	if (result == NULL)
-	{
-		free(str1);
-		return (NULL);
-	}
-	ft_memcpy(result, str1, len1);
-	ft_memcpy(result + len1, str2, len2);
-	result[len1 + len2] = '\0';
-	free(str1);
-	return (result);
+    result = malloc(len1 + len2 + 1);
+    if (result == NULL)
+    {
+        free(str1);
+        return (NULL);
+    }
+    if (str1)
+    {
+        ft_memcpy(result, str1, len1);
+        free(str1);
+    }
+    ft_memcpy(result + len1, str2, len2);
+    result[len1 + len2] = '\0';
+    return (result);
 }
 
-char	*input_line(int fd, char *buffer)
+char *input_line(int fd, char *buffer)
 {
-	char		*line;
-	ssize_t		read_check;
-	char		*newline_pos;
-	size_t		line_len;
-	size_t		part_len;
+    char *line;
+    ssize_t read_check;
+    char *newline_pos;
+    size_t line_len;
+    size_t part_len;
 
-	read_check = 1;
-	line_len = 0;
-	while (read_check > 0)
-	{
-		read_check = read(fd, buffer, BUFFER_SIZE);
-		if (read_check == -1) 
-			return (NULL);
-		buffer[read_check] = '\0';
-		newline_pos = ft_strchr(buffer, '\n');
-		if (newline_pos != NULL)
-		{
-			part_len = newline_pos - buffer;
-			line = concatenate_strings(line, buffer, line_len, part_len);
-			break ;
-		}
-		else
-		{
-			line = concatenate_strings(line, buffer, line_len, read_check);
-			line_len += read_check;
-		}
-	}
-	printf("test %s", line);
-	return (line);
+    line = NULL;
+    line_len = 0;
+    while (1)
+    {
+        read_check = read(fd, buffer, BUFFER_SIZE);
+        if (read_check <= 0)
+            return (line_len ? line : NULL);
+        buffer[read_check] = '\0';
+        newline_pos = ft_strchr(buffer, '\n');
+        if (newline_pos)
+        {
+            part_len = newline_pos - buffer + 1;
+            line = concatenate_strings(line, buffer, line_len, part_len);
+            return (line);
+        }
+        else
+        {
+            line = concatenate_strings(line, buffer, line_len, read_check);
+            if (!line)
+                return (NULL);
+            line_len += read_check;
+        }
+    }
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	static char	next_char;
-	char		*buffer;
-	char		*line;
+    static char *buffer = NULL;
 
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}
-	if (buffer == NULL)
-		return (NULL);
-	line = input_line(fd, buffer);
-	free (buffer);
-	buffer = NULL;
-	if (line == NULL)
-		return (0);
-	return (line);
+    if (BUFFER_SIZE <= 0 || fd < 0)
+        return (NULL);
+    if (!buffer)
+        buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if (!buffer)
+        return (NULL);
+    char *line = input_line(fd, buffer);
+    if (!line)
+    {
+        free(buffer);
+        buffer = NULL;
+    }
+    return (line);
 }
 
 int main(void)
