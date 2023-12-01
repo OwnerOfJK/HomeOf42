@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:19:20 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/30 14:54:56 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/11/30 19:13:07 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #  define BUFFER_SIZE 2
 # endif
 
-#include <stddef.h>
+# include <stddef.h>
 
 char		*get_next_line(int fd);
 char		*ft_strjoin(char *s1, char *s2);
