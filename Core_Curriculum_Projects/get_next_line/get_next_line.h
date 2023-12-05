@@ -19,8 +19,8 @@
 # include <stddef.h>
 
 char		*get_next_line(int fd);
-char		*ft_strjoin(char *s1, char *s2);
-int			ft_strlen(char const *str);
+char	    *ft_strnjoin(char *s1, char *s2, size_t len);
+int	        ft_strlen(char const *str);
 char		*ft_strdup(char *str);
 char		*ft_strchr(char *s, int c);
 void		*ft_memcpy(void *dst, const void *src, size_t len);

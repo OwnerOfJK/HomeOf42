@@ -109,22 +109,23 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
 
-// 	fd = open("file.txt", O_RDONLY);
-// 	if (fd == -1) 
-// 	{
-// 		return (1);
-// 	}
-// 	line = NULL;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("Line: %s\n", line);
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("file.txt", O_RDONLY);
+	if (fd == -1) 
+	{
+		return (1);
+	}
+	line = NULL;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("Line: %s\n", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
