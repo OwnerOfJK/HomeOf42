@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:27:28 by jkaller           #+#    #+#             */
-/*   Updated: 2023/11/30 19:13:50 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/12/16 22:44:48 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,6 @@
 #include "get_next_line.h"
 #include <string.h>
 #include <stddef.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t len)
-{
-	unsigned int			i;
-	unsigned char			*p_dst;
-	unsigned const char		*p_src;
-
-	i = 0;
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned const char *)src;
-	if (dst == NULL && src == NULL)
-		return (0);
-	while (i < len)
-	{
-		p_dst[i] = p_src[i];
-		i++;
-	}
-	return (dst);
-}
 
 char	*ft_strchr(char *s, int c)
 {
@@ -113,4 +94,33 @@ char	*ft_strdup(char *str)
 	}
 	dup[i] = '\0';
 	return (dup);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*newstr;
+	size_t	i;
+
+	i = 0;
+	if (start >= (unsigned int)ft_strlen(s))
+	{
+		newstr = malloc(sizeof(char));
+		if (!newstr)
+			return (NULL);
+		newstr[0] = '\0';
+		return (newstr);
+	}
+	if ((size_t)ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	newstr = malloc(sizeof(char) * len + 1);
+	if (newstr == NULL)
+		return (NULL);
+	while (i < len && s[i] != '\0')
+	{
+		newstr[i] = s[start];
+		i++;
+		start++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
 }
