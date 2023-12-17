@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:27:28 by jkaller           #+#    #+#             */
-/*   Updated: 2023/12/16 22:44:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2023/12/17 01:29:18 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <stddef.h>
 
-char	*ft_strchr(char *s, int c)
+static char	*ft_strchr(char *s, int c)
 {
 	unsigned int		i;
 	char				tmp;
