@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 19:27:28 by jkaller           #+#    #+#             */
-/*   Updated: 2023/12/17 13:17:49 by jkaller          ###   ########.fr       */
+/*   Created: 2023/12/17 14:16:26 by jkaller           #+#    #+#             */
+/*   Updated: 2023/12/17 15:55:02 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <string.h>
 #include <stddef.h>
 

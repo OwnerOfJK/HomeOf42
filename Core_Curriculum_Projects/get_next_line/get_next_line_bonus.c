@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:19:23 by jkaller           #+#    #+#             */
-/*   Updated: 2023/12/17 15:54:35 by jkaller          ###   ########.fr       */
+/*   Created: 2023/12/17 14:16:32 by jkaller           #+#    #+#             */
+/*   Updated: 2023/12/17 15:54:25 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*delegate_static(char *line)
 {
@@ -68,26 +68,26 @@ char	*input_line(int fd, char *start_of_next, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*start_of_next;
+	static char	*start_of_next[MAX_FD];
 	char		*line;
 	char		*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		free(start_of_next);
+		free(start_of_next[fd]);
 		free(buffer);
-		start_of_next = NULL;
+		start_of_next[fd] = NULL;
 		buffer = NULL;
 		return (NULL);
 	}
 	if (buffer == NULL)
 		return (NULL);
-	line = input_line(fd, start_of_next, buffer);
+	line = input_line(fd, start_of_next[fd], buffer);
 	free(buffer);
 	buffer = NULL;
 	if (line == NULL)
 		return (NULL);
-	start_of_next = delegate_static(line);
+	start_of_next[fd] = delegate_static(line);
 	return (line);
 }
