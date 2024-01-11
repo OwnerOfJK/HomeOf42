@@ -12,7 +12,6 @@ INC=/usr/include
 ## Please use configure script
 
 
-
 UNAME = $(shell uname)
 CC	= gcc
 ifeq ($(UNAME),FreeBSD)
