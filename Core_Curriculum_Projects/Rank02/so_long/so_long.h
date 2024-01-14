@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/14 18:03:56 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/14 20:09:42 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 // hook-related functions.
-int				close(int keycode, t_vars *vars);
-
+int				close_window(int keycode, t_vars *vars);
+int				mouse_hook(int keycode, t_vars *vars);
+int				mouse_move(int x, int y, t_vars *vars);
 #endif
