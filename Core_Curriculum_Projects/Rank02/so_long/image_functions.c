@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:31:48 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 17:36:58 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/15 21:19:45 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	create_image(t_vars *vars, char *xpm_path, int mapX, int mapY)
+void	create_map(t_vars *vars)
 {
-	create_walls;
-	create_collectibles;
-	
-	// char	*relative_path = "assets/sumrot.xpm";
-    // Load the XPM file
-    void	*img;
-    int		img_width;
-    int		img_height;
+	char	*xpm_paths[2] = {"assets/floor.xpm", "assets/rails.xpm"};
+	void	*imgs[2];
+	int		img_width;
+	int		img_height;
 
-    img = mlx_xpm_file_to_image(vars->mlx, xpm_path, &img_width, &img_height);
-    if (!img) {
-        ft_putstr_fd("Error\nFailed to load image.\n", 2);
-        return ;
-    }
-
-    // Put the image to the desired coordinates on the map
-    mlx_put_image_to_window(vars->mlx, vars->win, img, mapX * TILE_SIZE, mapY * TILE_SIZE);
+	for (int i = 0; i < 2; i++)
+	{
+		imgs[i] = mlx_xpm_file_to_image(vars->mlx, xpm_paths[i], &img_width, &img_height);
+		if (!imgs[i])
+			return;
+	}
+	for (int mapY = 0; mapY < LENGTH_MAX; mapY++)
+		for (int mapX = 0; mapX < WIDTH_MAX; mapX++)
+			mlx_put_image_to_window(vars->mlx, vars->win, imgs[vars->map[mapY][mapX]], mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
 }
 
 int	clear_and_reset(t_vars *vars)
@@ -41,7 +38,6 @@ int	clear_and_reset(t_vars *vars)
 	int	x;
 	int	y;
 
-	mlx_clear_window(vars->mlx, vars->win);
 	x = 0;
 	while (x < LENGTH_MAX)
 	{
@@ -53,5 +49,5 @@ int	clear_and_reset(t_vars *vars)
 		}
 		x++;
 	}
-	//create_image(vars);
+	create_map(vars);
 }

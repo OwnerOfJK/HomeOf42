@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 17:13:50 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/15 21:09:01 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,20 @@ int	player_movement(int keycode, t_vars *vars)
 	int	i;
 
 	i = 0;
-	clear_and_reset(vars);
 	while (i < vars->player_number)
 	{
 		if (keycode == 65361) //left
-			vars->players[i].x -= 5;
+			vars->players[i].x -= 1;
 		else if (keycode == 65363) //right
-			vars->players[i].x += 5;
+			vars->players[i].x += 1;
 		else if (keycode == 65364) //up
-			vars->players[i].y += 5;
+			vars->players[i].y += 1;
 		else if (keycode == 65362) //down
-			vars->players[i].y -= 5;
+			vars->players[i].y -= 1;
 		my_mlx_pixel_put(vars, vars->players[i].x, vars->players[i].y, vars->players[i].color);
 		i++;
 		printf("Key pressed: %d\n", keycode);
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	//mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	return (0);
 }

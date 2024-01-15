@@ -6,13 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 17:33:53 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/15 19:34:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_linux/mlx.h"
 #include "so_long.h"
 #include <stdio.h>
+#include <string.h>
 
 int	key_press(int keycode, t_vars *vars)
 {
@@ -34,7 +35,17 @@ int	main(void)
 	// Create a new image
 	vars.img = mlx_new_image(vars.mlx, LENGTH_MAX, WIDTH_MAX);
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
-	create_image(vars);
+	
+    // create map
+    int map[LENGTH_MAX][WIDTH_MAX] = {
+        {0, 0, 1, 1, 0},
+        {0, 0, 1, 1, 0},
+		{0, 0, 1, 1, 0},
+		{0, 0, 1, 1, 0},
+		{0, 0, 1, 1, 0},
+    };  
+    memcpy(vars.map, map, sizeof(map));
+    create_map(&vars);
 
 	//Initialise player variables
 	vars.players = NULL;
