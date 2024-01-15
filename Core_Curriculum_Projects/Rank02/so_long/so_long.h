@@ -6,15 +6,15 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 16:53:58 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:06:40 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define LENGTH_MAX 100
-# define WIDTH_MAX 100
+# define LENGTH_MAX 500
+# define WIDTH_MAX 500
 # define PLAYER_MAX 10
 # define DEFAULT_COLOR 0x000000
 # define PLAYER_COLOR 0xFF0000

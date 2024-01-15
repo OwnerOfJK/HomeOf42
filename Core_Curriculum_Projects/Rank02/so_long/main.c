@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 16:51:03 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:33:53 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ int	key_press(int keycode, t_vars *vars)
 
 int	main(void)
 {
-	//t_data	img;
 	t_vars	vars;
-	// char	*relative_path = "assets/sumrot.xpm";
-	// int		img_width;
-	// int		img_height;
 
 	// create window
 	vars.mlx = mlx_init();
@@ -38,6 +34,7 @@ int	main(void)
 	// Create a new image
 	vars.img = mlx_new_image(vars.mlx, LENGTH_MAX, WIDTH_MAX);
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
+	create_image(vars);
 
 	//Initialise player variables
 	vars.players = NULL;
