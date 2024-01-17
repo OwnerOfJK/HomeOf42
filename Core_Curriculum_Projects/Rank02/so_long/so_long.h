@@ -6,19 +6,24 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 14:37:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 21:05:49 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define LENGTH_MAX 500
-# define WIDTH_MAX 500
-# define PLAYER_MAX 30
+# define PLAYER_MAX 10
 # define DEFAULT_COLOR 0x000000
 # define PLAYER_COLOR 0xFF0000
-# define OBJECTS_SIZE 100
+# define OBJECTS_SIZE 50
+
+typedef struct s_sprites {
+	int	*floor_xpm;
+	int	*path_xpm;
+    int *player_xpm;
+    int *collectible_xpm;
+}				t_sprites;
 
 typedef struct s_player {
 	int	x;
@@ -34,7 +39,10 @@ typedef struct s_vars {
     int bits_per_pixel;
     int line_length;
     int endian;
-    int map[LENGTH_MAX][WIDTH_MAX];
+    char **map;
+    int x_max;
+    int y_max;
+    int fd;
     int player_number;
     t_player *players;
 } t_vars;

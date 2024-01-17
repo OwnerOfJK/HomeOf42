@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:23:30 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 14:14:29 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:38:28 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-# define MAX_FD 10240
+# define MAX_FD 10
 
 # include <string.h>
 

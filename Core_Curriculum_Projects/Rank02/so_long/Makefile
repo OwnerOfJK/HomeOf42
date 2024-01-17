@@ -1,7 +1,7 @@
 # Makefile for so_long
 
 # Compiler
-CC = gcc
+CC = clang -g
 
 # Source files
 SRCS = $(wildcard *.c)
@@ -18,7 +18,7 @@ LIBFT_DIR = libs/libft
 
 # Compiler flags
 EFLAGS = -Wall -Wextra -Werror
-CFLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+CFLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -fPIE
 
 all: mlx_linux $(TARGET)
 

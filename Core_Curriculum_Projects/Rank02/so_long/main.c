@@ -6,14 +6,17 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 14:31:41 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 21:27:07 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libs/libft/libft.h"
 #include "libs/mlx_linux/mlx.h"
 #include "so_long.h"
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 int	key_press(int keycode, t_vars *vars)
 {
@@ -24,28 +27,57 @@ int	key_press(int keycode, t_vars *vars)
 	return (0);
 }
 
+void	prepare_map_array(char *path_to_map, t_vars *vars)
+{
+	char	*line;
+	int		i;
+
+	vars->fd = open(path_to_map, O_RDONLY);
+	line = get_next_line(vars->fd);
+	vars->y_max = 1;
+	vars->x_max = ft_strlen(line);
+	free(line);
+	while (get_next_line(vars->fd) != NULL)
+		vars->y_max++;
+	close(vars->fd);
+	vars->fd = open(path_to_map, O_RDONLY);
+	vars->map = (char **)malloc(vars->y_max * sizeof(char *));
+	i = 0;
+	while (i < vars->y_max)
+	{
+		vars->map[i] = (char *)malloc((vars->x_max + 1) * sizeof(char));
+		read(vars->fd, vars->map[i], vars->x_max);
+		vars->map[i][vars->x_max] = '\0';
+		i++;
+	}
+	close(vars->fd);
+	for (int i = 0; i < vars->y_max; i++)
+	{
+		for (int j = 0; j < vars->x_max; j++)
+			printf("%c", vars->map[i][j]);
+	}
+}
+
 int	main(void)
 {
 	t_vars	vars;
+	char	*line;
+	
 
 	// create window
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, LENGTH_MAX, WIDTH_MAX, "A GAME");
+	prepare_map_array("maps/small.txt", &vars);
 
+
+	
 	// Create a new image
-	vars.img = mlx_new_image(vars.mlx, LENGTH_MAX, WIDTH_MAX);
+	vars.win = mlx_new_window(vars.mlx, vars.x_max * OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE, "A GAME");
+	vars.img = mlx_new_image(vars.mlx, vars.x_max *OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE);
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
 	
-    // create map
-    int map[LENGTH_MAX][WIDTH_MAX] = {
-        {1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1},
-		{1, 0, 0, 0, 1},
-		{1, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1},
-    };  
-    memcpy(vars.map, map, sizeof(map));
-    create_map(&vars);
+
+
+	create_map(&vars);
 
 	//Initialise player variables
 	vars.players = NULL;
@@ -59,20 +91,3 @@ int	main(void)
 	mlx_loop(vars.mlx);
 	return (0);
 }
-
-
-
-// int	render_next_frame(t_vars *vars)
-// {
-// 	t_vars *vars = (t_vars *)vars;
-
-	
-	
-// 	vars.img = mlx_new_image(vars->mlx, LENGTH_MAX, WIDTH_MAX);
-// 	//img.img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-// 			&img.line_length, &img.endian);
-// 	my_mlx_area_put(&img, 0x0000FF);
-// 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
-	
-// }
