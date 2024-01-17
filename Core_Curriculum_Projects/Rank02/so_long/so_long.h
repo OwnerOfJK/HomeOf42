@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 21:05:49 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 22:40:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@
 # define OBJECTS_SIZE 50
 
 typedef struct s_sprites {
-	int	*floor_xpm;
-	int	*path_xpm;
-    int *player_xpm;
-    int *collectible_xpm;
+	void	*floor_xpm;
+	void	*path_xpm;
+    void *collectible_xpm;
 }				t_sprites;
 
 typedef struct s_player {
 	int	x;
 	int	y;
-	int	color;
+    void *player_xpm;
 }				t_player;
 
 typedef struct s_vars {
@@ -44,7 +43,8 @@ typedef struct s_vars {
     int y_max;
     int fd;
     int player_number;
-    t_player *players;
+    t_player *player;
+    t_sprites *sprites;
 } t_vars;
 
 
