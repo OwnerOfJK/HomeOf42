@@ -6,11 +6,11 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:31:48 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 12:13:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:31:36 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_linux/mlx.h"
+#include "libs/mlx_linux/mlx.h"
 #include "so_long.h"
 #include <stdio.h>
 #include <stdlib.h>
