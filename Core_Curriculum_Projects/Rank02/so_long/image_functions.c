@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:31:48 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 21:19:45 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:13:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,4 @@ void	create_map(t_vars *vars)
 	for (int mapY = 0; mapY < LENGTH_MAX; mapY++)
 		for (int mapX = 0; mapX < WIDTH_MAX; mapX++)
 			mlx_put_image_to_window(vars->mlx, vars->win, imgs[vars->map[mapY][mapX]], mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
-}
-
-int	clear_and_reset(t_vars *vars)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < LENGTH_MAX)
-	{
-		y = 0;
-		while (y < WIDTH_MAX)
-		{
-			my_mlx_pixel_put(vars, x, y, DEFAULT_COLOR);
-			y++;
-		}
-		x++;
-	}
-	create_map(vars);
 }

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 21:09:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:05:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	player_movement(int keycode, t_vars *vars)
 	i = 0;
 	while (i < vars->player_number)
 	{
+		my_mlx_pixel_put(vars, vars->players[i].x, vars->players[i].y, DEFAULT_COLOR);
 		if (keycode == 65361) //left
 			vars->players[i].x -= 1;
 		else if (keycode == 65363) //right

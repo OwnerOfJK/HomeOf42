@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/15 19:34:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:11:52 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main(void)
 	
     // create map
     int map[LENGTH_MAX][WIDTH_MAX] = {
-        {0, 0, 1, 1, 0},
-        {0, 0, 1, 1, 0},
-		{0, 0, 1, 1, 0},
-		{0, 0, 1, 1, 0},
-		{0, 0, 1, 1, 0},
+        {1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+		{1, 0, 0, 0, 1},
+		{1, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1},
     };  
     memcpy(vars.map, map, sizeof(map));
     create_map(&vars);
@@ -54,6 +54,7 @@ int	main(void)
 	//input listener
 	//mlx_loop_hook(vars.win, render_next_frame, &vars);
 	mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
+	mlx_hook(vars.win, 17, 1L<<0, close_window, &vars);
 	mlx_mouse_hook(vars.win, mouse_inputs, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
