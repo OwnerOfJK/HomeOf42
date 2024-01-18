@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:12:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:25:13 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,36 @@
 typedef struct s_sprites {
 	void	*floor_xpm;
 	void	*barrier_xpm;
-	void    *collectible_xpm;
-	void    *exit_xpm;
-	void    *danger_xpm;
-}				t_sprites;
+	void	*collectible_xpm;
+	void	*exit_xpm;
+	void	*danger_xpm;
+}	t_sprites;
 
 typedef struct s_player {
-	int	x;
-	int	y;
-	int health;
-	void *player_xpm;
-}				t_player;
+	int		x;
+	int		y;
+	int		health;
+	void	*player_xpm;
+}	t_player;
 
 typedef struct s_vars {
-	void *mlx;
-	void *win;
-	void *img;
-	char *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-	char **map;
-	int x_max;
-	int y_max;
-	int fd;
-	int player_number;
-	int collectible_count;
-	t_player *player;
-	t_sprites *sprites;
-} t_vars;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	char		**map;
+	int			x_max;
+	int			y_max;
+	int			fd;
+	int			player_number;
+	int			collectible_count;
+	t_player	*player;
+	t_sprites	*sprites;
+}	t_vars;
 
-
-// color-related functions
-int				create_trgb(unsigned char t, unsigned char r,
-					unsigned char g, unsigned char b);
-unsigned char	get_t(int trgb);
-unsigned char	get_r(int trgb);
-unsigned char	get_g(int trgb);
-unsigned char	get_b(int trgb);
 
 // hook-related functions.;
 int				close_window(t_vars *vars);
@@ -67,21 +59,16 @@ int				mouse_inputs(int button, int x, int y, t_vars *vars);
 
 // color manipulation exercises
 void			my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
-int				add_shade(double distance, int color);
-int				get_opposite(int color);
-//void			my_mlx_area_put(t_data *data, int color);
 
 //image functions
-int				clear_and_reset(t_vars *vars);
 void			create_map(t_vars *vars);
 
 //sprite_initialization
-void    put_floor(t_vars *vars, int x, int y);
-void    put_barrier(t_vars *vars, int x, int y);
-void    put_danger(t_vars *vars, int x, int y);
-void    put_exit(t_vars *vars, int x, int y);
-void    put_player(t_vars *vars, int x, int y);
-void    put_collectible(t_vars *vars, int x, int y);
-
+void			put_floor(t_vars *vars, int x, int y);
+void			put_barrier(t_vars *vars, int x, int y);
+void			put_danger(t_vars *vars, int x, int y);
+void			put_exit(t_vars *vars, int x, int y);
+void			put_player(t_vars *vars, int x, int y);
+void			put_collectible(t_vars *vars, int x, int y);
 
 #endif
