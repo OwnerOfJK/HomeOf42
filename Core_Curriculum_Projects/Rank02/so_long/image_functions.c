@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:31:48 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/17 22:53:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:19:33 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,69 @@
 #include "so_long.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
-void create_map(t_vars *vars)
+void	put_player(t_vars *vars, int x, int y)
 {
-	t_player	*player;
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->player->player_xpm, x * OBJECTS_SIZE, y * OBJECTS_SIZE);
+	vars->player->x = x;
+	vars->player->y = y;
+}
 
-	int img_width;
-    int img_height;
-	int mapY;
-	int mapX;
+void	init_variables(t_vars *vars)
+{
+	int			img_width;
+	int			img_height;
+	t_player	*player;
 
 	player = malloc(sizeof(*player));
 	player->x = 0;
 	player->y = 0;
+	player->health = 3;
 	player->player_xpm = NULL;
 	vars->player = player;
+	vars->collectible_count = 0;
+	vars->sprites = malloc(sizeof(*vars->sprites));
+	vars->sprites->floor_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/floor.xpm", &img_width, &img_height);
+	vars->sprites->barrier_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/barrier.xpm", &img_width, &img_height);
+	vars->player->player_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/player.xpm", &img_width, &img_height);
+	vars->sprites->collectible_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/collectible.xpm", &img_width, &img_height);
+	vars->sprites->exit_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/exit.xpm", &img_width, &img_height);
+	vars->sprites->danger_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "assets/danger.xpm", &img_width, &img_height);
+}
 
-	vars->sprites->floor_xpm = mlx_xpm_file_to_image(vars->mlx, "assets/floor.xpm", &img_width, &img_height);
-	vars->sprites->path_xpm = mlx_xpm_file_to_image(vars->mlx, "assets/path.xpm", &img_width, &img_height);
-	vars->player->player_xpm = mlx_xpm_file_to_image(vars->mlx, "assets/player.xpm", &img_width, &img_height);
-	vars->sprites->collectible_xpm = mlx_xpm_file_to_image(vars->mlx, "assets/collectible.xpm", &img_width, &img_height);
-	mapY = 0;
-	while (mapY < vars->y_max)
+void	create_map(t_vars *vars)
+{
+	int		map_x;
+	int		map_y;
+	void	(*put_functions[128])(t_vars *vars, int x, int y);
+
+	init_variables(vars);
+	ft_memset(put_functions, 0, sizeof(put_functions));
+	put_functions['0'] = put_floor;
+	put_functions['1'] = put_barrier;
+	put_functions['F'] = put_danger;
+	put_functions['E'] = put_exit;
+	put_functions['P'] = put_player;
+	put_functions['C'] = put_collectible;
+	map_y = 0;
+	while (map_y < vars->y_max)
 	{
-		mapX = 0;
-		while (mapX < vars->x_max)
+		map_x = 0;
+		while (map_x < vars->x_max)
 		{
-			if (vars->map[mapY][mapX] == '0')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprites->floor_xpm, mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
-			else if (vars->map[mapY][mapX] == '1')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprites->path_xpm, mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
-			else if (vars->map[mapY][mapX] == 'P')
-			{
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->player->player_xpm, mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
-				vars->player->x = mapX;
-				vars->player->y = mapY;
-			}
-			else if (vars->map[mapY][mapX] == 'C')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprites->collectible_xpm, mapX * OBJECTS_SIZE, mapY * OBJECTS_SIZE);
-			mapX++;
+			if (put_functions[(unsigned char)vars->map[map_y][map_x]])
+				put_functions[(unsigned char)
+					vars->map[map_y][map_x]](vars, map_x, map_y);
+			map_x++;
 		}
-		mapY++;
+		map_y++;
 	}
 }
