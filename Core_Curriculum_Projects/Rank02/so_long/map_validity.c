@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:12:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/20 14:37:40 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 17:12:06 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	error_messaging(t_vars *vars, int error_number)
+void	check_for_rectangle(t_vars *vars)
 {
-	if (error_number == 1)
-		ft_printf("Error\nNo or more than one exits in the map!");
-	if (error_number == 2)
-		ft_printf("Error\nNo or more than one players in the map!");
-	if (error_number == 3)
-		ft_printf("Error\nLess than 1 Collectible on the map!");
-	if (error_number == 4)
-		ft_printf("Error\nMap is not surrounded by walls!");
-	if (error_number == 5)
-		ft_printf("Error\nFile Format is not .ber!");
-	//close_window(vars);
+	if (vars->y_max >= vars->x_max)
+		error_messaging(vars, 8);
 }
 
 void	check_for_exit(t_vars *vars)
@@ -49,8 +40,10 @@ void	check_for_exit(t_vars *vars)
 		}
 		i++;
 	}
-	if (e_counter != 1)
+	if (e_counter < 1)
 		error_messaging(vars, 1);
+	else if (e_counter > 1)
+		error_messaging(vars, 2);
 }
 
 
@@ -69,16 +62,18 @@ void	check_for_player_collectible(t_vars *vars)
 		j = 0;
 		while (j < vars->x_max)
 		{
-			p_counter += (vars->map[i][j] == 'E');
-			c_counter += (vars->map[i][j] == 'P');
+			p_counter += (vars->map[i][j] == 'P');
+			c_counter += (vars->map[i][j] == 'C');
 			j++;
 		}
 		i++;
 	}
-	if (p_counter != 1)
-		error_messaging(vars, 2);
-	if (c_counter != 1)
+	if (p_counter > 1)
 		error_messaging(vars, 3);
+	else if (p_counter < 1)
+		error_messaging(vars, 4);
+	if (c_counter < 1)
+		error_messaging(vars, 5);
 }
 
 
@@ -90,23 +85,44 @@ void	check_for_walls(t_vars *vars)
 	while (i < vars->x_max - 1)
 	{
 		if (vars->map[0][i] != '1' || vars->map[vars->y_max - 1][i] != '1')
-			error_messaging(vars, 4);
+			error_messaging(vars, 6);
 		i++;
 	}
 	i = 0;
 	while (i < vars->y_max - 1)
 	{
 		if (vars->map[i][0] != '1' || vars->map[i][vars->x_max - 2] != '1')
-			error_messaging(vars, 4);
+			error_messaging(vars, 6);
 		i++;
 	}
 }
 
-void	check_map(t_vars *vars)
-{
-	check_for_player_collectible(vars);
-	check_for_exit(vars);
-	check_for_walls(vars);
-}
+// int check_for_path(t_vars *vars, int player_x, int player_y)
+// {
+//     int exit_x = vars->exit->x;
+//     int exit_y = vars->exit->y;
 
+//     // Check if the cell is outside the map boundaries, visited, or a wall
+//     if (player_x < 0 || player_x >= vars->x_max || player_y < 0 || player_y >= vars->y_max ||
+//         vars->map_visited[player_y][player_x] || vars->map[player_y][player_x] == '1')
+//     {
+//         return 0; // Invalid cell or already visited or a wall
+//     }
+
+//     vars->map_visited[player_y][player_x] = 1; // Mark the cell as visited
+
+//     if (player_x == exit_x && player_y == exit_y)
+//     {
+//         return 1; // Reached the exit
+//     }
+
+//     // Explore adjacent cells
+//     if (check_for_path(vars, player_x + 1, player_y) || check_for_path(vars, player_x - 1, player_y) ||
+//         check_for_path(vars, player_x, player_y + 1) || check_for_path(vars, player_x, player_y - 1))
+//     {
+//         return 1; // Found a path
+//     }
+
+//     return 0; // No path found
+// }
 

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/19 15:57:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 17:11:24 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,24 +101,18 @@ int	main(int argc, char **argv)
 		char	*line;
 		
 		if (check_file_format(argv[1]) == 0)
-			error_messaging(&vars, 5);
+			error_messaging(&vars, 7);
 		vars.mlx = mlx_init();
 		prepare_map_array(argv[1], &vars);
 		check_map(&vars);
 		vars.win = mlx_new_window(vars.mlx, (vars.x_max - 1) * OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE, "A GAME");
 		vars.img = mlx_new_image(vars.mlx, vars.x_max *OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE);
 		vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
-		//vars.sprites = malloc(sizeof(t_sprites));
-		//vars.player = malloc(sizeof(t_player));
-		//vars.player->x = 0;
-		//vars.player->y = 0;
-		//vars.player->health = 3;
-		//vars.player = NULL;
 		create_map(&vars);
 		mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
 		mlx_hook(vars.win, 17, 1L<<0, close_window, &vars);
 		mlx_loop(vars.mlx);
-		cleanup(&vars);
+		//cleanup(&vars);
 	}
 	return (0);
 }

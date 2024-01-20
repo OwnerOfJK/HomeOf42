@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/19 15:51:13 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 17:42:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_sprites {
 	void	*floor_xpm;
 	void	*barrier_xpm;
 	void	*collectible_xpm;
-	void	*exit_xpm;
 	void	*danger_xpm;
+	//void	*exit_xpm;
 }	t_sprites;
 
 typedef struct s_player {
@@ -32,6 +32,12 @@ typedef struct s_player {
 	int		health;
 	void	*player_xpm;
 }	t_player;
+
+typedef struct s_exit {
+	int		x;
+	int		y;
+	void	*exit_xpm;
+}	t_exit;
 
 typedef struct s_vars {
 	void		*mlx;
@@ -42,6 +48,7 @@ typedef struct s_vars {
 	int			line_length;
 	int			endian;
 	char		**map;
+	int			**map_visited;
 	int			x_max;
 	int			y_max;
 	int			fd;
@@ -50,6 +57,7 @@ typedef struct s_vars {
 	int			moves;
 	t_player	*player;
 	t_sprites	*sprites;
+	t_exit		*exit;
 }	t_vars;
 
 
@@ -72,7 +80,13 @@ void			put_exit(t_vars *vars, int x, int y);
 void			put_player(t_vars *vars, int x, int y);
 void			put_collectible(t_vars *vars, int x, int y);
 
-void	check_map(t_vars *vars);
-void	error_messaging(t_vars *vars, int error_number);
+// error handling
+void			check_map(t_vars *vars);
+void			error_messaging(t_vars *vars, int error_number);
+void			check_for_rectangle(t_vars *vars);
+void			check_for_exit(t_vars *vars);
+void			check_for_player_collectible(t_vars *vars);
+void			check_for_walls(t_vars *vars);
+int				check_for_path(t_vars *vars, int player_x, int player_y);
 
 #endif

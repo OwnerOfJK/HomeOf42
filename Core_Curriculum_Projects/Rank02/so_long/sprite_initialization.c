@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:20:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 17:47:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	put_danger(t_vars *vars, int x, int y)
 void	put_exit(t_vars *vars, int x, int y)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->sprites->exit_xpm, x * OBJECTS_SIZE, y * OBJECTS_SIZE);
+		vars->exit->exit_xpm, x * OBJECTS_SIZE, y * OBJECTS_SIZE);
+	vars->exit->x = x;
+	vars->exit->y = y;
 }
 
 void	put_collectible(t_vars *vars, int x, int y)

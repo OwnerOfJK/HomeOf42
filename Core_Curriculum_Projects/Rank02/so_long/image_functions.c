@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:31:48 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:19:33 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 18:04:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,33 @@ void	init_variables(t_vars *vars)
 	int			img_width;
 	int			img_height;
 	t_player	*player;
+	t_exit		*exit;
 
 	player = malloc(sizeof(*player));
+	exit = malloc(sizeof(*exit));
+	exit->x = 0;
+	exit->y = 0;
 	player->x = 0;
 	player->y = 0;
 	player->health = 3;
 	player->player_xpm = NULL;
+	exit->exit_xpm = NULL;
 	vars->player = player;
+	vars->exit = exit;
 	vars->collectible_count = 0;
 	vars->sprites = malloc(sizeof(*vars->sprites));
 	vars->sprites->floor_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/floor.xpm", &img_width, &img_height);
+		(vars->mlx, "textures/floor.xpm", &img_width, &img_height);
 	vars->sprites->barrier_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/barrier.xpm", &img_width, &img_height);
+		(vars->mlx, "textures/barrier.xpm", &img_width, &img_height);
 	vars->player->player_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/player.xpm", &img_width, &img_height);
+		(vars->mlx, "textures/player.xpm", &img_width, &img_height);
 	vars->sprites->collectible_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/collectible.xpm", &img_width, &img_height);
-	vars->sprites->exit_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/exit.xpm", &img_width, &img_height);
+		(vars->mlx, "textures/collectible.xpm", &img_width, &img_height);
+	vars->exit->exit_xpm = mlx_xpm_file_to_image
+		(vars->mlx, "textures/exit.xpm", &img_width, &img_height);
 	vars->sprites->danger_xpm = mlx_xpm_file_to_image
-		(vars->mlx, "assets/danger.xpm", &img_width, &img_height);
+		(vars->mlx, "textures/danger.xpm", &img_width, &img_height);
 }
 
 void	create_map(t_vars *vars)

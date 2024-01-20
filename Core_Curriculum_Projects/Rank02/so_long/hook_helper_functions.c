@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/19 13:06:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:23:35 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_conditions(t_vars *vars, int new_x, int new_y)
 {
 	printf("New Player Location: x: %i / y: %i \n", new_x, new_y);
 	char map_value;
-	
+
 	map_value = vars->map[new_y][new_x];
 	if (map_value == '1')
 		return (0);
@@ -66,8 +66,6 @@ int	check_conditions(t_vars *vars, int new_x, int new_y)
 	}
 	else if (vars->map[new_y][new_x] == 'E' && vars->collectible_count == 0)
 	{
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->sprites->floor_xpm, vars->player->x * OBJECTS_SIZE, vars->player->y * OBJECTS_SIZE);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->player->player_xpm, new_x * OBJECTS_SIZE, new_y * OBJECTS_SIZE);
 		close_window(&vars);
 	}
 	return (0);
