@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:42:51 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:57:26 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,24 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-int	key_press(int keycode, t_vars *vars)
+int	check_file_format(char *file_name)
 {
-	if (keycode == 65307)
-		close_window(vars);
+	char	*file_format;
+
+	file_format = ".ber";
+	if (strcmp(file_name + strlen(file_name) 
+			- strlen(file_format), file_format) == 0)
+		return (1); // File format is correct
 	else
-		player_movement(keycode, vars);
+		return (0); // File format is incorrect
+}
+
+int	key_press(int key, t_vars *vars)
+{
+	if (key == 65307)
+		close_window(vars);
+	else if (key == 65361 || key == 65362 || key == 65363 || key == 65364)
+		player_movement(key, vars);
 	return (0);
 }
 
@@ -87,10 +99,13 @@ int	main(int argc, char **argv)
 	{
 		t_vars	vars;
 		char	*line;
-
+		
+		if (check_file_format(argv[1]) == 0)
+			error_messaging(&vars, 5);
 		vars.mlx = mlx_init();
 		prepare_map_array(argv[1], &vars);
-		vars.win = mlx_new_window(vars.mlx, vars.x_max * OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE, "A GAME");
+		check_map(&vars);
+		vars.win = mlx_new_window(vars.mlx, (vars.x_max - 1) * OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE, "A GAME");
 		vars.img = mlx_new_image(vars.mlx, vars.x_max *OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE);
 		vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
 		//vars.sprites = malloc(sizeof(t_sprites));
@@ -99,7 +114,6 @@ int	main(int argc, char **argv)
 		//vars.player->y = 0;
 		//vars.player->health = 3;
 		//vars.player = NULL;
-		//vars.player_number = 0;
 		create_map(&vars);
 		mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
 		mlx_hook(vars.win, 17, 1L<<0, close_window, &vars);

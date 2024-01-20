@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:25:13 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:51:13 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_vars {
 	int			fd;
 	int			player_number;
 	int			collectible_count;
+	int			moves;
 	t_player	*player;
 	t_sprites	*sprites;
 }	t_vars;
@@ -70,5 +71,8 @@ void			put_danger(t_vars *vars, int x, int y);
 void			put_exit(t_vars *vars, int x, int y);
 void			put_player(t_vars *vars, int x, int y);
 void			put_collectible(t_vars *vars, int x, int y);
+
+void	check_map(t_vars *vars);
+void	error_messaging(t_vars *vars, int error_number);
 
 #endif

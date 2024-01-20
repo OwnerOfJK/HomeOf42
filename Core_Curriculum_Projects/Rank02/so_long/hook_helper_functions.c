@@ -6,11 +6,12 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/18 19:34:30 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:06:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
+#include "libs/libft/libft.h"
 #include "so_long.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,7 +80,9 @@ int	player_movement(int keycode, t_vars *vars)
 
 	new_x = vars->player->x + (keycode == 65363) - (keycode == 65361);
 	new_y = vars->player->y + (keycode == 65364) - (keycode == 65362);
-	printf("Player Location: x: %i / y: %i \n", vars->player->x, vars->player->y);
+	ft_printf("Player Location: x: %i / y: %i \n",
+		vars->player->x, vars->player->y);
+	ft_printf("Current Number of Movements: %i \n", (1 + vars->moves++));
 	if (check_conditions(vars, new_x, new_y) == 1)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->sprites->floor_xpm,
