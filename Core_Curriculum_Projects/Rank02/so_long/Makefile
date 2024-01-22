@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 19:39:56 by jkaller           #+#    #+#              #
-#    Updated: 2024/01/18 19:40:06 by jkaller          ###   ########.fr        #
+#    Updated: 2024/01/22 14:44:18 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = $(wildcard *.c)
 OBJ = $(SRCS:.c=.o)
 
 # Output binary
-TARGET = game
+TARGET = so_long
 
 # mlx_linux directory
 MLX_DIR = libs/mlx_linux

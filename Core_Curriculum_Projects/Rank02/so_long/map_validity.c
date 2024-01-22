@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:12:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/20 17:12:06 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:05:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	check_for_exit(t_vars *vars)
 		error_messaging(vars, 2);
 }
 
-
 void	check_for_player_collectible(t_vars *vars)
 {
 	int	p_counter;
@@ -76,7 +75,6 @@ void	check_for_player_collectible(t_vars *vars)
 		error_messaging(vars, 5);
 }
 
-
 void	check_for_walls(t_vars *vars)
 {
 	int	i;
@@ -96,33 +94,3 @@ void	check_for_walls(t_vars *vars)
 		i++;
 	}
 }
-
-// int check_for_path(t_vars *vars, int player_x, int player_y)
-// {
-//     int exit_x = vars->exit->x;
-//     int exit_y = vars->exit->y;
-
-//     // Check if the cell is outside the map boundaries, visited, or a wall
-//     if (player_x < 0 || player_x >= vars->x_max || player_y < 0 || player_y >= vars->y_max ||
-//         vars->map_visited[player_y][player_x] || vars->map[player_y][player_x] == '1')
-//     {
-//         return 0; // Invalid cell or already visited or a wall
-//     }
-
-//     vars->map_visited[player_y][player_x] = 1; // Mark the cell as visited
-
-//     if (player_x == exit_x && player_y == exit_y)
-//     {
-//         return 1; // Reached the exit
-//     }
-
-//     // Explore adjacent cells
-//     if (check_for_path(vars, player_x + 1, player_y) || check_for_path(vars, player_x - 1, player_y) ||
-//         check_for_path(vars, player_x, player_y + 1) || check_for_path(vars, player_x, player_y - 1))
-//     {
-//         return 1; // Found a path
-//     }
-
-//     return 0; // No path found
-// }
-
