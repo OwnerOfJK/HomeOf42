@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:20:12 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 21:11:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 23:13:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	close_window(t_vars *vars)
 	free_sprites(vars);
 	free_map(vars, vars->map);
 	free_structs(vars);
+	free(vars);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

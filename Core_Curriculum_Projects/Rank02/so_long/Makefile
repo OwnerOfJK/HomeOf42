@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 19:39:56 by jkaller           #+#    #+#              #
-#    Updated: 2024/01/23 16:36:01 by jkaller          ###   ########.fr        #
+#    Updated: 2024/01/23 23:35:04 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,4 +49,3 @@ clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 .PHONY: all mlx_linux libft clean
-

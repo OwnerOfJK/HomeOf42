@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 15:58:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 23:18:48 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 #include "so_long.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+int	key_press(int key, t_vars *vars)
+{
+	if (key == 65307)
+		close_window(vars);
+	else if (key == 65361 || key == 65362 || key == 65363 || key == 65364)
+		player_movement(key, vars);
+	return (0);
+}
 
 int	check_conditions(t_vars *vars, int new_x, int new_y)
 {
@@ -63,8 +72,8 @@ int	player_movement(int keycode, t_vars *vars)
 			mlx_put_image_to_window(vars->mlx, vars->win,
 				vars->sprites->player_on_exit_xpm,
 				new_x * OBJECTS_SIZE, new_y * OBJECTS_SIZE);
-		if (vars->player->x == vars->exit->x &&
-			vars->player->y == vars->exit->y)
+		if (vars->player->x == vars->exit->x
+			&& vars->player->y == vars->exit->y)
 			mlx_put_image_to_window(vars->mlx, vars->win,
 				vars->sprites->exit_xpm,
 				vars->player->x * OBJECTS_SIZE, vars->player->y * OBJECTS_SIZE);

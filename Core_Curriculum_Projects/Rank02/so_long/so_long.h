@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 21:06:30 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 22:47:31 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct s_vars {
 // hook-related functions.;
 int				close_window(t_vars *vars);
 int				player_movement(int keycode, t_vars *vars);
+int				key_press(int key, t_vars *vars);
+
+//parsing
+void			prepare_map_array(char *path_to_map, t_vars *vars);
 
 //image functions
 void			create_map(t_vars *vars);
@@ -71,13 +75,15 @@ void			put_player(t_vars *vars, int x, int y);
 void			put_collectible(t_vars *vars, int x, int y);
 
 // error handling
-void			check_map(t_vars *vars);
+int				check_map(t_vars *vars);
 void			error_messaging(t_vars *vars, int error_number);
-void			check_for_rectangle(t_vars *vars);
-void			check_for_exit(t_vars *vars);
-void			check_for_player_collectible(t_vars *vars);
-void			check_for_walls(t_vars *vars);
-void			check_for_path(t_vars *vars, int x, int y);
+int				check_file_format(char *file_name);
+int				check_for_rectangle(t_vars *vars);
+int				check_for_exit(t_vars *vars);
+int				check_for_player(t_vars *vars);
+int				check_for_collectible(t_vars *vars);
+int				check_for_walls(t_vars *vars);
+int				check_for_path(t_vars *vars, int x, int y);
 int				check_for_invalid_character(t_vars *vars);
 void			set_variables(t_vars *vars);
 
