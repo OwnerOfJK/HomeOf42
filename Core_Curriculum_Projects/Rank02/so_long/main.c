@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/22 20:20:25 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 20:58:14 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	check_file_format(char *file_name)
 	file_format = ".ber";
 	if (strcmp(file_name + strlen(file_name)
 			- strlen(file_format), file_format) == 0)
-		return (1); // File format is correct
+		return (1);
 	else
-		return (0); // File format is incorrect
+		return (0);
 }
 
 int	key_press(int key, t_vars *vars)
@@ -39,34 +39,6 @@ int	key_press(int key, t_vars *vars)
 		player_movement(key, vars);
 	return (0);
 }
-
-// Function to free all allocated memory
-// void cleanup(t_vars *vars) {
-// 	if (vars->sprites) {
-// 		if (vars->sprites->floor_xpm) {
-// 			mlx_destroy_image(vars->mlx, vars->sprites->floor_xpm);
-// 		}
-// 		if (vars->sprites->barrier_xpm) {
-// 			mlx_destroy_image(vars->mlx, vars->sprites->barrier_xpm);
-// 		}
-// 		if (vars->sprites->collectible_xpm) {
-// 			mlx_destroy_image(vars->mlx, vars->sprites->collectible_xpm);
-// 		}
-// 		free(vars->sprites); // Free the sprites struct itself
-// 		vars->sprites = NULL;
-// 	}
-// 	if (vars->player && vars->sprites->player_xpm)
-// 	{
-// 		mlx_destroy_image(vars->mlx, vars->sprites->player_xpm);
-// 		free(vars->player);  // Free the player struct itself
-// 		vars->player = NULL;
-// 	}
-// 	for (int i = 0; i < vars->y_max; ++i) {
-// 		free(vars->map[i]); // Free each string in the map
-// 	}
-// 	free(vars->map); // Free the map array itself
-// 	vars->map = NULL;
-// }
 
 void	prepare_map_array(char *path_to_map, t_vars *vars)
 {
@@ -96,25 +68,26 @@ void	prepare_map_array(char *path_to_map, t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
-	char	*line;
+    t_vars	*vars;
 
+	vars = (t_vars *)malloc(sizeof(t_vars));
 	if (argc == 2)
 	{
 		if (check_file_format(argv[1]) == 0)
-			error_messaging(&vars, 7);
-		vars.mlx = mlx_init();
-		prepare_map_array(argv[1], &vars);
-		set_variables(&vars);
-		check_map(&vars);
-		vars.win = mlx_new_window(vars.mlx, (vars.x_max - 1) * OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE, "A GAME");
-		vars.img = mlx_new_image(vars.mlx, vars.x_max *OBJECTS_SIZE, vars.y_max *OBJECTS_SIZE);
-		vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
-		create_map(&vars);
-		mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
-		mlx_hook(vars.win, 17, 1L<<0, close_window, &vars);
-		mlx_loop(vars.mlx);
-		//cleanup(&vars);
+			error_messaging(vars, 7);
+		prepare_map_array(argv[1], vars);
+		set_variables(vars);
+		check_map(vars);
+		vars->mlx = mlx_init();
+		vars->win = mlx_new_window(vars->mlx, (vars->x_max - 1) * OBJECTS_SIZE,
+				vars->y_max * OBJECTS_SIZE, "A GAME");
+		vars->img = mlx_new_image(vars->mlx, vars->x_max * OBJECTS_SIZE,
+				vars->y_max * OBJECTS_SIZE);
+		create_map(vars);
+		mlx_hook(vars->win, 2, 1L << 0, key_press, vars);
+		mlx_hook(vars->win, 17, 1L << 0, close_window, vars);
+		mlx_loop(vars->mlx);
 	}
+	free (vars);
 	return (0);
 }

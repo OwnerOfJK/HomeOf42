@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/22 19:28:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 21:06:30 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,12 @@ typedef struct s_exit {
 typedef struct s_player {
 	int		x;
 	int		y;
-	int		health;
 }	t_player;
 
 typedef struct s_vars {
 	void		*mlx;
 	void		*win;
 	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
 	char		**map;
 	char		**map_tmp;
 	int			x_max;
@@ -63,7 +58,6 @@ typedef struct s_vars {
 // hook-related functions.;
 int				close_window(t_vars *vars);
 int				player_movement(int keycode, t_vars *vars);
-int				mouse_inputs(int button, int x, int y, t_vars *vars);
 
 //image functions
 void			create_map(t_vars *vars);
@@ -84,7 +78,19 @@ void			check_for_exit(t_vars *vars);
 void			check_for_player_collectible(t_vars *vars);
 void			check_for_walls(t_vars *vars);
 void			check_for_path(t_vars *vars, int x, int y);
-
+int				check_for_invalid_character(t_vars *vars);
 void			set_variables(t_vars *vars);
+
+//free
+void			cleanup(t_vars *vars);
+void			free_sprites(t_vars *vars);
+void			free_structs(t_vars *vars);
+void			free_map(t_vars *vars, char **map_version);
+void			intialise_tmp_map(t_vars *vars);
+void			close_instance(t_vars *vars);
+
+// valid path
+int				find_all_collectibles(t_vars *vars, int x, int y);
+int				find_exit(t_vars *vars, int x, int y);
 
 #endif

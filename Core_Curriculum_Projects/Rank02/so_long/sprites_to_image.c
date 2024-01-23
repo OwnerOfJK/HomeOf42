@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_initialization.c                            :+:      :+:    :+:   */
+/*   sprites_to_image.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/22 17:22:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:09:00 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "libs/mlx_linux/mlx.h"
 
 void	put_floor(t_vars *vars, int x, int y)
 {

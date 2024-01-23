@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:12:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/22 16:05:37 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 20:36:35 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,30 @@ void	check_for_walls(t_vars *vars)
 			error_messaging(vars, 6);
 		i++;
 	}
+}
+
+int	check_for_invalid_character(t_vars *vars)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < vars->y_max)
+	{
+		j = 0;
+		while (j < vars->x_max)
+		{
+			if (vars->map[i][j] != 'P' && vars->map[i][j] != 'E'
+				&& vars->map[i][j] != 'C' && vars->map[i][j] != '1'
+				&& vars->map[i][j] != '0' && vars->map[i][j] != 'F'
+				&& vars->map[i][j] != '\n' && vars->map[i][j] != '\0')
+			{
+				error_messaging(vars, 11);
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

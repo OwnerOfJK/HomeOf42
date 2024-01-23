@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 19:12:00 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/22 20:18:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/23 21:17:55 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,69 +16,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	check_exit_coordinate(t_vars *vars, int x, int y)
+void	intialise_tmp_map(t_vars *vars)
 {
-	if (x == vars->exit->x && y == vars->exit->y)
-		return (1);
-	return (0);
-}
+	int	i;
+	int	j;
 
-int	find_exit(t_vars *vars, int x, int y)
-{
-	if (check_exit_coordinate(vars, x, y) == 1)
-		return (1);
-	if (vars->map_tmp[y][x] != '1' && vars->map_tmp[y][x] != 'C' && vars->map_tmp[y][x] != 'P')
-		vars->map_tmp[y][x] = 'C';
-	if (vars->map_tmp[y][x + 1] != '1' && vars->map_tmp[y][x + 1]
-		!= 'C' && find_exit(vars, x + 1, y) == 1)
-		return (1);
-	if (vars->map_tmp[y][x - 1] != '1' && vars->map_tmp[y][x - 1]
-		!= 'C' && find_exit(vars, x - 1, y) == 1)
-		return (1);
-	if (vars->map_tmp[y + 1][x] != '1' && vars->map_tmp[y + 1][x]
-		!= 'C' && find_exit(vars, x, y + 1) == 1)
-		return (1);
-	if (vars->map_tmp[y - 1][x] != '1' && vars->map_tmp[y - 1][x]
-		!= 'C' && find_exit(vars, x, y - 1) == 1)
-		return (1);
-	return (0);
-}
-
-void	check_collectible_coordinate(t_vars *vars, int x, int y)
-{
-	if (vars->map_tmp[y][x] == 'C')
-		vars->tmp_collectible_count -= 1;
-}
-
-int	find_all_collectibles(t_vars *vars, int x, int y)
-{
-	if (vars->map_tmp[y][x] != '1' && vars->map_tmp[y][x] != 'X' && vars->map_tmp[y][x] != 'P')
-		vars->map_tmp[y][x] = 'X';
-	if (vars->map_tmp[y][x + 1] != '1' && vars->map_tmp[y][x + 1] != 'X')
+	i = 0;
+	vars->map_tmp = (char **)malloc(vars->y_max * sizeof(char *));
+	while (i < vars->y_max)
 	{
-		check_collectible_coordinate(vars, x + 1, y);
-		find_all_collectibles(vars, x + 1, y);
+		vars->map_tmp[i] = (char *)malloc((vars->x_max + 1) * sizeof(char));
+		j = 0;
+		while (j < vars->x_max)
+		{
+			vars->map_tmp[i][j] = vars->map[i][j];
+			j++;
+		}
+		vars->map_tmp[i][j] = '\0';
+		i++;
 	}
-	if (vars->map_tmp[y][x - 1] != '1' && vars->map_tmp[y][x - 1] != 'X')
-	{
-		check_collectible_coordinate(vars, x - 1, y);
-		find_all_collectibles(vars, x - 1, y);
-	}
-	if (vars->map_tmp[y + 1][x] != '1' && vars->map_tmp[y + 1][x] != 'X')
-	{
-		check_collectible_coordinate(vars, x, y + 1);
-		find_all_collectibles(vars, x, y + 1);
-	}
-	if (vars->map_tmp[y - 1][x] != '1' && vars->map_tmp[y - 1][x] != 'X')
-	{
-		check_collectible_coordinate(vars, x, y - 1);
-		find_all_collectibles(vars, x, y - 1);
-	}
-	return (0);
 }
 
 void	check_for_path(t_vars *vars, int x, int y)
 {
+	intialise_tmp_map(vars);
 	find_all_collectibles(vars, x, y);
 	if (vars->tmp_collectible_count == 0)
 	{
@@ -91,4 +52,5 @@ void	check_for_path(t_vars *vars, int x, int y)
 	}
 	else
 		error_messaging(vars, 9);
+	free_map(vars, vars->map_tmp);
 }
