@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 14:07:36 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:51:20 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(int argc, char **argv)
 				close_instance(vars);
 		}
 	}
+	else
+		ft_printf("Not the right amount of arguments!");
 	free (vars);
 	return (0);
 }

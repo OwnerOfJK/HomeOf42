@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 19:39:56 by jkaller           #+#    #+#              #
-#    Updated: 2024/01/24 12:34:11 by jkaller          ###   ########.fr        #
+#    Updated: 2024/01/24 18:29:51 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,13 @@ clean:
 	rm -rf $(OBJS)
 
 # Remove all generated files
-fclean: clean
-	# Remove the target executable
+fclean:
+	# Fclean mlx_linux and libft targets
+	make clean -C ./libs/mlx_linux
+	make fclean -C ./libs/libft
+
+	# Remove object files and the target executable
+	rm -rf $(OBJS)
 	rm -rf $(NAME)
 
 # Rebuild the project

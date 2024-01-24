@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:58:45 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 14:09:41 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:50:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	check_file_format(char *file_name)
 	char	*file_format;
 
 	file_format = ".ber";
-	if (strcmp(file_name + strlen(file_name)
-			- strlen(file_format), file_format) == 0)
+	if (ft_strcmp(file_name + ft_strlen(file_name)
+			- ft_strlen(file_format), file_format) == 0)
 		return (1);
 	else
 		return (0);
