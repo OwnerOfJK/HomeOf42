@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 14:08:06 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:40:42 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int				check_for_row_length(t_vars *vars);
 void			set_variables(t_vars *vars);
 
 //free
-void			cleanup(t_vars *vars);
 void			free_sprites(t_vars *vars);
 void			free_structs(t_vars *vars);
 void			free_map(t_vars *vars, char **map_version);
