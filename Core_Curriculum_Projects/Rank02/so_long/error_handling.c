@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:58:45 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 23:17:15 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:45:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ void	set_variables(t_vars *vars)
 	int	map_x;
 
 	map_y = 0;
+	map_x = 0;
 	vars->player = (t_player *)malloc(sizeof(t_player));
 	vars->exit = (t_exit *)malloc(sizeof(t_exit));
+	vars->player->x = 0;
+	vars->player->y = 0;
+	vars->exit->x = 0;
+	vars->exit->y = 0;
 	vars->collectible_count = 0;
 	vars->moves = 0;
 	set_locations(vars, map_x, map_y);
@@ -77,7 +82,11 @@ void	error_messaging(t_vars *vars, int error_number)
 	if (error_number == 6)
 		ft_printf("Error: Map is not surrounded by walls!\n");
 	if (error_number == 7)
+	{
 		ft_printf("Error: File Format is not .ber!\n");
+		free(vars);
+		exit(EXIT_SUCCESS);
+	}
 	if (error_number == 8)
 		ft_printf("Error: Map is not a rectangle!\n");
 	if (error_number == 9)
@@ -92,12 +101,12 @@ int	check_map(t_vars *vars)
 {
 	vars->tmp_collectible_count = vars->collectible_count;
 	if (check_for_player(vars) != 1
-		&& check_for_collectible(vars) != 1
-		&& check_for_exit(vars) != 1
-		&& check_for_walls(vars) != 1
-		&& check_for_rectangle(vars) != 1
-		&& check_for_invalid_character(vars) != 1
-		&& check_for_path(vars, vars->player->x, vars->player->y) != 1)
+		|| check_for_collectible(vars) != 1
+		|| check_for_exit(vars) != 1
+		|| check_for_rectangle(vars) != 1
+		|| check_for_walls(vars) != 1
+		|| check_for_invalid_character(vars) != 1
+		|| check_for_path(vars, vars->player->x, vars->player->y) != 1)
 		return (0);
 	return (1);
 }

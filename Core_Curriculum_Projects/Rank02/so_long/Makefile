@@ -6,46 +6,58 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 19:39:56 by jkaller           #+#    #+#              #
-#    Updated: 2024/01/23 23:35:04 by jkaller          ###   ########.fr        #
+#    Updated: 2024/01/24 12:34:11 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Name of the target executable
+NAME = so_long
+
 # Compiler
-CC = cc -g
-
-# Source files
-SRCS = $(wildcard *.c)
-
-# Object files
-OBJ = $(SRCS:.c=.o)
-
-# Output binary
-TARGET = so_long
-
-# mlx_linux directory
-MLX_DIR = libs/mlx_linux
-LIBFT_DIR = libs/libft
+CC = cc
 
 # Compiler flags
-EFLAGS = -Wall -Wextra -Werror
-CFLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -fPIE
+CFLAGS = -Wall -Werror -Wextra -Imlx -g
 
-all: mlx_linux $(TARGET)
+# MLX flags for linking mlx_linux library
+MLXFLAGS = -L ./libs/mlx_linux -lmlx -lXext -lX11
 
-# Build mlx_linux target
-mlx_linux:
-	$(MAKE) -C $(MLX_DIR)
+# Library files
+LIBS = ./libs/libft/libft.a
 
-# Build libft target
-libft:
-	$(MAKE) -C $(LIBFT_DIR)
+# Source files
+SRCS = main.c create_map.c error_handling.c free_and_close.c map_validity.c map_validity2.c player_movement.c prepare_map_array.c sprites_to_image.c valid_path_checks.c valid_path.c
 
-$(TARGET): $(OBJ) mlx_linux libft
-	$(CC) $(EFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft $(CFLAGS) -o $(TARGET)
+# Object files
+OBJS = $(SRCS:.c=.o)
 
+# Build the target executable
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	# Build mlx_linux and libft targets
+	make -C ./libs/mlx_linux
+	make -C ./libs/libft
+
+	# Link the executable
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
+
+# Clean intermediate files
 clean:
-	rm -f $(OBJ) $(TARGET)
-	$(MAKE) -C $(MLX_DIR) clean
-	$(MAKE) -C $(LIBFT_DIR) clean
+	# Clean mlx_linux and libft targets
+	make clean -C ./libs/mlx_linux
+	make clean -C ./libs/libft
 
-.PHONY: all mlx_linux libft clean
+	# Remove object files
+	rm -rf $(OBJS)
+
+# Remove all generated files
+fclean: clean
+	# Remove the target executable
+	rm -rf $(NAME)
+
+# Rebuild the project
+re: fclean all
+
+# Specify the phony targets
+.PHONY: all clean fclean re

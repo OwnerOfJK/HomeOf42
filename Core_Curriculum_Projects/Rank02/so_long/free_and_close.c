@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:20:12 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 23:13:37 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:41:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	free_sprites(t_vars *vars)
 void	free_map(t_vars *vars, char **map_version)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (i < vars->y_max)
@@ -76,5 +75,6 @@ void	close_instance(t_vars *vars)
 {
 	free_structs(vars);
 	free_map(vars, vars->map);
+	free(vars);
 	exit(EXIT_SUCCESS);
 }

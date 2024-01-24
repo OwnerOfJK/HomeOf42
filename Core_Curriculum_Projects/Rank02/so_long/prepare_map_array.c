@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 22:33:04 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 22:41:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:53:22 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	initialise_y_max(t_vars *vars)
+void	define_y_max(t_vars *vars)
 {
 	char	*line;
 
@@ -43,7 +43,7 @@ void	prepare_map_array(char *path_to_map, t_vars *vars)
 	vars->y_max = 1;
 	vars->x_max = ft_strlen(line);
 	free(line);
-	initialise_y_max(vars);
+	define_y_max(vars);
 	close(vars->fd);
 	vars->fd = open(path_to_map, O_RDONLY);
 	vars->map = (char **)malloc((vars->y_max + 1) * sizeof(char *));
