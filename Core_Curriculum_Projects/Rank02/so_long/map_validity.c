@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:12:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 12:50:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:09:38 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
 #include "libs/libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	check_for_rectangle(t_vars *vars)
@@ -95,7 +94,7 @@ int	check_for_invalid_character(t_vars *vars)
 				&& vars->map[i][j] != '0' && vars->map[i][j] != 'F'
 				&& vars->map[i][j] != '\n' && vars->map[i][j] != '\0')
 			{
-				error_messaging(vars, 11);
+				ft_printf("Error: Invalid Character!\n");
 				return (0);
 			}
 			j++;

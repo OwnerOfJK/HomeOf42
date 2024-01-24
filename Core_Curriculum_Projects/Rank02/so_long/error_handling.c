@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:58:45 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 12:45:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:09:41 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
 #include "libs/libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	check_file_format(char *file_name)
@@ -79,6 +78,11 @@ void	error_messaging(t_vars *vars, int error_number)
 		ft_printf("Error: There is no player or more than 1 player!\n");
 	if (error_number == 3)
 		ft_printf("Error: Less than 1 Collectible on the map!\n");
+	if (error_number == 4)
+	{
+		ft_printf("Error: Not all rows have the same length!\n");
+		close_early(vars);
+	}
 	if (error_number == 6)
 		ft_printf("Error: Map is not surrounded by walls!\n");
 	if (error_number == 7)
@@ -93,8 +97,6 @@ void	error_messaging(t_vars *vars, int error_number)
 		ft_printf("Error: Not all Collectibles reachable!\n");
 	if (error_number == 10)
 		ft_printf("Error: Exit not reachable!\n");
-	if (error_number == 11)
-		ft_printf("Error: Invalid Character!\n");
 }
 
 int	check_map(t_vars *vars)

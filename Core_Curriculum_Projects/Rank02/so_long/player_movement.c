@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:01:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 23:18:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:03:57 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
 #include "libs/libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	key_press(int key, t_vars *vars)
@@ -42,7 +41,7 @@ int	check_conditions(t_vars *vars, int new_x, int new_y)
 		return (1);
 	else if (map_value == 'F')
 	{
-		printf("You got killed. Try harder next time.");
+		ft_printf("You got killed. Try harder next time.");
 		close_window(vars);
 	}
 	else if (vars->map[new_y][new_x] == 'C')

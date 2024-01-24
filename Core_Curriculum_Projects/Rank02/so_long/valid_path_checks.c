@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:04:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 21:17:42 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:04:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
 #include "libs/libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	possible_or_not(t_vars *vars, int x, int y)

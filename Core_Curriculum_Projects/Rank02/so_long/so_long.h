@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:22:40 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 22:47:31 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:08:06 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int				check_for_collectible(t_vars *vars);
 int				check_for_walls(t_vars *vars);
 int				check_for_path(t_vars *vars, int x, int y);
 int				check_for_invalid_character(t_vars *vars);
+int				check_for_row_length(t_vars *vars);
 void			set_variables(t_vars *vars);
 
 //free
@@ -94,6 +95,7 @@ void			free_structs(t_vars *vars);
 void			free_map(t_vars *vars, char **map_version);
 void			intialise_tmp_map(t_vars *vars);
 void			close_instance(t_vars *vars);
+void			close_early(t_vars *vars);
 
 // valid path
 int				find_all_collectibles(t_vars *vars, int x, int y);

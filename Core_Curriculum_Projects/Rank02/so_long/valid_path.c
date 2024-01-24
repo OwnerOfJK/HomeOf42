@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 19:12:00 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 22:01:06 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:04:59 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/mlx_linux/mlx.h"
 #include "libs/libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 void	intialise_tmp_map(t_vars *vars)

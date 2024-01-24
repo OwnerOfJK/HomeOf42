@@ -6,18 +6,24 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/23 23:07:32 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:07:36 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/libft/libft.h"
 #include "libs/mlx_linux/mlx.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+void	close_early(t_vars *vars)
+{
+	free_map(vars, vars->map);
+	free(vars);
+	exit(EXIT_SUCCESS);
+}
 
 void	start_game(t_vars *vars)
 {
@@ -40,13 +46,16 @@ int	main(int argc, char **argv)
 		if (check_file_format(argv[1]) == 0)
 			error_messaging(vars, 7);
 		prepare_map_array(argv[1], vars);
-		set_variables(vars);
-		if (check_map(vars) == 1)
+		if (check_for_row_length(vars) == 1)
 		{
-			start_game(vars);
+			set_variables(vars);
+			if (check_map(vars) == 1)
+			{
+				start_game(vars);
+			}
+			else
+				close_instance(vars);
 		}
-		else
-			close_instance(vars);
 	}
 	free (vars);
 	return (0);

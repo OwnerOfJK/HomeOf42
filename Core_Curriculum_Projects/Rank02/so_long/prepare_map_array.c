@@ -6,14 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 22:33:04 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 12:53:22 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:04:45 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/libft/libft.h"
 #include "libs/mlx_linux/mlx.h"
 #include "so_long.h"
-#include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
 #include <stdlib.h>
