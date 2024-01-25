@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:25:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/24 16:51:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/25 18:38:42 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	start_game(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, (vars->x_max - 1) * OBJECTS_SIZE,
-			vars->y_max * OBJECTS_SIZE, "A GAME OF DOG");
+			vars->y_max * OBJECTS_SIZE, "A GAME OF SKYSTRIFE");
 	create_map(vars);
 	mlx_hook(vars->win, 2, 1L << 0, key_press, vars);
 	mlx_hook(vars->win, 17, 1L << 0, close_window, vars);
