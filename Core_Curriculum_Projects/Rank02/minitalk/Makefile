@@ -6,57 +6,60 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 15:55:34 by jkaller           #+#    #+#              #
-#    Updated: 2024/01/26 15:56:40 by jkaller          ###   ########.fr        #
+#    Updated: 2024/01/27 14:44:10 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Name of the target executable
-NAME = so_long
+NAME = minitalk
 
 # Compiler
 CC = cc
 
 # Compiler flags
-CFLAGS = -Wall -Werror -Wextra -Imlx
+CFLAGS = -Wall -Werror -Wextra
 
 # Library files
-LIBS = ./libs/libft/libft.a
+LIBS = ./libft/libft.a
 
 # Source files
-SRCS = main.c create_map.c error_handling.c free_and_close.c map_validity.c map_validity2.c player_movement.c prepare_map_array.c sprites_to_image.c valid_path_checks.c valid_path.c
+SRCS = client.c server.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
 
 # Build the target executable
-all: $(NAME)
+all: server client
 
-$(NAME): $(OBJS)
-	# Build mlx_linux and libft targets
-	make -C ./libs/libft
+server: server.o libft
+	$(CC) -o $@ $< -Llibft -lft
 
-	# Link the executable
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+client: client.o libft
+	$(CC) -o $@ $< -Llibft -lft
 
+%.o: %.c
+	$(CC) -c $(CFLAGS) $?
+
+libft:
+	make -C libft
+	
 # Clean intermediate files
 clean:
-	# Clean mlx_linux and libft targets
-	make clean -C ./libs/libft
-
+	# Clean libft targets
+	make clean -C ./libft
 	# Remove object files
 	rm -rf $(OBJS)
 
 # Remove all generated files
 fclean:
-	# Fclean mlx_linux and libft targets
-	make fclean -C ./libs/libft
-
+	# Fclean libft targets
+	make fclean -C ./libft
 	# Remove object files and the target executable
 	rm -rf $(OBJS)
-	rm -rf $(NAME)
+	rm -rf server client
 
 # Rebuild the project
 re: fclean all
 
 # Specify the phony targets
-.PHONY: all clean fclean re
+.PHONY: all libft clean fclean re
