@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/28 16:37:16 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/01/31 18:06:36 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,44 +34,40 @@ int	*parse_number_input(int number_max, char **argv, int *stack_a)
 	return (stack_a);
 }
 
-void	initiate_linked_list(int argc, char **argv)
-{
-	node_t * head = NULL;
-	head = (node_t *) malloc(sizeof(node_t));
-	if (head == NULL) {
-		return 1;
-	}
 
-	head->val = 1;
-	head->next = NULL;
+int	*sa(t_list *head_a)
+{
+	int	tmp;
+
+	if (head_a && head_a->next)
+	{
+		tmp = head_a->val;
+		head_a->val = head_a->next->val;
+		head_a->next->val = tmp;
+	}
+	return (0);
+}
+
+void	initiate_linked_list(int argc, char **argv, t_list **head_a)
+{
+	t_list	*new_node;
+	int		i;
+
+	*head_a = NULL;
+	i = 0;
+	while (i < argc - 1)
+	{
+		new_node = ft_lstnew(ft_atoi(argv[i]));
+		ft_lstadd_back(&head_a, new_node);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	*stack_a;
-	int	*stack_b;
-	int	i;
+	t_list	*head_a;
 
-	ft_printf("argv[0]: %s\n", argv[0]);
-	ft_printf("argv[1]: %s\n", argv[1]);
-	i = 0;
-	initiate_linked_list(argc, argv);
-	stack_a = (int *)malloc(argc * sizeof(int *));
-	stack_b = (int *)malloc(argc * sizeof(int *));
-	parse_number_input(argc, argv, stack_a);
-	parse_number_input(argc, argv, stack_b);
-	sa(argc, stack_a);
-	// sb(argc, stack_b);
-	// ss(argc, stack_a, stack_b);
-	pa(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	while (i < argc - 1)
-	{
-		ft_printf("%i", stack_a[i]);
-		ft_printf("%i", stack_b[i]);
-		i++;
-	}
-	free(stack_a);
-	free(stack_b);
+	initiate_linked_list(argc, argv, &head_a);
+	sa(ft_lstsize(head_a));
 	return (0);
 }
