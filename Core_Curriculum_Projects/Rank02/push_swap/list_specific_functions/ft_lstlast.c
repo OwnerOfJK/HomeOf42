@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 16:38:52 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/31 11:06:55 by jkaller          ###   ########.fr       */
+/*   Created: 2024/01/31 11:03:19 by jkaller           #+#    #+#             */
+/*   Updated: 2024/01/31 11:42:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <unistd.h>
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list	*lst)
 {
-	t_list	*lst;
-
-	lst = (t_list *)malloc(sizeof(*lst));
-
-	if (!(lst))
-		return (NULL);
-	lst->val = content;
-	lst->next = NULL;
+	while (lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
 	return (lst);
 }

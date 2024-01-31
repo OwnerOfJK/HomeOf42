@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 16:38:52 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/31 11:06:55 by jkaller          ###   ########.fr       */
+/*   Created: 2024/01/31 11:38:31 by jkaller           #+#    #+#             */
+/*   Updated: 2024/01/31 11:41:26 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <unistd.h>
 
-t_list	*ft_lstnew(void *content)
+void    ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*lst;
+	t_list	*tmp;
 
-	lst = (t_list *)malloc(sizeof(*lst));
-
-	if (!(lst))
-		return (NULL);
-	lst->val = content;
-	lst->next = NULL;
-	return (lst);
+	if (!del || !lst || !*lst)
+		return ;
+	while (lst && *lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
 }
