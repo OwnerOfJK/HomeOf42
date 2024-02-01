@@ -10,35 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	*sa(int argc, int *stack_a)
-{
-	int	tmp;
+#include <stdlib.h>
+#include "libft/libft.h"
+#include "push_swap.h"
 
-	if (argc > 1)
+int	*swap(t_list *head_stack)
+{
+	int			tmp_val;
+	int			tmp_index;
+	
+	if (head_stack && head_stack->next)
 	{
-		tmp = stack_a[0];
-		stack_a[0] = stack_a[1];
-		stack_a[1] = tmp;
+		//store tmp values
+		tmp_val = head_stack->val;
+		tmp_index = head_stack->index;
+
+		//swap values
+		head_stack->val = head_stack->next->val;
+		head_stack->index = head_stack->next->index;
+
+		//swap next list pointer
+		head_stack->next = head_stack->next->next;
+		head_stack->next->next = head_stack;
 	}
 	return (0);
 }
 
-int	*sb(int argc, int *stack_b)
+int	*swap_both(t_list *head_stack_a, t_list *head_stack_b)
 {
-	int	tmp;
-
-	if (argc > 1)
+	if (head_stack_a && head_stack_b)
 	{
-		tmp = stack_b[0];
-		stack_b[0] = stack_b[1];
-		stack_b[1] = tmp;
+		swap(head_stack_a);
+		swap(head_stack_b);
 	}
-	return (0);
-}
-
-int	*ss(int argc, int *stack_a, int *stack_b)
-{
-	sa(argc, stack_a);
-	sb(argc, stack_b);
 	return (0);
 }

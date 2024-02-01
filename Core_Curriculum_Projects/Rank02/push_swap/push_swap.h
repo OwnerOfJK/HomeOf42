@@ -27,14 +27,13 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void*));
 t_list		*ft_lstlast(t_list	*lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *));
-t_list		*ft_lstnew(void *content);
+t_list		*ft_lstnew(int val, int index);
 int			ft_lstsize(t_list *lst);
 
 
 //swap operations
-int			*sa(int argc, int *stack_a);
-int			*sb(int argc, int *stack_b);
-int			*ss(int argc, int *stack_a, int *stack_b);
+int			*swap(t_list *head_stack);
+int			*swap_both(t_list *head_stack_a, t_list *head_stack_b);
 int			*pa(int *stack_a, int *stack_b);
 int			*pb(int *stack_a, int *stack_b);
 

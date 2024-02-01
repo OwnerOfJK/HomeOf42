@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//why to work with linked lists.
-// pa and pb require you to add a new value before the other values
-// this would be very tricky and slow using arrays, which is why we use linked lists.
+#include <stdlib.h>
+#include "libft/libft.h"
+#include "push_swap.h"
 
 int	*pa(int *stack_a, int *stack_b)
 {

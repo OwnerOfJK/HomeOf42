@@ -14,51 +14,17 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	*parse_number_input(int number_max, char **argv, int *stack_a)
+void	initiate_linked_list(int argc, char **argv, t_list **head_stack)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	ft_printf("argv[0]: %s\n", argv[0]);
-	ft_printf("argv[1]: %s\n", argv[1]);
-	while (i < number_max)
-	{
-		ft_printf("argv[i] in loop: %s\n", argv[i]);
-		stack_a[j] = ft_atoi(argv[i]);
-		ft_printf("stack_a[j] in loop: %i\n", stack_a[j]);
-		i++;
-		j++;
-	}
-	return (stack_a);
-}
-
-
-int	*sa(t_list *head_a)
-{
-	int	tmp;
-
-	if (head_a && head_a->next)
-	{
-		tmp = head_a->val;
-		head_a->val = head_a->next->val;
-		head_a->next->val = tmp;
-	}
-	return (0);
-}
-
-void	initiate_linked_list(int argc, char **argv, t_list **head_a)
-{
-	t_list	*new_node;
+	t_list	*new_node_stack;
 	int		i;
 
-	*head_a = NULL;
+	*head_stack = NULL;
 	i = 0;
 	while (i < argc - 1)
 	{
-		new_node = ft_lstnew(ft_atoi(argv[i]));
-		ft_lstadd_back(&head_a, new_node);
+		new_node_stack = ft_lstnew(ft_atoi(argv[i]), i);
+		ft_lstadd_back(head_stack, new_node_stack);
 		i++;
 	}
 }
@@ -66,8 +32,10 @@ void	initiate_linked_list(int argc, char **argv, t_list **head_a)
 int	main(int argc, char **argv)
 {
 	t_list	*head_a;
+	t_list	*head_b;
 
 	initiate_linked_list(argc, argv, &head_a);
-	sa(ft_lstsize(head_a));
+	initiate_linked_list(argc, argv, &head_b);
+	//sa(ft_lstsize(head_a));
 	return (0);
 }

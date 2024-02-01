@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int val, int index)
 {
 	t_list	*lst;
 
@@ -21,7 +21,8 @@ t_list	*ft_lstnew(void *content)
 
 	if (!(lst))
 		return (NULL);
-	lst->val = content;
+	lst->val = val;
+	lst->index = index;
 	lst->next = NULL;
 	return (lst);
 }
