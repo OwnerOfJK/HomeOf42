@@ -12,13 +12,13 @@
 
 #include "../push_swap.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 t_list	*ft_lstnew(int val, int index)
 {
 	t_list	*lst;
 
 	lst = (t_list *)malloc(sizeof(*lst));
-
 	if (!(lst))
 		return (NULL);
 	lst->val = val;

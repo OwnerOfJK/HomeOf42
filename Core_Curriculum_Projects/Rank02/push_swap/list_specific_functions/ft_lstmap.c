@@ -12,8 +12,9 @@
 
 #include "../push_swap.h"
 #include <unistd.h>
+#include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, int (*f)(int, int), void (*del)(int, int))
 {
 	t_list	*first;
 	t_list	*new;
@@ -23,13 +24,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))
 	first = NULL;
 	while (lst)
 	{
-		new = ft_lstnew((*f)(lst->val));
+		new = ft_lstnew((*f)(lst->val, lst->index), (lst->index));
 		if (!new)
 		{
 			while (first)
 			{
 				new = first->next;
-				(*del)(first->val);
+				(*del)((first->val), (first->index));
 				free(first);
 				first = new;
 			}

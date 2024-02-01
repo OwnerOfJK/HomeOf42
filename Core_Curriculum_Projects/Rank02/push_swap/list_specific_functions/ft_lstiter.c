@@ -13,13 +13,13 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	ft_lstiter(t_list *lst, void (*f)(void*))
+void	ft_lstiter(t_list *lst, int (*f)(int, int))
 {
 	if (!f)
 		return ;
 	while (lst)
 	{
-		(*f)(lst->val);
+		(*f)((lst->val), (lst->index));
 		lst = lst->next;
 	}
 }

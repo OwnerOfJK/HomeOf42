@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(int, int))
 {
 	t_list	*tmp;
 

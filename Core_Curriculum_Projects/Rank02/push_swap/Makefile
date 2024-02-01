@@ -23,7 +23,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIBS = ./libft/libft.a
 
 # Source files
-SRCS = main.c swap_operations/swap.c swap_operations/push.c
+SRCS = $(wildcard *.c) $(wildcard swap_operations/*.c) $(wildcard list_specific_functions/*.c)
 
 # Object files
 OBJS = $(SRCS:.c=.o)

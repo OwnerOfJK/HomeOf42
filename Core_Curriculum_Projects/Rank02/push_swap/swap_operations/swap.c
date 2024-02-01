@@ -11,32 +11,32 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
-int	*swap(t_list *head_stack)
+int	*swap(t_list **head_stack)
 {
-	int			tmp_val;
-	int			tmp_index;
-	
-	if (head_stack && head_stack->next)
+	int	tmp_val;
+	int	tmp_index;
+
+	if (head_stack && *head_stack && (*head_stack)->next)
 	{
-		//store tmp values
-		tmp_val = head_stack->val;
-		tmp_index = head_stack->index;
+		// store tmp values
+		tmp_val = (*head_stack)->val;
+		tmp_index = (*head_stack)->index;
 
-		//swap values
-		head_stack->val = head_stack->next->val;
-		head_stack->index = head_stack->next->index;
+		// swap values
+		(*head_stack)->val = (*head_stack)->next->val;
+		(*head_stack)->index = (*head_stack)->next->index;
 
-		//swap next list pointer
-		head_stack->next = head_stack->next->next;
-		head_stack->next->next = head_stack;
+        // swap next list pointers
+        (*head_stack)->next->val = tmp_val;
+        (*head_stack)->next->index = tmp_index;
 	}
 	return (0);
 }
 
-int	*swap_both(t_list *head_stack_a, t_list *head_stack_b)
+int	*swap_both(t_list **head_stack_a, t_list **head_stack_b)
 {
 	if (head_stack_a && head_stack_b)
 	{

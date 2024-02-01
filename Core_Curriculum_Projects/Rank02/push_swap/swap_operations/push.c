@@ -11,31 +11,37 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../libft/libft.h"
+#include "../push_swap.h"
 
-int	*pa(int *stack_a, int *stack_b)
+int	*pa(t_list **head_stack_a, t_list **head_stack_b)
 {
-	int	tmp;
+	t_list *tmp;
 
-	if (stack_b)
-	{
-		tmp = stack_a[0];
-		stack_a[0] = stack_b[0];
-		stack_b[0] = tmp;
-	}
+    if (head_stack_b && *head_stack_b)
+    {
+        tmp = *head_stack_b;
+        ft_lstadd_front(head_stack_a, ft_lstnew(tmp->val, tmp->index));
+        increment_index((*head_stack_a)->next);
+        delete_list(tmp);
+        *head_stack_b = (*head_stack_b)->next;
+        decrement_index(*head_stack_b);
+    }
 	return (0);
 }
 
-int	*pb(int *stack_a, int *stack_b)
+int	*pb(t_list **head_stack_a, t_list **head_stack_b)
 {
-	int	tmp;
+	t_list *tmp;
 
-	if (stack_a)
-	{
-		tmp = stack_b[0];
-		stack_a[0] = stack_b[0];
-		stack_b[0] = tmp;
-	}
+    if (head_stack_a && *head_stack_a)
+    {
+        tmp = *head_stack_a;
+        ft_lstadd_front(head_stack_b, ft_lstnew(tmp->val, tmp->index));
+		increment_index((*head_stack_b)->next);
+        delete_list(tmp);
+        *head_stack_a = (*head_stack_a)->next;
+		decrement_index(*head_stack_a);
+    }
 	return (0);
 }
