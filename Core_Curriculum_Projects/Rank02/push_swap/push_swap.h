@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/31 18:08:24 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 14:58:06 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int			ft_lstsize(t_list *lst);
 void 		increment_index(t_list *head_stack);
 void		decrement_index(t_list *head_stack);
 void		delete_list(t_list *lst);
-
-
-
 
 //swap operations
 int			*swap(t_list **head_stack);
