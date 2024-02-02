@@ -6,14 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:38:31 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 15:02:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:10:10 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(int, int))
+void	ft_lstclear(t_list **lst, void (*del)(t_list *))
 {
 	t_list	*tmp;
 

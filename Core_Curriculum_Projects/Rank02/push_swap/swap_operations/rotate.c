@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:07 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 16:37:43 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 18:37:43 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ void	rotate_down(t_list **head_stack)
 		ft_lstadd_front(head_stack, ft_lstnew(last_node->val, 1));
 		free(last_node);
 	}
+	ft_printf("rotate_down\n");
 }
 
 void	rotate_down_both(t_list **head_stack_a, t_list **head_stack_b)
 {
-	if (head_stack_a && *head_stack_a && (*head_stack_a)->next
-		&& head_stack_b && *head_stack_b && (*head_stack_b)->next)
-	{
-		rotate_up(head_stack_a);
-		rotate_up(head_stack_b);
-	}
+	if (head_stack_a && *head_stack_a && (*head_stack_a)->next)
+		rotate_down(head_stack_a);
+	if (head_stack_b && *head_stack_b && (*head_stack_b)->next)
+		rotate_down(head_stack_b);
 }
 
 void	rotate_up(t_list **head_stack)
@@ -67,14 +66,13 @@ void	rotate_up(t_list **head_stack)
 		}
 		free(first_node);
 	}
+	ft_printf("rotate_up\n");
 }
 
 void	rotate_up_both(t_list **head_stack_a, t_list **head_stack_b)
 {
-	if (head_stack_a && *head_stack_a && (*head_stack_a)->next
-		&& head_stack_b && *head_stack_b && (*head_stack_b)->next)
-	{
-		rotate_down(head_stack_a);
-		rotate_down(head_stack_b);
-	}
+	if (head_stack_a && *head_stack_a && (*head_stack_a)->next)
+		rotate_up(head_stack_a);
+	if (head_stack_b && *head_stack_b && (*head_stack_b)->next)
+		rotate_up(head_stack_b);
 }

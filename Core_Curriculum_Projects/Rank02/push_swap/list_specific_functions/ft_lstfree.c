@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:27:22 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 17:10:41 by jkaller          ###   ########.fr       */
+/*   Created: 2024/02/02 18:11:02 by jkaller           #+#    #+#             */
+/*   Updated: 2024/02/02 18:11:20 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ft_lstdelone(t_list *lst, void (*del)(t_list *))
+void	ft_lstfree(t_list *lst)
 {
-	if (!del)
-		return ;
-	if (lst)
+	t_list	*current_node;
+	t_list	*next_node;
+
+	current_node = lst;
+
+	while (current_node)
 	{
-		(*del)(lst);
-		free(lst);
+		next_node = current_node->next;
+		free(current_node);
+		current_node = next_node;
 	}
 }

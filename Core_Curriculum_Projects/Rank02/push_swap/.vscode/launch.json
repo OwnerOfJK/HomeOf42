@@ -5,11 +5,11 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": ["1", "2", "3", "4", "5", "6"],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/jkaller/Desktop/HomeOf42/Core_Curriculum_Projects/Rank02/push_swap",
-      "program": "/home/jkaller/Desktop/HomeOf42/Core_Curriculum_Projects/Rank02/push_swap/build/Debug/outDebug",
+      "program": "/home/jkaller/Desktop/HomeOf42/Core_Curriculum_Projects/Rank02/push_swap/push_swap",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

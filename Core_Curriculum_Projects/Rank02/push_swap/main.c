@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 17:00:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 18:35:40 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(int argc, char **argv)
 	head_a = NULL;
 	head_b = NULL;
 	parse_to_linkedlist(argc, argv, &head_a);
+
+	//just for testing
 	swap(&head_a);
 	swap_both(&head_a, &head_b);
 	swap_both(&head_a, &head_b);
@@ -60,18 +62,30 @@ int	main(int argc, char **argv)
 	rotate_up_both(&head_a, &head_b);
 	rotate_up_both(&head_a, &head_b);
 	rotate_up_both(&head_a, &head_b);
-	while (head_a)
+
+
+	//just for printing
+	t_list *current_a = head_a;
+	while (current_a)
 	{
-		ft_printf("head_a: val %i | index %i\n", head_a->val, head_a->index);
-		head_a = head_a->next;
+		ft_printf("head_a: val %i | index %i\n", current_a->val, current_a->index);
+		t_list *next_a = current_a->next;  // Declare next_a inside the loop
+		free(current_a);
+		current_a = next_a;
 	}
-	ft_printf("_______________________\n\n");
-	while (head_b)
+	ft_printf("______________________________\n\n");
+	t_list *current_b = head_b;
+	while (current_b)
 	{
-		ft_printf("head_b: val %i | index %i\n", head_b->val, head_b->index);
-		head_b = head_b->next;
+		ft_printf("head_b: val %i | index %i\n", current_b->val, current_b->index);
+		t_list *next_b = current_b->next;  // Declare next_b inside the loop
+		free(current_b);
+		current_b = next_b;
 	}
-	free(head_a);
-	free(head_b);
+
+
+	//freeing (comment out since we free during print)
+    // ft_lstfree(head_a);
+    // ft_lstfree(head_b);
 	return (0);
 }
