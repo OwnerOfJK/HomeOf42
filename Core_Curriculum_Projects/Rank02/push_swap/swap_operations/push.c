@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 16:44:58 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 16:56:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ int	*pa(t_list **head_stack_a, t_list **head_stack_b)
 		tmp = *head_stack_b;
 		ft_lstadd_front(head_stack_a, ft_lstnew(tmp->val, tmp->index));
 		increment_index((*head_stack_a)->next);
-		if ((*head_stack_b)->next)
-		{
-			*head_stack_b = (*head_stack_b)->next;
-			//decrement_index(*head_stack_b);
-		}
+		*head_stack_b = (*head_stack_b)->next;
+		if (*head_stack_b)
+			decrement_index(*head_stack_b);
+
 		free(tmp);
 	}
 	return (0);

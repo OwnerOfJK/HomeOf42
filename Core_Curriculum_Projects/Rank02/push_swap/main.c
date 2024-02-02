@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 16:40:32 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:00:01 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 
 	head_a = NULL;
 	head_b = NULL;
-
 	parse_to_linkedlist(argc, argv, &head_a);
 	swap(&head_a);
 	swap_both(&head_a, &head_b);
@@ -44,22 +43,23 @@ int	main(int argc, char **argv)
 	swap_both(&head_a, &head_b);
 	pb(&head_a, &head_b);
 	pa(&head_a, &head_b);
-	// pa(&head_a, &head_b);
-	// pa(&head_a, &head_b);
-	swap(&head_a);
+	pa(&head_a, &head_b);
 	pb(&head_a, &head_b);
-	// rotate_up(&head_a);
-	// rotate_down(&head_a);
-	// rotate_down(&head_a);
-	// rotate_down(&head_a);
-	// rotate_up(&head_a);
-	// rotate_up(&head_b);
-	// rotate_down_both(&head_a, &head_b);
-	// rotate_down_both(&head_a, &head_b);
-	// rotate_down_both(&head_a, &head_b);
-	// rotate_up_both(&head_a, &head_b);
-	// rotate_up_both(&head_a, &head_b);
-	// rotate_up_both(&head_a, &head_b);
+	pb(&head_a, &head_b);
+	pb(&head_a, &head_b);
+	swap(&head_a);
+	rotate_up(&head_a);
+	rotate_down(&head_a);
+	rotate_down(&head_a);
+	rotate_down(&head_a);
+	rotate_up(&head_a);
+	rotate_up(&head_b);
+	rotate_down_both(&head_a, &head_b);
+	rotate_down_both(&head_a, &head_b);
+	rotate_down_both(&head_a, &head_b);
+	rotate_up_both(&head_a, &head_b);
+	rotate_up_both(&head_a, &head_b);
+	rotate_up_both(&head_a, &head_b);
 	while (head_a)
 	{
 		ft_printf("head_a: val %i | index %i\n", head_a->val, head_a->index);
