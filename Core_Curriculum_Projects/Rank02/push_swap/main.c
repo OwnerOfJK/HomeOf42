@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 18:35:40 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:41:21 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,29 @@ int	main(int argc, char **argv)
 	parse_to_linkedlist(argc, argv, &head_a);
 
 	//just for testing
-	swap(&head_a);
-	swap_both(&head_a, &head_b);
-	swap_both(&head_a, &head_b);
-	swap_both(&head_a, &head_b);
+	sa(&head_a);
+	ss(&head_a, &head_b);
+	ss(&head_a, &head_b);
+	ss(&head_a, &head_b);
 	pb(&head_a, &head_b);
 	pa(&head_a, &head_b);
 	pa(&head_a, &head_b);
 	pb(&head_a, &head_b);
 	pb(&head_a, &head_b);
 	pb(&head_a, &head_b);
-	swap(&head_a);
-	rotate_up(&head_a);
-	rotate_down(&head_a);
-	rotate_down(&head_a);
-	rotate_down(&head_a);
-	rotate_up(&head_a);
-	rotate_up(&head_b);
-	rotate_down_both(&head_a, &head_b);
-	rotate_down_both(&head_a, &head_b);
-	rotate_down_both(&head_a, &head_b);
-	rotate_up_both(&head_a, &head_b);
-	rotate_up_both(&head_a, &head_b);
-	rotate_up_both(&head_a, &head_b);
+	sa(&head_a);
+	ra(&head_a);
+	rra(&head_a);
+	rra(&head_a);
+	rra(&head_a);
+	ra(&head_a);
+	rb(&head_b);
+	rr(&head_a, &head_b);
+	rr(&head_a, &head_b);
+	rr(&head_a, &head_b);
+	rrr(&head_a, &head_b);
+	rr(&head_a, &head_b);
+	rrr(&head_a, &head_b);
 
 
 	//just for printing

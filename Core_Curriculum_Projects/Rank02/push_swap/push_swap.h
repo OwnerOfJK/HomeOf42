@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 18:11:38 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:39:20 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ void		delete_list(t_list *lst);
 void		ft_lstfree(t_list *lst);
 
 //swap operations
-int			*swap(t_list **head_stack);
-int			*swap_both(t_list **head_stack_a, t_list **head_stack_b);
+int			*sa(t_list **head_stack_a);
+int			*sb(t_list **head_stack_b);
+int			*ss(t_list **head_stack_a, t_list **head_stack_b);
 int			*pa(t_list **head_stack_a, t_list **head_stack_b);
 int			*pb(t_list **head_stack_a, t_list **head_stack_b);
-void		rotate_up(t_list **head_stack);
-void		rotate_up_both(t_list **head_stack_a, t_list **head_stack_b);
-void		rotate_down(t_list **head_stack);
-void		rotate_down_both(t_list **head_stack_a, t_list **head_stack_b);
+void		ra(t_list **head_stack_a);
+void		rb(t_list **head_stack_b);
+void		rr(t_list **head_stack_a, t_list **head_stack_b);
+void		rra(t_list **head_stack_a);
+void		rrb(t_list **head_stack_b);
+void		rrr(t_list **head_stack_a, t_list **head_stack_b);
 
 #endif
