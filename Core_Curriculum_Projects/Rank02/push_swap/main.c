@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 17:28:19 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:57:08 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,23 @@ int	main(int argc, char **argv)
 		required_operations = sort_three(&head_a);
 		ft_printf("To solve, it required %i steps!\n", required_operations);
 	}
+	if (argc == 6)
+	{
+		required_operations = sort_five(&head_a, &head_b);
+		ft_printf("To solve, it required %i steps!\n", required_operations);
+	}
+	// if (argc == 101)
+	// {
+	// 	required_operations = sort_hundred(&head_a, &head_b);
+	// 	ft_printf("To solve, it required %i steps!\n", required_operations);
+	// }
+	// if (argc == 501)
+	// {
+	// 	required_operations = sort_fivehundred(&head_a, &head_b);
+	// 	ft_printf("To solve, it required %i steps!\n", required_operations);
+	// }
 
-
-	//just for printing
+	// just for printing
 	t_list *current_a = head_a;
 	while (current_a)
 	{

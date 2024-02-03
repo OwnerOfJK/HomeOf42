@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 17:30:40 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:46:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ int			sort_213(t_list **head_stack);
 int			sort_231(t_list **head_stack);
 int			sort_312(t_list **head_stack);
 int			sort_321(t_list **head_stack);
+
+//sort five
+int			sort_five(t_list **head_stack_a, t_list **head_stack_b);
+
+//sort hundred
+int			sort_hundred(t_list **head_stack_a, t_list **head_stack_b);
+
+//sort fivehundred
+int			sort_fivehundred(t_list **head_stack_a, t_list **head_stack_b);
 
 //valid checks
 int			confirm_order(t_list *head_stack);
