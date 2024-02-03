@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/02 18:36:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 16:45:55 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	*pa(t_list **head_stack_a, t_list **head_stack_b)
 		*head_stack_b = (*head_stack_b)->next;
 		if (*head_stack_b)
 			decrement_index(*head_stack_b);
-
 		free(tmp);
 	}
 	ft_printf("pa\n");

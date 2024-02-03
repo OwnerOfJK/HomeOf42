@@ -6,13 +6,24 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 15:41:21 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:28:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "push_swap.h"
+
+int	confirm_order(t_list *head_stack)
+{
+	while (head_stack && head_stack->next)
+	{
+		if (head_stack->val > head_stack->next->val)
+			return (0);
+		head_stack = head_stack->next;
+	}
+	return (1);
+}
 
 void	parse_to_linkedlist(int argc, char **argv, t_list **head_stack)
 {
@@ -33,35 +44,42 @@ int	main(int argc, char **argv)
 {
 	t_list	*head_a;
 	t_list	*head_b;
+	int		required_operations;
 
 	head_a = NULL;
 	head_b = NULL;
 	parse_to_linkedlist(argc, argv, &head_a);
 
 	//just for testing
-	sa(&head_a);
-	ss(&head_a, &head_b);
-	ss(&head_a, &head_b);
-	ss(&head_a, &head_b);
-	pb(&head_a, &head_b);
-	pa(&head_a, &head_b);
-	pa(&head_a, &head_b);
-	pb(&head_a, &head_b);
-	pb(&head_a, &head_b);
-	pb(&head_a, &head_b);
-	sa(&head_a);
-	ra(&head_a);
-	rra(&head_a);
-	rra(&head_a);
-	rra(&head_a);
-	ra(&head_a);
-	rb(&head_b);
-	rr(&head_a, &head_b);
-	rr(&head_a, &head_b);
-	rr(&head_a, &head_b);
-	rrr(&head_a, &head_b);
-	rr(&head_a, &head_b);
-	rrr(&head_a, &head_b);
+	// sa(&head_a);
+	// ss(&head_a, &head_b);
+	// ss(&head_a, &head_b);
+	// ss(&head_a, &head_b);
+	// pb(&head_a, &head_b);
+	// pa(&head_a, &head_b);
+	// pa(&head_a, &head_b);
+	// pb(&head_a, &head_b);
+	// pb(&head_a, &head_b);
+	// pb(&head_a, &head_b);
+	// sa(&head_a);
+	// ra(&head_a);
+	// rra(&head_a);
+	// rra(&head_a);
+	// rra(&head_a);
+	// ra(&head_a);
+	// rb(&head_b);
+	// rr(&head_a, &head_b);
+	// rr(&head_a, &head_b);
+	// rr(&head_a, &head_b);
+	// rrr(&head_a, &head_b);
+	// rr(&head_a, &head_b);
+	// rrr(&head_a, &head_b);
+
+	if (argc == 4)
+	{
+		required_operations = sort_three(&head_a);
+		ft_printf("To solve, it required %i steps!\n", required_operations);
+	}
 
 
 	//just for printing

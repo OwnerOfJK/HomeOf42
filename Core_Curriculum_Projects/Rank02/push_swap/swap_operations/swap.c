@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:09 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 15:37:41 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/03 16:41:31 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,36 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	*sa(t_list **head_stack_a)
+int	*swap(t_list **head_stack)
 {
 	int	tmp_val;
 
-	if (head_stack_a && *head_stack_a && (*head_stack_a)->next)
+	if (head_stack && *head_stack && (*head_stack)->next)
 	{
-		tmp_val = (*head_stack_a)->val;
-		(*head_stack_a)->val = (*head_stack_a)->next->val;
-		(*head_stack_a)->next->val = tmp_val;
+		tmp_val = (*head_stack)->val;
+		(*head_stack)->val = (*head_stack)->next->val;
+		(*head_stack)->next->val = tmp_val;
 	}
-	ft_printf("sa\n");
+	return (0);
+}
+
+int	*sa(t_list **head_stack_a)
+{
+	if (head_stack_a)
+	{
+		swap(head_stack_a);
+		ft_printf("sa\n");
+	}
 	return (0);
 }
 
 int	*sb(t_list **head_stack_b)
 {
-	int	tmp_val;
-
-	if (head_stack_b && *head_stack_b && (*head_stack_b)->next)
+	if (head_stack_b)
 	{
-		tmp_val = (*head_stack_b)->val;
-		(*head_stack_b)->val = (*head_stack_b)->next->val;
-		(*head_stack_b)->next->val = tmp_val;
+		swap(head_stack_b);
+		ft_printf("sb\n");
 	}
-	ft_printf("sb\n");
 	return (0);
 }
 
