@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:38:52 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/31 11:06:55 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:33:57 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_list	*ft_lstnew(int val, int index)
+t_list	*ft_lstnew(int val)
 {
 	t_list	*lst;
 
@@ -22,7 +22,7 @@ t_list	*ft_lstnew(int val, int index)
 	if (!(lst))
 		return (NULL);
 	lst->val = val;
-	lst->index = index;
 	lst->next = NULL;
+	lst->previous = NULL;
 	return (lst);
 }

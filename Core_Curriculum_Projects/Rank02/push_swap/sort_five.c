@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:43:08 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 19:54:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:20:57 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int	sort_five(t_list **head_stack_a, t_list **head_stack_b)
 	pb(head_stack_a, head_stack_b);
 	pb(head_stack_a, head_stack_b);
 	count += sort_three(head_stack_a);
+
+
+
+
+	
 	count += sort_stack_b(head_stack_b);
 	pa(head_stack_a, head_stack_b);
 	ra(head_stack_a);

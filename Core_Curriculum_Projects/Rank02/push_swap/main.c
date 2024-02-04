@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 17:57:08 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:41:16 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	parse_to_linkedlist(int argc, char **argv, t_list **head_stack)
 	i = 1;
 	while (i < argc)
 	{
-		new_node_stack = ft_lstnew(ft_atoi(argv[i]), i);
+		new_node_stack = ft_lstnew(ft_atoi(argv[i]));
 		ft_lstadd_back(head_stack, new_node_stack);
 		i++;
 	}
@@ -100,7 +100,7 @@ int	main(int argc, char **argv)
 	t_list *current_a = head_a;
 	while (current_a)
 	{
-		ft_printf("head_a: val %i | index %i\n", current_a->val, current_a->index);
+		ft_printf("head_a: val %i\n", current_a->val);
 		t_list *next_a = current_a->next;  // Declare next_a inside the loop
 		free(current_a);
 		current_a = next_a;
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 	t_list *current_b = head_b;
 	while (current_b)
 	{
-		ft_printf("head_b: val %i | index %i\n", current_b->val, current_b->index);
+		ft_printf("head_b: val %i\n", current_b->val);
 		t_list *next_b = current_b->next;  // Declare next_b inside the loop
 		free(current_b);
 		current_b = next_b;
