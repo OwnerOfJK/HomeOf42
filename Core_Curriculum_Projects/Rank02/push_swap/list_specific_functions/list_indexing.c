@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   list_indexing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:42:15 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/04 16:42:51 by jkaller          ###   ########.fr       */
+/*   Created: 2024/02/04 16:44:22 by jkaller           #+#    #+#             */
+/*   Updated: 2024/02/04 16:44:25 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	ft_lstiter(t_list *lst, int (*f)(int, int))
+void	increment_index(t_list *head_stack)
 {
-	if (!f)
-		return ;
-	while (lst)
+	while (head_stack)
 	{
-		(*f)((lst->val), (lst->index));
-		lst = lst->next;
+		head_stack->index++;
+		head_stack = head_stack->next;
+	}
+}
+
+void	decrement_index(t_list *head_stack)
+{
+	while (head_stack)
+	{
+		head_stack->index--;
+		head_stack = head_stack->next;
 	}
 }

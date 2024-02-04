@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:43:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/04 15:42:15 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/04 16:42:17 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))
+t_list	*ft_lstmap(t_list *lst, int (*f)(int, int), void (*del)(int, int))
 {
 	t_list	*first;
 	t_list	*new;
@@ -24,13 +24,13 @@ t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))
 	first = NULL;
 	while (lst)
 	{
-		new = ft_lstnew((*f)(lst->val));
+		new = ft_lstnew((*f)(lst->val, lst->index), (lst->index));
 		if (!new)
 		{
 			while (first)
 			{
 				new = first->next;
-				(*del)((first->val));
+				(*del)((first->val), (first->index));
 				free(first);
 				first = new;
 			}

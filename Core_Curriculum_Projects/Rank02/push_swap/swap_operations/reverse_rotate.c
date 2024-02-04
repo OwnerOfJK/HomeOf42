@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 15:28:16 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/04 15:38:24 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/04 16:36:49 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	rotate_down(t_list **head_stack)
 		last_node = *head_stack;
 		while (last_node->next)
 		{
+			last_node->index++;
 			prev_node = last_node;
 			last_node = last_node->next;
 		}
@@ -32,7 +33,7 @@ void	rotate_down(t_list **head_stack)
 			prev_node->next = NULL;
 			free(prev_node->next);
 		}
-		ft_lstadd_front(head_stack, ft_lstnew(last_node->val));
+		ft_lstadd_front(head_stack, ft_lstnew(last_node->val, 1));
 		free(last_node);
 	}
 }
