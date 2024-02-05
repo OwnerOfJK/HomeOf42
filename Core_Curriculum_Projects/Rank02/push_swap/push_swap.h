@@ -6,16 +6,21 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/04 16:41:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 13:22:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdbool.h>
+
 typedef struct s_list {
 	int					val;
 	int					index;
+	int					push_price;
+	bool				above_median;
+	bool				cheapest;
 	struct s_list		*next;
 	struct s_list		*previous;
 	struct s_list		*next_neighbor;
@@ -60,13 +65,18 @@ int			sort_321(t_list **head_stack);
 //sort five
 int			sort_five(t_list **head_stack_a, t_list **head_stack_b);
 
-//sort hundred
-int			sort_hundred(t_list **head_stack_a, t_list **head_stack_b);
+//sort all
+int			sort_all(t_list **head_stack_a, t_list **head_stack_b);
+void		set_node_values(t_list *stack_a, t_list *stack_b);
+void		move_cheapest_to_top(t_list **stack_a, t_list **stack_b);
+t_list		*return_cheapest(t_list *stack);
+t_list		*return_smallest_node(t_list *stack);
+void		set_index(t_list *stack);
 
-//sort fivehundred
-int			sort_fivehundred(t_list **head_stack_a, t_list **head_stack_b);
+
 
 //valid checks
 int			confirm_order(t_list *head_stack);
+void		print_stacks(t_list *stack_a, t_list *stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:38:52 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/04 16:36:16 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 12:10:17 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ t_list	*ft_lstnew(int val, int index)
 		return (NULL);
 	lst->val = val;
 	lst->index = index;
+	lst->push_price = 0;
+	lst->above_median = NULL;
+	lst->cheapest = NULL;
 	lst->next = NULL;
 	lst->previous = NULL;
 	lst->next_neighbor = NULL;

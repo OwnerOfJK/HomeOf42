@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 19:39:56 by jkaller           #+#    #+#              #
-#    Updated: 2024/02/03 17:33:04 by jkaller          ###   ########.fr        #
+#    Updated: 2024/02/05 12:02:56 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIBS = ./libft/libft.a
 
 # Source files
-SRCS = $(wildcard *.c) $(wildcard swap_operations/*.c) $(wildcard list_specific_functions/*.c) $(wildcard sorting_algo/sort_three_operations/*.c) $(wildcard sorting_algo/sort_five_operations/*.c) $(wildcard sorting_algo/sort_hundred_operations/*.c) $(wildcard sorting_algo/sort_fivehundred_operations/*.c)
+SRCS = $(wildcard *.c) $(wildcard swap_operations/*.c) $(wildcard list_specific_functions/*.c) $(wildcard sorting_algo/*.c) $(wildcard sorting_algo/sort_three_operations/*.c) $(wildcard sorting_algo/sort_five_operations/*.c) $(wildcard sorting_algo/sort_all_operations/*.c)
 
 # Object files
 OBJS = $(SRCS:.c=.o)
