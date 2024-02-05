@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 13:22:21 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:09:26 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int	main(int argc, char **argv)
 		ft_printf("To solve, it required %i steps!\n", required_operations);
 	}
 	print_stacks(head_a, head_b);
-	//freeing (comment out since we free during print)
     ft_lstfree(head_a);
     ft_lstfree(head_b);
 	return (0);

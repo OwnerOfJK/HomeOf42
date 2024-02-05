@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:50:38 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 13:30:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:42:17 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void	set_price(t_list *stack_a, t_list *stack_b)
 
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
+	print_stacks(stack_a, stack_b);
 	while (stack_b && stack_b->next)
 	{
+		ft_printf("hi");
+		print_stack(stack_b);
 		stack_b->push_price = stack_b->index;
 		if (!(stack_b->above_median))
 			stack_b->push_price = len_b - (stack_b->index);
@@ -53,6 +56,7 @@ void	set_price(t_list *stack_a, t_list *stack_b)
 		else
 			stack_b->push_price += len_a - (stack_b->next_neighbor->index);
 		stack_b = stack_b->next;
+		//print_stacks(stack_a, stack_b);
 	}
 }
 

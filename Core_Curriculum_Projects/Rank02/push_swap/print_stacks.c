@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:20:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 13:27:00 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:41:32 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 		//free(current_b);
 		current_b = next_b;
 	}
+}
+
+void	print_stack(t_list *stack)
+{
+	t_list *current_a = stack;
+
+	ft_printf("current_node: val %i | index %i | push_price %i | above_median %d | cheapest %d \n", current_a->val, current_a->index, current_a->push_price, current_a->above_median, current_a->cheapest);
 }

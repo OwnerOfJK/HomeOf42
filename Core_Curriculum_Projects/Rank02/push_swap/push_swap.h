@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 13:22:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:51:18 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ft_lstdelone(t_list *lst, void (*del)(t_list *));
 void		ft_lstiter(t_list *lst, int (*f)(int, int));
 t_list		*ft_lstlast(t_list	*lst);
 t_list		*ft_lstmap(t_list *lst, int (*f)(int, int), void (*del)(int, int));
-t_list		*ft_lstnew(int val, int index);
+t_list		*ft_lstnew(int val);
 int			ft_lstsize(t_list *lst);
 void		increment_index(t_list *head_stack);
 void		decrement_index(t_list *head_stack);
@@ -78,5 +78,6 @@ void		set_index(t_list *stack);
 //valid checks
 int			confirm_order(t_list *head_stack);
 void		print_stacks(t_list *stack_a, t_list *stack_b);
+void		print_stack(t_list *stack);
 
 #endif
