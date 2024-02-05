@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 14:09:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 22:07:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	parse_to_linkedlist(int argc, char **argv, t_list **head_stack)
 	i = 1;
 	while (i < argc)
 	{
-		new_node_stack = ft_lstnew(ft_atoi(argv[i]), i);
+		new_node_stack = ft_lstnew(ft_atoi(argv[i]), NULL, NULL);
 		ft_lstadd_back(head_stack, new_node_stack);
 		i++;
 	}
@@ -44,54 +44,17 @@ int	main(int argc, char **argv)
 {
 	t_list	*head_a;
 	t_list	*head_b;
-	int		required_operations;
 
 	head_a = NULL;
 	head_b = NULL;
 	parse_to_linkedlist(argc, argv, &head_a);
-
-	//just for testing
-	// sa(&head_a);
-	// ss(&head_a, &head_b);
-	// ss(&head_a, &head_b);
-	// ss(&head_a, &head_b);
-	// pb(&head_a, &head_b);
-	// pa(&head_a, &head_b);
-	// pa(&head_a, &head_b);
-	// pb(&head_a, &head_b);
-	// pb(&head_a, &head_b);
-	// pb(&head_a, &head_b);
-	// sa(&head_a);
-	// ra(&head_a);
-	// rra(&head_a);
-	// rra(&head_a);
-	// rra(&head_a);
-	// ra(&head_a);
-	// rb(&head_b);
-	// rr(&head_a, &head_b);
-	// rr(&head_a, &head_b);
-	// rr(&head_a, &head_b);
-	// rrr(&head_a, &head_b);
-	// rr(&head_a, &head_b);
-	// rrr(&head_a, &head_b);
-
 	if (argc == 4)
-	{
-		required_operations = sort_three(&head_a);
-		ft_printf("To solve, it required %i steps!\n", required_operations);
-	}
+		sort_three(&head_a);
 	if (argc == 6)
-	{
-		required_operations = sort_five(&head_a, &head_b);
-		ft_printf("To solve, it required %i steps!\n", required_operations);
-	}
+		sort_five(&head_a, &head_b);
 	if (argc > 5)
-	{
-		required_operations = sort_all(&head_a, &head_b);
-		ft_printf("To solve, it required %i steps!\n", required_operations);
-	}
-	print_stacks(head_a, head_b);
-    ft_lstfree(head_a);
-    ft_lstfree(head_b);
+		sort_all(&head_a, &head_b);
+	ft_lstfree(head_a);
+	ft_lstfree(head_b);
 	return (0);
 }

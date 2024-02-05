@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 14:49:18 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:57:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,49 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	*pa(t_list **head_stack_a, t_list **head_stack_b)
+void	pa(t_list **head_stack_a, t_list **head_stack_b)
 {
-	t_list	*tmp;
+	t_list	*node_to_push;
 
 	if (head_stack_b && *head_stack_b)
 	{
-		tmp = *head_stack_b;
-		ft_lstadd_front(head_stack_a, ft_lstnew(tmp->val));
-		if ((*head_stack_b)->next)
-			*head_stack_b = (*head_stack_b)->next;
+		node_to_push = *head_stack_b;
+		*head_stack_b = (*head_stack_b)->next;
+		if (*head_stack_b)
+			(*head_stack_b)->previous = NULL;
+		node_to_push->previous = NULL;
+		if (*head_stack_a)
+		{
+			node_to_push->next = *head_stack_a;
+			(*head_stack_a)->previous = node_to_push;
+		}
 		else
-			*head_stack_b = NULL;
-		free(tmp);
+			node_to_push->next = NULL;
+		*head_stack_a = node_to_push;
 	}
 	ft_printf("pa\n");
-	return (0);
 }
 
-int	*pb(t_list **head_stack_a, t_list **head_stack_b)
+void	pb(t_list **head_stack_a, t_list **head_stack_b)
 {
-	t_list	*tmp;
+	t_list	*node_to_push;
 
 	if (head_stack_a && *head_stack_a)
 	{
-		tmp = *head_stack_a;
-		ft_lstadd_front(head_stack_b, ft_lstnew(tmp->val));
-		if ((*head_stack_a)->next)
-			*head_stack_a = (*head_stack_a)->next;
+		node_to_push = *head_stack_a;
+		*head_stack_a = (*head_stack_a)->next;
+		if (*head_stack_a)
+			(*head_stack_a)->previous = NULL;
+		node_to_push->previous = NULL;
+		if (*head_stack_b)
+		{
+			node_to_push->next = *head_stack_b;
+			(*head_stack_b)->previous = node_to_push;
+		}
 		else
-			*head_stack_a = NULL;
-		free(tmp);
+			node_to_push->next = NULL;
+		*head_stack_b = node_to_push;
 	}
 	ft_printf("pb\n");
-	return (0);
 }
+

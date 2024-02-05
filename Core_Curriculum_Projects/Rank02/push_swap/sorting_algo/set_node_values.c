@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:50:38 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 14:42:17 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 22:06:02 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ void	set_price(t_list *stack_a, t_list *stack_b)
 
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
-	print_stacks(stack_a, stack_b);
 	while (stack_b && stack_b->next)
 	{
-		ft_printf("hi");
-		print_stack(stack_b);
 		stack_b->push_price = stack_b->index;
 		if (!(stack_b->above_median))
 			stack_b->push_price = len_b - (stack_b->index);
@@ -56,7 +53,6 @@ void	set_price(t_list *stack_a, t_list *stack_b)
 		else
 			stack_b->push_price += len_a - (stack_b->next_neighbor->index);
 		stack_b = stack_b->next;
-		//print_stacks(stack_a, stack_b);
 	}
 }
 
@@ -82,29 +78,28 @@ void	set_cheapest(t_list *stack_b)
 
 void	set_next_neighbors(t_list *stack_a, t_list *current_node_b)
 {
-	int			value_dif;
-	long		highscore;
+	long		target;
 	t_list		*current_node_a;
+	t_list		*next_neighbor;
 
-	highscore = LONG_MAX;
 	while (current_node_b)
 	{
+		target = LONG_MAX;
 		current_node_a = stack_a;
 		while (current_node_a)
 		{
-			if (current_node_a->val > current_node_b->val)
+			if (current_node_a->val > current_node_b->val && 
+				current_node_a->val < target)
 			{
-				value_dif = current_node_a->val - current_node_b->val;
-				if (value_dif < highscore)
-				{
-					highscore = value_dif;
-					current_node_b->next_neighbor = current_node_a;
-				}
+				target = current_node_a->val;
+				next_neighbor = current_node_a;
 			}
 			current_node_a = current_node_a->next;
 		}
-		if (highscore == LONG_MAX)
+		if (target == LONG_MAX)
 			current_node_b->next_neighbor = return_smallest_node(stack_a);
+		else
+			current_node_b->next_neighbor = next_neighbor;
 		current_node_b = current_node_b->next;
 	}
 }
@@ -115,5 +110,6 @@ void	set_node_values(t_list *stack_a, t_list *stack_b)
 	set_index(stack_b);
 	set_next_neighbors(stack_a, stack_b);
 	set_price(stack_a, stack_b);
-	//set_cheapest(stack_b);
+	set_cheapest(stack_b);
 }
+

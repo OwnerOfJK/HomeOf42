@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:38:52 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 14:48:46 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:40:55 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_list	*ft_lstnew(int val)
+t_list	*ft_lstnew(int val, bool above_median, bool cheapest)
 {
 	t_list	*lst;
 
@@ -24,8 +24,8 @@ t_list	*ft_lstnew(int val)
 	lst->val = val;
 	lst->index = 0;
 	lst->push_price = 0;
-	lst->above_median = NULL;
-	lst->cheapest = NULL;
+	lst->above_median = above_median;
+	lst->cheapest = cheapest;
 	lst->next = NULL;
 	lst->previous = NULL;
 	lst->next_neighbor = NULL;

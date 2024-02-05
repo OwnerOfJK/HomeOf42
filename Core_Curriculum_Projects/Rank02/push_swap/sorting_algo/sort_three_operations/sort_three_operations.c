@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:01:36 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 17:29:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:14:10 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	sort_132(t_list **head_stack)
 	if (head_stack)
 	{
 		sa(head_stack);
-		ra(head_stack);
+		ra(head_stack, false);
 	}
 	return (2);
 }
@@ -28,7 +28,7 @@ int	sort_231(t_list **head_stack)
 {
 	if (head_stack)
 	{
-		rra(head_stack);
+		rra(head_stack, false);
 	}
 	return (1);
 }
@@ -46,7 +46,7 @@ int	sort_312(t_list **head_stack)
 {
 	if (head_stack)
 	{
-		ra(head_stack);
+		ra(head_stack, false);
 	}
 	return (1);
 }
@@ -56,7 +56,7 @@ int	sort_321(t_list **head_stack)
 	if (head_stack)
 	{
 		sa(head_stack);
-		rra(head_stack);
+		rra(head_stack, false);
 	}
 	return (2);
 }

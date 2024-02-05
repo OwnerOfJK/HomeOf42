@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:09 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/03 16:41:31 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:36:05 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,43 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	*swap(t_list **head_stack)
+void	swap(t_list **head_stack)
 {
-	int	tmp_val;
-
-	if (head_stack && *head_stack && (*head_stack)->next)
-	{
-		tmp_val = (*head_stack)->val;
-		(*head_stack)->val = (*head_stack)->next->val;
-		(*head_stack)->next->val = tmp_val;
-	}
-	return (0);
+	if (NULL == *head_stack || NULL == head_stack
+		|| 1 == ft_lstsize(*head_stack))
+		return ;
+	*head_stack = (*head_stack)->next;
+	(*head_stack)->previous->previous = *head_stack;
+	(*head_stack)->previous->next = (*head_stack)->next;
+	if ((*head_stack)->next)
+		(*head_stack)->next->previous = (*head_stack)->previous;
+	(*head_stack)->next = (*head_stack)->previous;
+	(*head_stack)->previous = NULL;
 }
 
-int	*sa(t_list **head_stack_a)
+void	sa(t_list **head_stack_a)
 {
 	if (head_stack_a)
 	{
 		swap(head_stack_a);
 		ft_printf("sa\n");
 	}
-	return (0);
 }
 
-int	*sb(t_list **head_stack_b)
+void	sb(t_list **head_stack_b)
 {
 	if (head_stack_b)
 	{
 		swap(head_stack_b);
 		ft_printf("sb\n");
 	}
-	return (0);
 }
 
-int	*ss(t_list **head_stack_a, t_list **head_stack_b)
+void	ss(t_list **head_stack_a, t_list **head_stack_b)
 {
 	if (head_stack_a && head_stack_b)
 	{
 		sa(head_stack_a);
 		sb(head_stack_b);
 	}
-	return (0);
 }

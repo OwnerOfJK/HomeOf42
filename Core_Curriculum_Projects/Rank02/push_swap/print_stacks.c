@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:20:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 14:41:32 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 19:13:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	t_list *current_a = stack_a;
-	
+	ft_printf("____________stack_a_______________\n\n");
 	while (current_a)
 	{
 		ft_printf("head_a: val %i | index %i | push_price %i | above_median %d | cheapest %d \n", current_a->val, current_a->index, current_a->push_price, current_a->above_median, current_a->cheapest);
@@ -25,7 +25,7 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 		//free(current_a);
 		current_a = next_a;
 	}
-	ft_printf("______________________________\n\n");
+	ft_printf("____________stack_b_______________\n\n");
 	t_list *current_b = stack_b;
 	while (current_b)
 	{
@@ -34,11 +34,26 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 		//free(current_b);
 		current_b = next_b;
 	}
+	ft_printf("____________done_______________\n\n");
 }
 
-void	print_stack(t_list *stack)
+void	print_node(t_list *stack)
 {
 	t_list *current_a = stack;
 
 	ft_printf("current_node: val %i | index %i | push_price %i | above_median %d | cheapest %d \n", current_a->val, current_a->index, current_a->push_price, current_a->above_median, current_a->cheapest);
+}
+
+void	print_stack(t_list *stack)
+{
+	t_list *current = stack;
+	
+	while (current)
+	{
+		ft_printf("head_a: val %i | index %i | push_price %i | above_median %d | cheapest %d \n", current->val, current->index, current->push_price, current->above_median, current->cheapest);
+		t_list *next_a = current->next;  // Declare next_a inside the loop
+		//free(current_a);
+		current = next_a;
+	}
+	ft_printf("______________________________\n\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:55:12 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 13:13:23 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:07:05 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	rotate_both(t_list **stack_a,
 {
 	while (*stack_a != cheapest_node->next_neighbor
 		&& *stack_b != cheapest_node)
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, true);
 	set_index(*stack_a);
 	set_index(*stack_b);
 }
 
-static void	reverse_rotate_both(t_list **stack_a,
+void	reverse_rotate_both(t_list **stack_a,
 								t_list **stack_b,
 								t_list *cheapest_node)
 {
 	while (*stack_a != cheapest_node->next_neighbor
 		&& *stack_b != cheapest_node)
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, true);
 	set_index(*stack_a);
 	set_index(*stack_b);
 }
@@ -45,16 +45,16 @@ void	finish_rotation(t_list **stack,
 		if (stack_name == 'a')
 		{
 			if (top_node->above_median)
-				ra(stack);
+				ra(stack, false);
 			else
-				rra(stack);
+				rra(stack, false);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->above_median)
-				rb(stack);
+				rb(stack, false);
 			else
-				rrb(stack);
+				rrb(stack, false);
 		}
 	}
 }
