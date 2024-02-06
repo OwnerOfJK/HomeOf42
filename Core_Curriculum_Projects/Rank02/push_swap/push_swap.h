@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/06 12:16:30 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:29:42 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ typedef struct s_list {
 	struct s_list		*previous;
 	struct s_list		*next_neighbor;
 }	t_list;
+
+//data parsing
+void		parse_to_linkedlist(int *argc, char **argv, t_list **head_stack_a);
 
 //list_specific_functions
 void		ft_lstadd_back(t_list **lst, t_list *new);
@@ -47,6 +50,9 @@ void		rra(t_list **head_stack_a, bool flag);
 void		rrb(t_list **head_stack_b, bool flag);
 void		rrr(t_list **head_stack_a, t_list **head_stack_b, bool flag);
 
+//sort two
+void		sort_two(t_list **stack_a);
+
 //sort three
 int			sort_three(t_list **head_stack);
 int			sort_132(t_list **head_stack);
@@ -55,15 +61,10 @@ int			sort_231(t_list **head_stack);
 int			sort_312(t_list **head_stack);
 int			sort_321(t_list **head_stack);
 
-//sort two
-void		sort_two(t_list **stack_a);
-
 //sort all
 void		sort_all(t_list **head_stack_a, t_list **head_stack_b);
 void		set_node_values(t_list *stack_a, t_list *stack_b);
 void		move_cheapest_to_top(t_list **stack_a, t_list **stack_b);
-t_list		*return_cheapest(t_list *stack);
-t_list		*return_smallest_node(t_list *stack);
 void		set_index(t_list *stack);
 
 //valid checks
@@ -71,5 +72,7 @@ int			confirm_order(t_list *head_stack);
 void		print_stacks(t_list *stack_a, t_list *stack_b);
 void		print_stack(t_list *stack);
 void		print_node(t_list *stack);
+t_list		*return_cheapest(t_list *stack);
+t_list		*return_smallest_node(t_list *stack);
 
 #endif

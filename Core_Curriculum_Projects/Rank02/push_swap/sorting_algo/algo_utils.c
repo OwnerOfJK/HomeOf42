@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:24:37 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 12:00:25 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 12:19:19 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,15 @@ t_list	*return_cheapest(t_list *stack)
 		stack = stack->next;
 	}
 	return (NULL);
+}
+
+int	confirm_order(t_list *head_stack)
+{
+	while (head_stack && head_stack->next)
+	{
+		if (head_stack->val > head_stack->next->val)
+			return (0);
+		head_stack = head_stack->next;
+	}
+	return (1);
 }
