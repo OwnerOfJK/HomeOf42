@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/06 11:31:10 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 12:16:30 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void		ft_lstadd_front(t_list **lst, t_list *new);
 t_list		*ft_lstlast(t_list	*lst);
 t_list		*ft_lstnew(int val, bool above_median, bool cheapest);
 int			ft_lstsize(t_list *lst);
-void		increment_index(t_list *head_stack);
-void		decrement_index(t_list *head_stack);
 void		ft_lstfree(t_list *lst);
 
 //swap operations
@@ -57,7 +55,7 @@ int			sort_231(t_list **head_stack);
 int			sort_312(t_list **head_stack);
 int			sort_321(t_list **head_stack);
 
-//sort five
+//sort two
 void		sort_two(t_list **stack_a);
 
 //sort all
@@ -72,5 +70,6 @@ void		set_index(t_list *stack);
 int			confirm_order(t_list *head_stack);
 void		print_stacks(t_list *stack_a, t_list *stack_b);
 void		print_stack(t_list *stack);
+void		print_node(t_list *stack);
 
 #endif

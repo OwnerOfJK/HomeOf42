@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:50:38 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 22:06:02 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 12:04:29 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,3 @@ void	set_node_values(t_list *stack_a, t_list *stack_b)
 	set_price(stack_a, stack_b);
 	set_cheapest(stack_b);
 }
-

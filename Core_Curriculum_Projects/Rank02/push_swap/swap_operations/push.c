@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:15:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 20:57:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 12:13:36 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ void	pb(t_list **head_stack_a, t_list **head_stack_b)
 	}
 	ft_printf("pb\n");
 }
-
