@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 15:53:06 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 21:33:53 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 11:11:07 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ int	sort_three(t_list **head_stack)
 		required_operations += sort_312(head_stack);
 	if (confirm_order(*head_stack) == 1)
 		return (required_operations);
-	//ft_printf("sort_three");
 	return (0);
 }

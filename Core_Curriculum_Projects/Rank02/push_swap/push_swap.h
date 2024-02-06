@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 22:09:03 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 11:31:10 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			sort_312(t_list **head_stack);
 int			sort_321(t_list **head_stack);
 
 //sort five
-int			sort_five(t_list **head_stack_a, t_list **head_stack_b);
+void		sort_two(t_list **stack_a);
 
 //sort all
 void		sort_all(t_list **head_stack_a, t_list **head_stack_b);

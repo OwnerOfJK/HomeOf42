@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/05 22:07:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 11:35:39 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,15 @@ int	main(int argc, char **argv)
 	head_a = NULL;
 	head_b = NULL;
 	parse_to_linkedlist(argc, argv, &head_a);
-	if (argc == 4)
-		sort_three(&head_a);
-	if (argc == 6)
-		sort_five(&head_a, &head_b);
-	if (argc > 5)
-		sort_all(&head_a, &head_b);
+	if (confirm_order(head_a) == 0)
+	{
+		if (argc == 3)
+			sort_two(&head_a);
+		if (argc == 4)
+			sort_three(&head_a);
+		else if (argc > 4)
+			sort_all(&head_a, &head_b);
+	}
 	ft_lstfree(head_a);
 	ft_lstfree(head_b);
 	return (0);
