@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/06 13:29:42 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:43:48 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list {
 }	t_list;
 
 //data parsing
-void		parse_to_linkedlist(int *argc, char **argv, t_list **head_stack_a);
+int			parse_to_linkedlist(int *argc, char **argv, t_list **head_stack_a);
 
 //list_specific_functions
 void		ft_lstadd_back(t_list **lst, t_list *new);
