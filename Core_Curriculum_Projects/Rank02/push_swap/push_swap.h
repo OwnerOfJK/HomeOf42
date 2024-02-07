@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:17:10 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/07 14:40:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/07 23:04:32 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		print_stack(t_list *stack);
 void		print_node(t_list *stack);
 t_list		*return_cheapest(t_list *stack);
 t_list		*return_smallest_node(t_list *stack);
-void		free_word_array(char **word_array, int amount_of_words);
+int			string_of_numbers(int *argc, char **argv, t_list **head_stack_a);
+int			number_check_for_all(int argc, char **argv);
 
 #endif
