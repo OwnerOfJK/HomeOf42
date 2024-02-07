@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:43:46 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/06 18:00:03 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:10:25 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	head_b = NULL;
 	argc_pointer = &argc;
 	if (argc <= 1)
-		ft_printf("Error \n");
+		return (0);
 	else
 	{
 		if (parse_to_linkedlist(argc_pointer, argv, &head_a) == 1)

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:20:47 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/06 17:48:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:16:12 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	has_duplicate_numbers(int argc, char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		j = i + 1;
@@ -86,7 +86,10 @@ int	handle_string_of_numbers(int *argc, char **argv, t_list **head_stack_a)
 	amount_of_numbers = ft_count_words(argv[1], ' ');
 	word_array = ft_split(argv[1], ' ');
 	if (check_for_all(amount_of_numbers, word_array, 0) == 0)
+	{
+		free_word_array(word_array, amount_of_numbers);
 		return (0);
+	}
 	while (i < amount_of_numbers)
 	{
 		new_node_stack = ft_lstnew(ft_atoi(word_array[i]), NULL, NULL);
