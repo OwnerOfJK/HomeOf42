@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:53:38 by jkaller           #+#    #+#             */
-/*   Updated: 2024/02/07 23:04:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:04:28 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	string_is_valid_number(const char *str)
 		i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
-		if (ft_isdigit(str[i - 2]))
+		if (ft_isdigit(str[i - 1]))
 			return (0);
 	}
 	while (str[i] && ft_isdigit(str[i]))
