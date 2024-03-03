@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:46:53 by jkaller           #+#    #+#             */
-/*   Updated: 2024/01/27 16:58:01 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/03/03 23:16:56 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	print_decoded_message(int signum)
 	{
 		if (received_char == 0)
 			ft_putchar('\n');
-		ft_putchar_fd(received_char, 1);
+		else
+			ft_putchar_fd(received_char, 1);
 		bit_index = 0;
 		received_char = 0;
 	}
@@ -36,11 +37,8 @@ void	print_decoded_message(int signum)
 
 int	main(void)
 {
-	struct sigaction	action;
-
-	action.sa_handler = print_decoded_message;
-	sigaction(SIGUSR1, &action, NULL);
-	sigaction(SIGUSR2, &action, NULL);
+	signal(SIGUSR1, print_decoded_message);
+	signal(SIGUSR2, print_decoded_message);
 	ft_printf("PID of server: %d\n", getpid());
 	while (1)
 	{
