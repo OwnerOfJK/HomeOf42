@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/23 18:16:09 by jkaller           #+#    #+#              #
-#    Updated: 2024/04/23 18:26:57 by jkaller          ###   ########.fr        #
+#    Updated: 2024/04/24 22:32:58 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ NAME = philo
 CC = cc
 
 # Compiler flags
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -pthread
 
 # Source files
-SRCS = main.c
+SRCS = main.c init/init_philo.c free/free_philo.c utils/function_utils.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
