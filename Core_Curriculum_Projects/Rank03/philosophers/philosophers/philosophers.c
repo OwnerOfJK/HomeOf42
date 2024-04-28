@@ -6,11 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:12:32 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/24 22:24:45 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/28 11:34:41 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+
 
 // void    run_loop(t_philo *philo)
 // {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_philo.c                                       :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 22:10:32 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/24 22:11:01 by jkaller          ###   ########.fr       */
+/*   Created: 2024/04/28 11:50:26 by jkaller           #+#    #+#             */
+/*   Updated: 2024/04/28 11:51:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,15 @@ void	free_philo(t_philo *philo)
 		philo = philo->next;
 		free(tmp);
 	}
+}
+
+void	free_table(t_table *table)
+{
+	free(table);
+}
+
+void	free_data(t_table *table, t_philo *philo)
+{
+	free_table(table);
+	free_philo(philo);
 }
