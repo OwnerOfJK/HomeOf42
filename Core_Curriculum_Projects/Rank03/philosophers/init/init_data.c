@@ -6,13 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 12:02:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:13:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-t_philo	*new_philo(int id, t_table *table)
+t_philo	*new_philo(int id)
 {
 	t_philo	*philo;
 
@@ -23,11 +23,11 @@ t_philo	*new_philo(int id, t_table *table)
 	philo->has_not_eaten = 0;
 	philo->is_eating = 0;
 	philo->is_sleeping = 0;
-	philo->is_thinking = true;
+	philo->is_thinking = 0;
 	philo->meals = 0;
-	philo->table = table;
 	philo->next = NULL;
 	philo->prev = NULL;
+	pthread_mutex_init(&philo->fork, NULL);
 	return (philo);
 }
 
@@ -53,13 +53,13 @@ t_philo	*init_philo(t_table *table)
 	if (philo_count < 1)
 		return (NULL);
 	i = 1;
-	philo = new_philo(i, table);
+	philo = new_philo(i);
 	head = philo;
-	while (i < philo_count)
+	while (i++ < philo_count)
 	{
-		i++;
-		philo = new_philo(i, table);
-		add_to_end(&head, philo);
+		philo->next = new_philo(i);
+		philo->next->prev = philo;
+		philo = philo->next;
 	}
 	return (head);
 }
@@ -77,5 +77,9 @@ t_table	*init_table(char *argv[])
 	table->time_to_eat = ft_atoi(argv[3]);
 	table->time_to_sleep = ft_atoi(argv[4]);
 	table->max_meals = ft_atoi(argv[5]);
+	table->thread_id = malloc(sizeof(pthread_t) * table->philo_count);
+	if (!table->thread_id)
+		return (NULL);
+	table->philosophers = init_philo(table);
 	return (table);
 }

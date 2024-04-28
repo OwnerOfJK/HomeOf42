@@ -6,13 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:17:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 12:03:39 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:08:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_data(t_table	*table, t_philo *philo)
+void	print_data(t_table	*table)
 {
 	printf("philo_count: %d\n", table->philo_count);
 	printf("fork_count: %d\n", table->fork_count);
@@ -21,31 +21,29 @@ void	print_data(t_table	*table, t_philo *philo)
 	printf("time_to_sleep: %d\n", table->time_to_sleep);
 	printf("max_meals: %d\n", table->max_meals);
 	printf("\n");
-	while (philo)
+	while (table->philosophers)
 	{
-		printf("philo_id: %d\n", philo->philo_id);
-		printf("has_not_eaten: %d\n", philo->has_not_eaten);
-		printf("is_eating: %d\n", philo->is_eating);
-		printf("is_sleeping: %d\n", philo->is_sleeping);
-		printf("is_thinking: %d\n", philo->is_thinking);
-		printf("meals: %d\n", philo->meals);
+		printf("philo_id: %d\n", table->philosophers->philo_id);
+		printf("has_not_eaten: %d\n", table->philosophers->has_not_eaten);
+		printf("is_eating: %d\n", table->philosophers->is_eating);
+		printf("is_sleeping: %d\n", table->philosophers->is_sleeping);
+		printf("is_thinking: %d\n", table->philosophers->is_thinking);
+		printf("meals: %d\n", table->philosophers->meals);
 		printf("\n");
-		philo = philo->next;
+		table->philosophers = table->philosophers->next;
 	}
 }
 
 int	main(int argc, char *argv[])
 {
-	t_philo	*philo;
 	t_table	*table;
 
 	if (argc == 6)
 	{
 		table = init_table(argv);
-		philo = init_philo(table);
-		print_data(table, philo);
-		//run_loop(philo);
-		free_data(table, philo);
+		//print_data(table);
+		run_loop(table);
+		free_data(table);
 	}
 	return (0);
 }
