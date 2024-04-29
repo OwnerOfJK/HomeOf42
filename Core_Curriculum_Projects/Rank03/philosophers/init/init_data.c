@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/29 18:20:00 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:25:50 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_philo	*new_philo(t_table *table, int id)
 		table->philos[id]->left_fork = &table->forks[0];
 	else
 		table->philos[id]->left_fork = &table->forks[id + 1];
+	table->philos[id]->table = table;
 	return (table->philos[id]);
 }
 

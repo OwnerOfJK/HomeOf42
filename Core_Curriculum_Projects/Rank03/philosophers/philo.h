@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/29 18:08:10 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:35:32 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <sys/time.h>
 
+typedef struct s_table	t_table;
+
 typedef struct s_philo
 {
 	int				philo_id;
@@ -30,7 +32,7 @@ typedef struct s_philo
 	int				meals;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
-	//struct s_table	*table;
+	t_table			*table;
 }	t_philo;
 
 typedef struct s_table
@@ -53,7 +55,6 @@ void	free_data(t_table *table);
 
 /* Philosopher */
 void	run_philosophers(t_table *table);
-t_philo	*philo_at_index(t_philo *philo, int index);
 
 /* Utils */
 int		ft_atoi(const char *str);

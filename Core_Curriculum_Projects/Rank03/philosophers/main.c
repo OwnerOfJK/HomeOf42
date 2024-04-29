@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:17:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/29 18:08:03 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:36:46 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 	{
 		table = init_data(argv);
 		print_data(table);
-		//run_philosophers(table);
+		run_philosophers(table);
 		free_data(table);
 	}
 	return (0);
