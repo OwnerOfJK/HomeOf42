@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 18:59:43 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:08:10 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ typedef struct s_philo
 	int				is_sleeping;
 	int				is_thinking;
 	int				meals;
-	struct s_philo	*next;
-	struct s_philo	*prev;
-	pthread_mutex_t	fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*left_fork;
 	//struct s_table	*table;
 }	t_philo;
 
@@ -43,17 +42,17 @@ typedef struct s_table
 	int				time_to_sleep;
 	int				max_meals;
 	pthread_t		*thread_id;
-	t_philo			*philosophers;
+	pthread_mutex_t	*forks;
+	t_philo			**philos;
 }	t_table;
 
 
 /* Data Handling*/
-t_table	*init_table(char *argv[]);
-t_philo	*init_philo(t_table *table);
+t_table	*init_data(char *argv[]);
 void	free_data(t_table *table);
 
 /* Philosopher */
-void	run_loop(t_table *table);
+void	run_philosophers(t_table *table);
 t_philo	*philo_at_index(t_philo *philo, int index);
 
 /* Utils */

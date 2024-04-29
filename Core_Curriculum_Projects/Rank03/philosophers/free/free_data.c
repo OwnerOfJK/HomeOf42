@@ -6,28 +6,31 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:50:26 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 18:28:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:19:03 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	free_philo(t_philo *philo)
+void	free_philo(t_philo **philo)
 {
-	t_philo	*tmp;
+	int		i;
 
-	while (philo)
+	i = 0;
+	while (philo[i])
 	{
-		tmp = philo;
-		philo = philo->next;
-		pthread_mutex_destroy(&tmp->fork);
-		free(tmp);
+		free(philo[i]);
+		i++;
 	}
+	free(philo);
 }
 
 void	free_table(t_table *table)
 {
-	free_philo(table->philosophers);
+	free_philo(table->philos);
+	free(table->thread_id);
+	pthread_mutex_destroy(table->forks);
+	free(table->forks);
 	free(table);
 }
 

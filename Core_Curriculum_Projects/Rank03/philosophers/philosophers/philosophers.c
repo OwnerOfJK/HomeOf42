@@ -6,68 +6,69 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:12:32 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 19:22:45 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 17:52:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+// #include "../philo.h"
 
-void	*routine(void *philo_pointer)
-{
-	t_philo			*philo;
-	struct timeval	current_time;
+// void	*run_loop(void *table_pointer)
+// {
+// 	t_table			*table;
+// 	struct timeval	current_time;
 
-	gettimeofday(&current_time, NULL);
-	philo = (t_philo *) philo_pointer;
-	printf("%ld %i is_thinking\n", current_time.tv_usec, philo->philo_id);
+// 	gettimeofday(&current_time, NULL);
+// 	table = (t_table *) table_pointer;
+// 	printf("%ld %i is_thinking\n", current_time.tv_usec, table->philosophers->philo_id);
 
-	// Lock the mutexes in a consistent order
-	pthread_mutex_lock(&philo->fork);
+// 	// Lock the mutexes in a consistent order
+// 	pthread_mutex_lock(&table->philosophers->fork);
 
-	// Check if the next philosopher exists before accessing its fork
-	if (philo->next != NULL) {
-		pthread_mutex_lock(&philo->next->fork);
-		printf("%ld %i is_eating\n", current_time.tv_usec, philo->philo_id);
-		usleep(1);
-		pthread_mutex_unlock(&philo->next->fork);
-	} else {
-		printf("No adjacent philosopher to the right. Skipping eating.\n");
-	}
+// 	// Check if the next philosopher exists before accessing its fork
+// 	if (table->philosophers->next != NULL) {
+// 		pthread_mutex_lock(&table->philosophers->next->fork);
+// 		printf("%ld %i is_eating\n", current_time.tv_usec, table->philosophers->philo_id);
+// 		usleep(1);
+// 		pthread_mutex_unlock(&table->philosophers->next->fork);
+// 	} else {
+// 		pthread_mutex_lock(&table->philosophers->next->fork);
+// 		printf("No adjacent philosopher to the right. Skipping eating.\n");
+// 	}
 
-	pthread_mutex_unlock(&philo->fork);
-	printf("%ld %i is_sleeping\n", current_time.tv_usec, philo->philo_id);
-	return ((void *)0);
-}
+// 	pthread_mutex_unlock(&table->philosophers->fork);
+// 	printf("%ld %i is_sleeping\n", current_time.tv_usec, table->philosophers->philo_id);
+// 	return ((void *)0);
+// }
 
-void	run_loop(t_table *table)
-{
-	int		i;
-	//t_philo	*tmp;
-	t_philo	*current;
+// void	run_philosophers(t_table *table)
+// {
+// 	int		i;
+// 	//t_philo	*tmp;
+// 	t_philo	*header;
 
-	i = 0;
-	current = table->philosophers;
-	while (current)
-	{
-		//tmp = philo_at_index(table->philosophers, i);
-		if (pthread_create(&table->thread_id[i], NULL, &routine, current) != 0)
-			return ;
-		usleep(1);
-		i++;
-		current = current->next;
-	}
-	current = table->philosophers;
-	i = 0;
-	while (current)
-	{
-		if (pthread_join(table->thread_id[i], NULL) != 0) {
-			return ;
-		}
-		usleep(1);
-		i++;
-		current = current->next;
-	}
-}
+// 	i = 0;
+// 	header = table->philosophers;
+// 	while (table->philosophers)
+// 	{
+// 		//tmp = philo_at_index(table->philosophers, i);
+// 		if (pthread_create(&table->thread_id[i], NULL, &run_loop, table) != 0)
+// 			return ;
+// 		usleep(1);
+// 		i++;
+// 		table->philosophers = table->philosophers->next;
+// 	}
+// 	table->philosophers = header;
+// 	i = 0;
+// 	while (table->philosophers)
+// 	{
+// 		if (pthread_join(table->thread_id[i], NULL) != 0) {
+// 			return ;
+// 		}
+// 		usleep(1);
+// 		i++;
+// 		table->philosophers = table->philosophers->next;
+// 	}
+// }
 
 // int mails = 0;
 // pthread_mutex_t mutex;

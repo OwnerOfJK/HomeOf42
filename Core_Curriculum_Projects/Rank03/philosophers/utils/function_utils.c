@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:30:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/28 19:00:05 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/29 17:52:39 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,3 @@ int	ft_atoi(const char *str)
 	return (num * neg);
 }
 
-t_philo	*philo_at_index(t_philo *philo, int index)
-{
-	int	i;
-
-	i = 0;
-	while (i < index && philo)
-	{
-		philo = philo->next;
-		i++;
-	}
-	return (philo);
-}
