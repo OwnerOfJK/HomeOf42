@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/29 18:25:50 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/04/30 16:04:02 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_philo	*new_philo(t_table *table, int id)
 {
 	table->philos[id] = malloc(sizeof(t_philo));
 	table->philos[id]->philo_id = id;
-	table->philos[id]->has_not_eaten = 0;
-	table->philos[id]->is_eating = 0;
-	table->philos[id]->is_sleeping = 0;
-	table->philos[id]->is_thinking = 0;
+	table->philos[id]->has_not_eaten = (u_int64_t)0;
+	table->philos[id]->is_eating = (u_int64_t)0;
+	table->philos[id]->is_sleeping = (u_int64_t)0;
+	table->philos[id]->is_thinking = (u_int64_t)0;
 	table->philos[id]->meals = 0;
 	table->philos[id]->right_fork = &table->forks[id];
 	if (id == table->philo_count - 1)
@@ -60,9 +60,10 @@ t_table	*init_table(char *argv[])
 		return (NULL);
 	table->philo_count = ft_atoi(argv[1]);
 	table->fork_count = table->philo_count;
-	table->time_to_die = ft_atoi(argv[2]);
-	table->time_to_eat = ft_atoi(argv[3]);
-	table->time_to_sleep = ft_atoi(argv[4]);
+	table->time_to_die = (u_int64_t)ft_atoi(argv[2]);
+	table->time_to_eat = (u_int64_t)ft_atoi(argv[3]);
+	table->time_to_sleep = (u_int64_t)ft_atoi(argv[4]);
+	table->death_count = 0;
 	table->max_meals = ft_atoi(argv[5]);
 	table->thread_id = malloc(sizeof(pthread_t) * table->philo_count);
 	if (!table->thread_id)
