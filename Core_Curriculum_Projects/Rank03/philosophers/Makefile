@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/23 18:16:09 by jkaller           #+#    #+#              #
-#    Updated: 2024/04/30 16:32:03 by jkaller          ###   ########.fr        #
+#    Updated: 2024/05/02 14:05:33 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread
 
 # Source files
-SRCS = main.c init/init_data.c free/free_data.c utils/function_utils.c philosophers/philosophers.c philosophers/philosophers_utils.c error/error.c
+SRCS = main.c init/init_data.c free/free_data.c utils/function_utils.c \
+ philosophers/philosophers.c philosophers/philosophers_utils.c error/error.c \
+ philosophers/philosophers_actions.c philosophers/philosophers_monitor.c \
 
 # Object files
 OBJS = $(SRCS:.c=.o)

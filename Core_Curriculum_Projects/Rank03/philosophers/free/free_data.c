@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:50:26 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/29 18:19:03 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:12:54 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	free_philo(t_philo **philo)
 	i = 0;
 	while (philo[i])
 	{
+		pthread_mutex_destroy(philo[i]->eating_lock);
+		pthread_mutex_destroy(philo[i]->death_lock);
+		pthread_mutex_destroy(philo[i]->print_lock);
+		free(philo[i]->eating_lock);
+		free(philo[i]->death_lock);
+		free(philo[i]->print_lock);
 		free(philo[i]);
 		i++;
 	}

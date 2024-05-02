@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:17:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/30 16:09:50 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/02 16:47:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 // 	while (i < table->philo_count)
 // 	{
 // 		printf("philo_id: %d\n", table->philos[i]->philo_id);
-// 		printf("has_not_eaten: %d\n", table->philos[i]->has_not_eaten);
+// 		printf("recent_meal: %d\n", table->philos[i]->recent_meal);
 // 		printf("is_eating: %d\n", table->philos[i]->is_eating);
 // 		printf("is_sleeping: %d\n", table->philos[i]->is_sleeping);
 // 		printf("is_thinking: %d\n", table->philos[i]->is_thinking);
@@ -42,7 +42,7 @@ int	main(int argc, char *argv[])
 {
 	t_table	*table;
 
-	if (argc == 6)
+	if (argc == 6 || argc == 5)
 	{
 		table = init_data(argv);
 		//print_data(table);

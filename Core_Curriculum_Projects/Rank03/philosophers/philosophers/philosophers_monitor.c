@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   philosophers_monitor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 16:23:38 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 15:14:22 by jkaller          ###   ########.fr       */
+/*   Created: 2024/05/02 13:16:39 by jkaller           #+#    #+#             */
+/*   Updated: 2024/05/02 16:22:55 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	philo_error(int err_code, t_table *table)
+void	*philo_monitor(void *table_pointer)
 {
-	if (err_code == THREAD_CREATE_ERROR)
-		perror("Error with creating thread");
-	else if (err_code == THREAD_JOIN_ERROR)
-		perror("Error with joining thread");
-	free_data(table);
-	return (err_code);
+	t_table			*table;
+
+	table = (t_table *)table_pointer;
+	while (1)
+	{
+		if (check_for_death(table) == 1 || check_for_max_meals(table) == 1)
+			break ;
+	}
+	return (table_pointer);   
 }

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:30:51 by jkaller           #+#    #+#             */
-/*   Updated: 2024/04/30 16:02:18 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/02 14:29:53 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,5 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (num * neg);
-}
-
-u_int64_t	get_time(void)
-{
-	struct timeval	tv;
-
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }
 
