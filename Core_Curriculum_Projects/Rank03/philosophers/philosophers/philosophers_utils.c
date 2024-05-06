@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:11:24 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/06 18:14:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:21:59 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_for_max_meals(t_table *table)
 		pthread_mutex_unlock(table->philos[i]->eating_lock);
 		i++;
 	}
-	if (philos_eaten == (table->philo_count - 1))
+	if (philos_eaten == table->philo_count)
 	{
 		pthread_mutex_lock(table->philos[table->philo_count - 1]->death_lock);
 		table->death_count = 1;

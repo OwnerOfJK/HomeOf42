@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 13:16:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 16:22:55 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:21:01 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*philo_monitor(void *table_pointer)
 	{
 		if (check_for_death(table) == 1 || check_for_max_meals(table) == 1)
 			break ;
+		usleep(1000);
 	}
 	return (table_pointer);   
 }

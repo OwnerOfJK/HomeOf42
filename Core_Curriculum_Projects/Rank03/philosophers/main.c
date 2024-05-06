@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:17:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/06 18:02:23 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:20:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char *argv[])
 	if (argc == 6 || argc == 5)
 	{
 		table = init_data(argv);
-		print_data(table);
+		//print_data(table);
 		run_philosophers(table);
 		free_data(table);
 	}

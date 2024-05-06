@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:32:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/06 18:08:37 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:25:56 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*philo_routine(void *philo_pointer)
 
 	philo = (t_philo *) philo_pointer;
 	if (philo->philo_id % 2 == 0)
-		return (0);
+		ft_usleep(1);
 	while (!dead_loop(philo))
 	{
 		eat(philo);
