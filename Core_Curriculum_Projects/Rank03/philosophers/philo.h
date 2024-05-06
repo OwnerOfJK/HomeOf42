@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 16:47:15 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:02:08 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ typedef struct s_philo
 {
 	int				philo_id;
 	u_int64_t		recent_meal;
-	u_int64_t		is_eating;
-	u_int64_t		is_sleeping;
-	u_int64_t		is_thinking;
+	size_t			start_time;
 	int				meals;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
@@ -67,7 +65,7 @@ void		free_data(t_table *table);
 /* Philosopher */
 int			run_philosophers(t_table *table);
 void		*philo_routine(void *philo_pointer);
-void 		*philo_monitor(void *table_pointer);
+void		*philo_monitor(void *table_pointer);
 
 /* Utils */
 int			ft_atoi(const char *str);
@@ -75,8 +73,9 @@ int			check_for_max_meals(t_table *table);
 int			check_for_death(t_table *table);
 u_int64_t	get_time(void);
 int			dead_loop(t_philo *philo);
+int			ft_usleep(size_t milliseconds);
 
 /* Error Handling */
-int	philo_error(int err_code, t_table *table);
+int			philo_error(int err_code, t_table *table);
 
 #endif

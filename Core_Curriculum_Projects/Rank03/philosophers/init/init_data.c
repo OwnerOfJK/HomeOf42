@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 16:47:22 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:06:08 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ t_philo	*new_philo(t_table *table, int id)
 	table->philos[id] = malloc(sizeof(t_philo));
 	table->philos[id]->philo_id = id;
 	table->philos[id]->recent_meal = get_time();
-	table->philos[id]->is_eating = (u_int64_t)0;
-	table->philos[id]->is_sleeping = (u_int64_t)0;
-	table->philos[id]->is_thinking = (u_int64_t)0;
+	table->philos[id]->start_time = get_time();
 	table->philos[id]->meals = 0;
 	pthread_mutex_init(&table->forks[id], NULL);
 	table->philos[id]->right_fork = &table->forks[id];

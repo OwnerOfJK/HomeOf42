@@ -6,7 +6,7 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/23 18:16:09 by jkaller           #+#    #+#              #
-#    Updated: 2024/05/02 14:05:33 by jkaller          ###   ########.fr        #
+#    Updated: 2024/05/06 18:12:12 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = philo
 CC = cc
 
 # Compiler flags
-CFLAGS = -Wall -Werror -Wextra -pthread
+CFLAGS = -Wall -Werror -Wextra -pthread -fsanitize=address
 
 # Source files
 SRCS = main.c init/init_data.c free/free_data.c utils/function_utils.c \
