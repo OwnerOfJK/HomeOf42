@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:11:24 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 17:10:21 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:04:15 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 int	check_for_death(t_table *table)
 {
-	int	i;
-	u_int64_t	time;
+	int		i;
+	size_t	time;
 
 	i = 0;
 	while (i < table->philo_count)
 	{
 		pthread_mutex_lock(table->philos[i]->eating_lock);
 		time = get_time();
-		if (time - table->philos[i]->recent_meal >= table->time_to_die && table->philos[i]->eating == 0)
+		if (time - table->philos[i]->recent_meal
+			>= table->time_to_die && table->philos[i]->eating == 0)
 		{
 			pthread_mutex_lock(table->monitor_death);
-			printf("%lu %d died\n", get_time() - table->philos[i]->start_time, i);
+			printf("%lu %d died\n",
+				get_time() - table->philos[i]->start_time, i);
 			table->death_count++;
 			pthread_mutex_unlock(table->monitor_death);
 			pthread_mutex_unlock(table->philos[i]->eating_lock);
@@ -36,38 +38,6 @@ int	check_for_death(t_table *table)
 	}
 	return (0);
 }
-
-// int	philosopher_dead(t_philo *philo, size_t time_to_die)
-// {
-// 	pthread_mutex_lock(philo->eating_lock);
-// 	if (get_time() - philo->recent_meal >= time_to_die
-// 		&& philo->eating == 0)
-// 		return (pthread_mutex_unlock(philo->eating_lock), 1);
-// 	pthread_mutex_unlock(philo->eating_lock);
-// 	return (0);
-// }
-
-// // Check if any philo died
-
-// int	check_for_death(t_table *table)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < table->philo_count)
-// 	{
-// 		if (philosopher_dead(table->philos[i], table->time_to_die))
-// 		{
-// 			printf("%lu %d died\n", get_time() - table->philos[i]->start_time, i);
-// 			pthread_mutex_unlock(table->philos[i]->death_lock);
-// 			table->death_count = 1;
-// 			pthread_mutex_unlock(table->philos[i]->death_lock);
-// 			return (1);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 int	check_for_max_meals(t_table *table)
 {
@@ -89,10 +59,8 @@ int	check_for_max_meals(t_table *table)
 	if (philos_eaten == table->philo_count)
 	{
 		pthread_mutex_lock(table->monitor_death);
-		//pthread_mutex_lock(table->philos[0]->death_lock);
 		table->death_count++;
 		pthread_mutex_unlock(table->monitor_death);
-		//pthread_mutex_unlock(table->philos[0]->death_lock);
 		return (1);
 	}
 	return (0);
@@ -110,14 +78,12 @@ size_t	get_time(void)
 int	dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->table->monitor_death);
-	//pthread_mutex_lock(philo->death_lock);
 	if (philo->table->death_count > 0)
 	{
 		pthread_mutex_unlock(philo->table->monitor_death);
 		return (1);
 	}
 	pthread_mutex_unlock(philo->table->monitor_death);
-	//pthread_mutex_unlock(philo->death_lock);
 	return (0);
 }
 

@@ -6,24 +6,25 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:17:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 17:14:22 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:59:31 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_inputs(char *argv[])
+int	check_inputs(int argc, char *argv[])
 {
 	int	i;
 	int	j;
 
 	i = 1;
 	j = 0;
-	while (argv[i])
+	while (i < argc)
 	{
-		while (argv[i][j])
+		j = 0;
+		while (argv[i][j] != '\0')
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!(argv[i][j] >= 48 && argv[i][j] <= 57))
 			{
 				printf("Error: Non-numeric values are not allowed\n");
 				return (EXIT_FAILURE);
@@ -46,7 +47,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 6 || argc == 5)
 	{
-		if (check_inputs(argv) == EXIT_FAILURE)
+		if (check_inputs(argc, argv) == EXIT_FAILURE)
 			return (0);
 		table = init_data(argv);
 		run_philosophers(table);

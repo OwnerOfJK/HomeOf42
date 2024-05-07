@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:12:32 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 15:11:24 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:03:12 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ int	run_philosophers(t_table *table)
 	}
 	return (EXIT_SUCCESS);
 }
-
