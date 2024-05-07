@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 17:10:59 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:39:20 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_philo	*new_philo(t_table *table, int id)
 		table->philos[id]->left_fork = &table->forks[id + 1];
 	table->philos[id]->eating_lock = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->philos[id]->eating_lock, NULL);
-	table->philos[id]->print_lock = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(table->philos[id]->print_lock, NULL);
 	table->philos[id]->death_lock = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->philos[id]->death_lock, NULL);
 	table->philos[id]->table = table;

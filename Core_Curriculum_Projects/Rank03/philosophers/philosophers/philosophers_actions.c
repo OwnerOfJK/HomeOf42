@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:32:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 18:04:43 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:33:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
+	if (dead_loop(philo) == 1)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		return ;
+	}
 	printf("%ld %i has taken a fork\n",
 		get_time() - philo->start_time, philo->philo_id);
 	if (philo->table->philo_count == 1)
@@ -24,6 +29,12 @@ void	eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->left_fork);
+	if (dead_loop(philo) == 1)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+		return ;
+	}
 	printf("%ld %i has taken a fork\n",
 		get_time() - philo->start_time, philo->philo_id);
 	philo->eating = 1;
@@ -41,6 +52,8 @@ void	eat(t_philo *philo)
 
 void	philo_sleep(t_philo *philo)
 {
+	if (dead_loop(philo) == 1)
+		return ;
 	printf("%ld %i is sleeping\n",
 		get_time() - philo->start_time, philo->philo_id);
 	ft_usleep(philo->table->time_to_sleep);
@@ -48,6 +61,8 @@ void	philo_sleep(t_philo *philo)
 
 void	think(t_philo *philo)
 {
+	if (dead_loop(philo) == 1)
+		return ;
 	printf("%ld %i is thinking\n",
 		get_time() - philo->start_time, philo->philo_id);
 }

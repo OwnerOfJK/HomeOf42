@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 18:02:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:39:12 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*eating_lock;
 	pthread_mutex_t	*death_lock;
-	pthread_mutex_t	*print_lock;
 	t_table			*table;
 }	t_philo;
 
