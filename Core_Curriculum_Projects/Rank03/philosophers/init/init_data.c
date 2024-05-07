@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/06 18:06:08 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:10:59 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 t_philo	*new_philo(t_table *table, int id)
 {
 	table->philos[id] = malloc(sizeof(t_philo));
-	table->philos[id]->philo_id = id;
+	table->philos[id]->philo_id = id + 1;
 	table->philos[id]->recent_meal = get_time();
 	table->philos[id]->start_time = get_time();
+	table->philos[id]->eating = 0;
 	table->philos[id]->meals = 0;
 	pthread_mutex_init(&table->forks[id], NULL);
 	table->philos[id]->right_fork = &table->forks[id];
@@ -27,10 +28,10 @@ t_philo	*new_philo(t_table *table, int id)
 		table->philos[id]->left_fork = &table->forks[id + 1];
 	table->philos[id]->eating_lock = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->philos[id]->eating_lock, NULL);
-	table->philos[id]->death_lock = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(table->philos[id]->death_lock, NULL);
 	table->philos[id]->print_lock = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->philos[id]->print_lock, NULL);
+	table->philos[id]->death_lock = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(table->philos[id]->death_lock, NULL);
 	table->philos[id]->table = table;
 	return (table->philos[id]);
 }
@@ -56,6 +57,17 @@ t_philo	**init_philo(t_table *table)
 	return (table->philos);
 }
 
+void	init_table_mutex(t_table *table)
+{
+	table->forks = calloc(sizeof(pthread_mutex_t), table->fork_count);
+	if (!table->forks)
+		return ;
+	table->monitor_death = malloc(sizeof(pthread_mutex_t));
+	if (!table->monitor_death)
+		return ;
+	pthread_mutex_init(table->monitor_death, NULL);
+}
+
 t_table	*init_table(char *argv[])
 {
 	t_table	*table;
@@ -76,9 +88,7 @@ t_table	*init_table(char *argv[])
 	table->thread_id = malloc(sizeof(pthread_t) * table->philo_count);
 	if (!table->thread_id)
 		return (NULL);
-	table->forks = calloc(sizeof(pthread_mutex_t), table->fork_count);
-	if (!table->forks)
-		return (NULL);
+	init_table_mutex(table);
 	return (table);
 }
 

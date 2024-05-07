@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:50:26 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/02 15:12:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/07 16:31:55 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	free_philo(t_philo **philo)
 	while (philo[i])
 	{
 		pthread_mutex_destroy(philo[i]->eating_lock);
-		pthread_mutex_destroy(philo[i]->death_lock);
 		pthread_mutex_destroy(philo[i]->print_lock);
+		pthread_mutex_destroy(philo[i]->death_lock);
 		free(philo[i]->eating_lock);
-		free(philo[i]->death_lock);
 		free(philo[i]->print_lock);
+		free(philo[i]->death_lock);
 		free(philo[i]);
 		i++;
 	}
@@ -36,7 +36,9 @@ void	free_table(t_table *table)
 	free_philo(table->philos);
 	free(table->thread_id);
 	pthread_mutex_destroy(table->forks);
+	pthread_mutex_destroy(table->monitor_death);
 	free(table->forks);
+	free(table->monitor_death);
 	free(table);
 }
 
