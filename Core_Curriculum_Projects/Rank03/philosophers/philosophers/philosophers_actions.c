@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:32:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:08:05 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:34:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ void	*philo_routine(void *philo_pointer)
 		ft_usleep(1);
 	while (1)
 	{
-		if (dead_loop(philo) == 1)
+		if (alive_status(philo) == 1)
 			break ;
 		if (eat(philo) == EXIT_FAILURE)
 			break ;
-		if (dead_loop(philo) == 1)
+		if (alive_status(philo) == 1)
 			break ;
 		if (philo_sleep(philo) == EXIT_FAILURE)
 			break ;
-		if (dead_loop(philo) == 1)
+		if (alive_status(philo) == 1)
 			break ;
 		if (think(philo) == EXIT_FAILURE)
 			break ;

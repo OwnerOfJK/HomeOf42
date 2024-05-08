@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:11:24 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:13:09 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:34:27 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_for_max_meals(t_table *table)
 	return (0);
 }
 
-int	dead_loop(t_philo *philo)
+int	alive_status(t_philo *philo)
 {
 	pthread_mutex_lock(philo->table->monitor_death);
 	if (philo->table->death_count > 0)
@@ -82,7 +82,7 @@ int	dead_loop(t_philo *philo)
 int	print_message(t_philo *philo, char *message)
 {
 	pthread_mutex_lock(philo->print_lock);
-	if (dead_loop(philo) == 1)
+	if (alive_status(philo) == 1)
 	{
 		pthread_mutex_unlock(philo->print_lock);
 		return (EXIT_FAILURE);
