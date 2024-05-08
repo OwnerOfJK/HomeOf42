@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:34:27 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:57:44 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,6 @@ int			run_philosophers(t_table *table);
 void		*philo_routine(void *philo_pointer);
 void		*philo_monitor(void *table_pointer);
 int			print_message(t_philo *philo, char *message);
-
-/* Philosopher Routine */
-void		eat_action(t_philo *philo);
-int			philo_uneven_fork(t_philo *philo);
-int			philo_even_fork(t_philo *philo);
 
 /* Philosopher Monitor */
 int			check_for_max_meals(t_table *table);
