@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:32:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:57:26 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 17:14:46 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,8 @@ void	*philo_routine(void *philo_pointer)
 		ft_usleep(1);
 	while (alive_status(philo) == 0)
 	{
-		// if (alive_status(philo) == 1)
-		// 	break ;
 		eat(philo);
-		// if (alive_status(philo) == 1)
-		// 	break ;
 		philo_sleep(philo);
-		// if (alive_status(philo) == 1)
-		// 	break ;
 		think(philo);
 	}
 	return (philo_pointer);

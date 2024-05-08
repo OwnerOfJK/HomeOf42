@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:57:44 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 17:13:43 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ typedef struct s_table
 {
 	int				philo_count;
 	int				fork_count;
-	u_int64_t		time_to_die;
-	u_int64_t		time_to_eat;
-	u_int64_t		time_to_sleep;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
 	int				death_count;
 	int				max_meals;
 	pthread_t		*thread_id;

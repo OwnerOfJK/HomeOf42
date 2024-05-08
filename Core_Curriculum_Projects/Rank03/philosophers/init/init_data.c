@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/08 16:04:23 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 17:13:34 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ t_table	*init_table(char *argv[])
 		return (NULL);
 	table->philo_count = ft_atoi(argv[1]);
 	table->fork_count = table->philo_count;
-	table->time_to_die = (u_int64_t)ft_atoi(argv[2]);
-	table->time_to_eat = (u_int64_t)ft_atoi(argv[3]);
-	table->time_to_sleep = (u_int64_t)ft_atoi(argv[4]);
+	table->time_to_die = (size_t)ft_atoi(argv[2]);
+	table->time_to_eat = (size_t)ft_atoi(argv[3]);
+	table->time_to_sleep = (size_t)ft_atoi(argv[4]);
 	table->death_count = 0;
 	if (argv[5])
 		table->max_meals = ft_atoi(argv[5]);
