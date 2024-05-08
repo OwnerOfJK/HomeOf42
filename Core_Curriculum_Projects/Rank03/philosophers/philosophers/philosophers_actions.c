@@ -6,109 +6,46 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:32:39 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 19:05:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:08:05 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// void	eat(t_philo *philo)
-// {
-// 	pthread_mutex_lock(philo->right_fork);
-// 	if (dead_loop(philo) == 1)
-// 	{
-// 		pthread_mutex_unlock(philo->right_fork);
-// 		return ;
-// 	}
-// 	printf("%ld %i has taken a fork\n",
-// 		get_time() - philo->start_time, philo->philo_id);
-// 	if (philo->table->philo_count == 1)
-// 	{
-// 		ft_usleep(philo->table->time_to_die);
-// 		pthread_mutex_unlock(philo->right_fork);
-// 		return ;
-// 	}
-// 	pthread_mutex_lock(philo->left_fork);
-// 	if (dead_loop(philo) == 1)
-// 	{
-// 		pthread_mutex_unlock(philo->right_fork);
-// 		pthread_mutex_unlock(philo->left_fork);
-// 		return ;
-// 	}
-// 	printf("%ld %i has taken a fork\n",
-// 		get_time() - philo->start_time, philo->philo_id);
-// 	philo->eating = 1;
-// 	printf("%ld %i is eating\n",
-// 		get_time() - philo->start_time, philo->philo_id);
-// 	pthread_mutex_lock(philo->eating_lock);
-// 	philo->recent_meal = get_time();
-// 	philo->meals++;
-// 	pthread_mutex_unlock(philo->eating_lock);
-// 	ft_usleep(philo->table->time_to_eat);
-// 	philo->eating = 0;
-// 	pthread_mutex_unlock(philo->right_fork);
-// 	pthread_mutex_unlock(philo->left_fork);
-// }
-
-void eat(t_philo *philo) {
-    if (philo->table->philo_count != 1) {
-        pthread_mutex_lock(philo->left_fork);
-        pthread_mutex_lock(philo->right_fork);
-    } else {
-        pthread_mutex_lock(philo->right_fork);
-    }
-
-    if (dead_loop(philo) == 1) {
-        if (philo->table->philo_count != 1) {
-            pthread_mutex_unlock(philo->right_fork);
-            pthread_mutex_unlock(philo->left_fork);
-        } else {
-            pthread_mutex_unlock(philo->right_fork);
-        }
-        return;
-    }
-
-    printf("%ld %i has taken a fork\n", get_time() - philo->start_time, philo->philo_id);
-
-    if (philo->table->philo_count != 1) {
-        printf("%ld %i has taken a fork\n", get_time() - philo->start_time, philo->philo_id);
-    }
-
-    philo->eating = 1;
-    printf("%ld %i is eating\n", get_time() - philo->start_time, philo->philo_id);
-
-    pthread_mutex_lock(philo->eating_lock);
-    philo->recent_meal = get_time();
-    philo->meals++;
-    pthread_mutex_unlock(philo->eating_lock);
-
-    ft_usleep(philo->table->time_to_eat);
-    philo->eating = 0;
-
-    if (philo->table->philo_count != 1) {
-        pthread_mutex_unlock(philo->right_fork);
-        pthread_mutex_unlock(philo->left_fork);
-    } else {
-        pthread_mutex_unlock(philo->right_fork);
-    }
+int	eat(t_philo *philo)
+{
+	if (philo->philo_id % 2 != 0)
+	{
+		if (philo_uneven_fork(philo) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+	}
+	else
+		philo_even_fork(philo);
+	eat_action(philo);
+	if (philo->philo_id % 2 != 0)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
+	return (EXIT_SUCCESS);
 }
 
-
-void	philo_sleep(t_philo *philo)
+int	philo_sleep(t_philo *philo)
 {
-	if (dead_loop(philo) == 1)
-		return ;
-	printf("%ld %i is sleeping\n",
-		get_time() - philo->start_time, philo->philo_id);
+	print_message(philo, "is sleeping");
 	ft_usleep(philo->table->time_to_sleep);
+	return (EXIT_SUCCESS);
 }
 
-void	think(t_philo *philo)
+int	think(t_philo *philo)
 {
-	if (dead_loop(philo) == 1)
-		return ;
-	printf("%ld %i is thinking\n",
-		get_time() - philo->start_time, philo->philo_id);
+	print_message(philo, "is thinking");
+	return (EXIT_SUCCESS);
 }
 
 void	*philo_routine(void *philo_pointer)
@@ -118,16 +55,19 @@ void	*philo_routine(void *philo_pointer)
 	philo = (t_philo *) philo_pointer;
 	if (philo->philo_id % 2 == 0)
 		ft_usleep(1);
-	while (!dead_loop(philo))
+	while (1)
 	{
-		eat(philo);
 		if (dead_loop(philo) == 1)
 			break ;
-		philo_sleep(philo);
+		if (eat(philo) == EXIT_FAILURE)
+			break ;
 		if (dead_loop(philo) == 1)
 			break ;
-		think(philo);
+		if (philo_sleep(philo) == EXIT_FAILURE)
+			break ;
 		if (dead_loop(philo) == 1)
+			break ;
+		if (think(philo) == EXIT_FAILURE)
 			break ;
 	}
 	return (philo_pointer);

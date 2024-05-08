@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:41 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 18:39:20 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:04:23 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_philo	*new_philo(t_table *table, int id)
 	pthread_mutex_init(table->philos[id]->eating_lock, NULL);
 	table->philos[id]->death_lock = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->philos[id]->death_lock, NULL);
+	table->philos[id]->print_lock = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(table->philos[id]->print_lock, NULL);
 	table->philos[id]->table = table;
 	return (table->philos[id]);
 }

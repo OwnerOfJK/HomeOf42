@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:11:24 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 18:04:15 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:13:09 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	check_for_death(t_table *table)
 		{
 			pthread_mutex_lock(table->monitor_death);
 			printf("%lu %d died\n",
-				get_time() - table->philos[i]->start_time, i);
+				get_time() - table->philos[i]->start_time,
+				table->philos[i]->philo_id);
 			table->death_count++;
 			pthread_mutex_unlock(table->monitor_death);
 			pthread_mutex_unlock(table->philos[i]->eating_lock);
@@ -66,15 +67,6 @@ int	check_for_max_meals(t_table *table)
 	return (0);
 }
 
-size_t	get_time(void)
-{
-	struct timeval	time;
-
-	if (gettimeofday(&time, NULL) == -1)
-		write(2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 int	dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->table->monitor_death);
@@ -87,12 +79,16 @@ int	dead_loop(t_philo *philo)
 	return (0);
 }
 
-int	ft_usleep(size_t milliseconds)
+int	print_message(t_philo *philo, char *message)
 {
-	size_t	start;
-
-	start = get_time();
-	while ((get_time() - start) < milliseconds)
-		usleep(500);
-	return (0);
+	pthread_mutex_lock(philo->print_lock);
+	if (dead_loop(philo) == 1)
+	{
+		pthread_mutex_unlock(philo->print_lock);
+		return (EXIT_FAILURE);
+	}
+	printf("%ld %i %s\n",
+		get_time() - philo->start_time, philo->philo_id, message);
+	pthread_mutex_unlock(philo->print_lock);
+	return (EXIT_SUCCESS);
 }

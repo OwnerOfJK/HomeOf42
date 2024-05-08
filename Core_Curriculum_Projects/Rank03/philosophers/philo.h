@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:21:49 by jkaller           #+#    #+#             */
-/*   Updated: 2024/05/07 18:39:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/05/08 16:08:52 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*eating_lock;
 	pthread_mutex_t	*death_lock;
+	pthread_mutex_t	*print_lock;
 	t_table			*table;
 }	t_philo;
 
@@ -66,13 +67,21 @@ void		free_data(t_table *table);
 int			run_philosophers(t_table *table);
 void		*philo_routine(void *philo_pointer);
 void		*philo_monitor(void *table_pointer);
+int			print_message(t_philo *philo, char *message);
+
+/* Philosopher Routine */
+void		eat_action(t_philo *philo);
+int			philo_uneven_fork(t_philo *philo);
+int			philo_even_fork(t_philo *philo);
+
+/* Philosopher Monitor */
+int			check_for_max_meals(t_table *table);
+int			check_for_death(t_table *table);
+int			dead_loop(t_philo *philo);
 
 /* Utils */
 int			ft_atoi(const char *str);
-int			check_for_max_meals(t_table *table);
-int			check_for_death(t_table *table);
 size_t		get_time(void);
-int			dead_loop(t_philo *philo);
 int			ft_usleep(size_t milliseconds);
 int			ft_isdigit(int c);
 
