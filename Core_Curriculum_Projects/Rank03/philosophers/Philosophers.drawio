@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2024-05-12T14:24:40.332Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="c_CSE-ocnObf2K7BKExx" version="24.4.0" type="device">
+  <diagram name="Page-1" id="1w67UrtTXx5kV1jx5jc7">
+    <mxGraphModel dx="1434" dy="707" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ao70Qbj4qWcge28383Q1-1" value="Threads" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-2" value="Philosophers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-3" value="Monitor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-4" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Ao70Qbj4qWcge28383Q1-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="560" as="sourcePoint" />
+            <mxPoint x="450" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-5" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="402" y="558" as="sourcePoint" />
+            <mxPoint x="400" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-6" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="442" y="558" as="sourcePoint" />
+            <mxPoint x="440" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-7" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="481" y="558" as="sourcePoint" />
+            <mxPoint x="479" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-8" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="522" y="558" as="sourcePoint" />
+            <mxPoint x="520" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="562" y="558" as="sourcePoint" />
+            <mxPoint x="560" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-10" value="" style="endArrow=none;html=1;rounded=0;entryX=0.119;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="602" y="558" as="sourcePoint" />
+            <mxPoint x="600" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-12" value="philo_routine&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;loops through eat, sleep, think and continuously checks if any exit conditions are hit.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-13" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="Ao70Qbj4qWcge28383Q1-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="560" as="sourcePoint" />
+            <mxPoint x="450" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-14" value="monitor&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;runs a concurrent threads that updates the exit variables&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Ao70Qbj4qWcge28383Q1-17" value="Running until exit condition hit. (Death or Max_meals)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="560" width="480" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
