@@ -1,33 +1,20 @@
-# NAME = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/20 14:11:18 by jkaller           #+#    #+#              #
+#    Updated: 2024/05/20 14:28:30 by jkaller          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# SRCS = $(wildcard *.c)
-
-# OBJS = $(SRCS:.c=.o)
-
-# CC = cc
-# CFLAGS = -Wall -Wextra -Werror
-
-# all: $(NAME)
-
-# $(NAME): $(OBJS)
-# 	ar rcs $(NAME) $(OBJS)
-
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# clean:
-# 	rm -f $(OBJS)
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-# .PHONY: all clean fclean re
-
-SRCS = $(wildcard *.c)
+SRCS 			=		$(wildcard *.c)
+PRINTF_SRCS 	= 		$(wildcard printf_utils/*.c)
 
 OBJS			= $(SRCS:.c=.o)
+PRINTF_OBJS		= $(PRINTF_SRCS:printf_utils/.c=.o)
 
 CC				= cc
 RM				= rm -f
@@ -36,12 +23,12 @@ NAME			= libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		$(CC) $(CFLAGS) -c $(SRCS)
-		ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(PRINTF_OBJS)
+		$(CC) $(CFLAGS) -c $(SRCS) $(PRINTF_SRCS)
+		ar rcs $(NAME) $(OBJS) $(PRINTF_OBJS)
 
 clean:
-		$(RM) $(OBJS) $(B_OBJS)
+		$(RM) $(OBJS) $(PRINTF_OBJS)
 
 fclean: clean
 		$(RM) $(NAME)
