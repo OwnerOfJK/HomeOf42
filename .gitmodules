@@ -1,3 +1,6 @@
 [submodule "Core_Curriculum_Projects/Rank03/minishell"]
 	path = Core_Curriculum_Projects/Rank03/minishell
 	url = https://github.com/tiziaco/minishell.git
+[submodule "Core_Curriculum_Projects/Rank04/miniRT"]
+	path = Core_Curriculum_Projects/Rank04/miniRT
+	url = https://github.com/OwnerOfJK/miniRT.git
