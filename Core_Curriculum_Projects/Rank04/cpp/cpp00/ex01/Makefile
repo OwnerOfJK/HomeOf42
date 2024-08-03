@@ -6,46 +6,31 @@
 #    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/11 15:28:32 by jkaller           #+#    #+#              #
-#    Updated: 2024/05/11 16:04:50 by jkaller          ###   ########.fr        #
+#    Updated: 2024/08/03 23:25:26 by jkaller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Name of the target executable
-NAME = megaphone
+NAME = contact
 
-# Compiler
-CC = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Compiler flags
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
 
-# Source files
-SRCS = megaphone.cpp
+SRCS = main.cpp src/contact.cpp
 
-# Object files
 OBJS = $(SRCS:.cpp=.o)
 
-# Build the target executable
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-	# Link the executable
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-# Clean intermediate files
 clean:
-	# Remove object files
 	rm -rf $(OBJS)
 
-# Remove all generated files
 fclean:
-	# Remove object files and the target executable
-	rm -rf $(OBJS)
-	rm -rf $(NAME)
+	rm -rf $(OBJS) $(NAME)
 
-# Rebuild the project
 re: fclean all
 
-# Specify the phony targets
 .PHONY: all clean fclean re
