@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:59:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/08/03 23:37:57 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/08/03 23:56:13 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
     void exitBook();
 
     private:
-    std::vector<Contact> contacts_;
+    std::vector<Contact> contacts_
 };
 
 #endif // PhoneBook_HPP
