@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:59:25 by jkaller           #+#    #+#             */
-/*   Updated: 2024/08/03 23:19:43 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/08/31 16:57:53 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int main(void)
 {
-    Contact user(1, "John", "Doe", "Johnny", 1234567890, "Loves coding");
-    user.displayContact();
+    Contact user;
+    user.userID = 1;
+    user.firstName = "John";
+    user.lastName = "Doe";
+    user.nickName = "JD";
+    user.phoneNumber = 1234567890;
+    user.secret = "I am a secret";
 }

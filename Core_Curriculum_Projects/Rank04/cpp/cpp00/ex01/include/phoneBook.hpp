@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:59:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/08/03 23:56:13 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/08/31 17:01:29 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@
 
 class PhoneBook {
 public:
-    PhoneBook();  // Constructor
-    ~PhoneBook(); // Destructor
-
     void addContact(const Contact& contact);
-    Contact getContact(int userId) const;
+    Contact searchContact(int userId) const;
     void exitBook();
 
     private:
-    std::vector<Contact> contacts_
+    std::map<int, Contact> contacts;
 };
 
 #endif // PhoneBook_HPP
