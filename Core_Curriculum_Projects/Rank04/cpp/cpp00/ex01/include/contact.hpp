@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Contact_HPP
-#define Contact_HPP
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
 #include <string>
 #include <iostream>
@@ -22,7 +22,7 @@ public:
     std::string firstName;
     std::string lastName;
     std::string nickName;
-    int phoneNumber;
+    std::string phoneNumber;
     std::string secret;
 };
 

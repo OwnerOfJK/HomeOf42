@@ -11,22 +11,26 @@
 /* ************************************************************************** */
 
 // PhoneBook.hpp
-#ifndef PhoneBook_HPP
-#define PhoneBook_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-#include <iostream>
-#include <string>
-#include <map>
+#include <array>
 #include "contact.hpp"
 
 class PhoneBook {
 public:
-    void addContact(const Contact& contact);
-    Contact searchContact(int userId) const;
-    void exitBook();
+    PhoneBook();
+    ~PhoneBook();
+    void addContact(const Contact &contact);
+    void exitBook() const;
+    void displayContacts() const;
+    void displayContact(int index) const;
+    std::string truncate(const std::string& str) const;
 
-    private:
-    std::map<int, Contact> contacts;
+private:
+    static const int MAX_CONTACTS = 8;
+    std::array<Contact, MAX_CONTACTS> contacts;
+    int currentIndex;
 };
 
-#endif // PhoneBook_HPP
+#endif
