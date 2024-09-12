@@ -6,13 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:13:33 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/12 18:13:34 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/12 18:17:37 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
+#include "include/HumanA.hpp"
+#include "include/HumanB.hpp"
+#include "include/Weapon.hpp"
 
 int main() {
     Weapon club = Weapon("crude spiked club");

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:13:11 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/12 18:13:12 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/12 18:18:33 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class HumanB {
 
     private:
     std::string name;
-    Weapon *weapon;
+    Weapon weapon;
 };
 
 #endif

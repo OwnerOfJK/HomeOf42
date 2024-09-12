@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:12:32 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/12 18:12:33 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/12 18:15:02 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Zombie* zombieHorde(int N, std::string name)
 {
     if (N <= 0)
-        return nullptr;
+        return NULL;
 
     Zombie* horde = new Zombie[N];
 
