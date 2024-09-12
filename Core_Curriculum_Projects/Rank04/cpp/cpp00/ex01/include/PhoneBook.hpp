@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phoneBook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:59:18 by jkaller           #+#    #+#             */
-/*   Updated: 2024/08/31 17:01:29 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:06:16 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include <array>
-#include "contact.hpp"
+#include "Contact.hpp"
 
 class PhoneBook {
 public:
@@ -29,7 +28,7 @@ public:
 
 private:
     static const int MAX_CONTACTS = 8;
-    std::array<Contact, MAX_CONTACTS> contacts;
+    Contact contacts[MAX_CONTACTS];
     int currentIndex;
 };
 

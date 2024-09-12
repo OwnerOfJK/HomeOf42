@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:59:27 by jkaller           #+#    #+#             */
-/*   Updated: 2024/08/31 17:04:22 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:02:06 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/contact.hpp"
-#include "../include/phoneBook.hpp"
+#include "../include/Contact.hpp"
+#include "../include/PhoneBook.hpp"
 #include <iomanip>
+#include <cstdlib>
 
 PhoneBook::PhoneBook() {
     currentIndex = 0;
