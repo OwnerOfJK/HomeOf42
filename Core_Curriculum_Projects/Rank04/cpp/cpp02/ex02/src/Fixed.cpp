@@ -61,3 +61,26 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
     out << fixed.toFloat();
     return out;
 }
+
+Fixed Fixed::operator*(const Fixed &rhs) const {
+    return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed& Fixed::operator++() {
+    this->_fixedPointValue++;
+    return *this;
+}
+
+Fixed Fixed::operator++(int) {
+    Fixed temp(*this);
+    ++(*this);
+    return temp;
+}
+
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b) {
+    return (a > b) ? a : b;
+}
+
+bool Fixed::operator>(const Fixed &rhs) const {
+    return this->getRawBits() > rhs.getRawBits();
+}
