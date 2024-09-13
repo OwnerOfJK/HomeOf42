@@ -1,0 +1,9 @@
+Hello, world!
+This is a test file for the replace program.
+We will replace some words in this file.
+The word "replace" should be replaced.
+Also, let's try replacing "program" with something else.
+Multiple occurrences of "replace" on one line: replace replace replace.
+What if we try to replace an empty string?
+Or replace a string with an empty string?
+End of the test file.

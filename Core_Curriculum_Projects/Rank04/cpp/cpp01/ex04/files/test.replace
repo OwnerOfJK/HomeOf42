@@ -1,0 +1,9 @@
+Hello, world!
+This is a test file for the wazzup program.
+We will wazzup some words in this file.
+The word "wazzup" should be wazzupd.
+Also, let's try replacing "program" with something else.
+Multiple occurrences of "wazzup" on one line: wazzup wazzup wazzup.
+What if we try to wazzup an empty string?
+Or wazzup a string with an empty string?
+End of the test file.
