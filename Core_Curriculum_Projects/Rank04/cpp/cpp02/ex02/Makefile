@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/13 20:53:04 by jkaller           #+#    #+#              #
+#    Updated: 2024/09/13 20:54:17 by jkaller          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fixed
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -v -g
 
 SRCS = main.cpp src/Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
