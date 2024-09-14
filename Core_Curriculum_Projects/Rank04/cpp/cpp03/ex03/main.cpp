@@ -1,6 +1,7 @@
 #include "include/ClapTrap.hpp"
 #include "include/ScavTrap.hpp"
 #include "include/FragTrap.hpp"
+#include "include/DiamondTrap.hpp"
 
 int main() {
     ClapTrap playerA("Jeff");
@@ -18,4 +19,14 @@ int main() {
     FragTrap playerE("Will");
     playerD.highFivesGuys();
     playerE = playerD;
+
+    DiamondTrap diamond("Diamond");
+    diamond.whoAmI();
+    diamond.attack("Target");
+    diamond.takeDamage(20);
+    diamond.beRepaired(10);
+    diamond.guardGate();
+    diamond.highFivesGuys();
+
+    return 0;
 }
