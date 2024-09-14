@@ -1,5 +1,6 @@
 #include "include/ClapTrap.hpp"
 #include "include/ScavTrap.hpp"
+#include "include/FragTrap.hpp"
 
 int main() {
     ClapTrap playerA("Jeff");
@@ -12,4 +13,9 @@ int main() {
     ScavTrap playerC("Robot");
     playerC.attack("Jeff");
     playerC.guardGate();
+
+    FragTrap playerD("Joe");
+    FragTrap playerE("Will");
+    playerD.highFivesGuys();
+    playerE = playerD;
 }
