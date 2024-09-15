@@ -11,41 +11,38 @@
 /* ************************************************************************** */
 
 #include "include/Animal.hpp"
-#include "include/Cat.hpp"
 #include "include/Dog.hpp"
-#include "include/WrongAnimal.hpp"
-#include "include/WrongCat.hpp"
+#include "include/Cat.hpp"
 
-int main()
-{
-    //Correct
-    const Animal* meta = new Animal();
-    const Animal* dog = new Dog();
-    const Animal* cat = new Cat();
-    std::cout << dog->getType() << " " << std::endl;
-    std::cout << cat->getType() << " " << std::endl;
-    cat->makeSound();
-    dog->makeSound();
-    meta->makeSound();
-    delete meta;
-    delete dog;
-    delete cat;
+int main() {
+    const int arraySize = 10;
+    Animal* animals[arraySize];
 
-    //Wrong
-    const WrongAnimal* wrongCat = new WrongCat();
-    std::cout << wrongCat->getType() << " " << std::endl;
-    wrongCat->makeSound();
-    delete wrongCat;
-
-    //Brain test
-    Animal animal_array[10];
-    for (int i = 0; i < 10; i++) {
-        if (i % 2 == 0) {
-            animal_array[i] = Dog();
+    // Fill the array with Dogs and Cats
+    for (int i = 0; i < arraySize; i++) {
+        if (i < arraySize / 2) {
+            animals[i] = new Dog();
+        } else {
+            animals[i] = new Cat();
         }
-        else
-            animal_array[i] = Cat();
     }
-    
+
+    // Test deep copy
+    Dog* originalDog = new Dog();
+    Dog* copiedDog = new Dog(*originalDog);
+    delete originalDog;
+    copiedDog->makeSound(); // This should work if it's a deep copy
+
+    // Delete all animals
+    for (int i = 0; i < arraySize; i++) {
+        delete animals[i];
+    }
+
+    // Test for leaks as per the example
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    delete j;
+    delete i;
+
     return 0;
 }
