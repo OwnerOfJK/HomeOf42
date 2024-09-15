@@ -44,5 +44,8 @@ int main() {
     delete j;
     delete i;
 
+    // This line would now cause a compilation error:
+    // Animal a;
+
     return 0;
 }
