@@ -1,9 +1,9 @@
 Hello, world!
-This is a test file for the 3 program.
-We will 3 some words in this file.
-The word "3" should be 3d.
+This is a test file for the REPLACE program.
+We will REPLACE some words in this file.
+The word "REPLACE" should be REPLACEd.
 Also, let's try replacing "program" with something else.
-Multiple occurrences of "3" on one line: 3 3 3.
-What if we try to 3 an empty string?
-Or 3 a string with an empty string?
+Multiple occurrences of "REPLACE" on one line: REPLACE REPLACE REPLACE.
+What if we try to REPLACE an empty string?
+Or REPLACE a string with an empty string?
 End of the test file.

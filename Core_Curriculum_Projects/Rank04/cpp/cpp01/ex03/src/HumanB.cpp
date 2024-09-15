@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:13:23 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/12 18:25:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/15 17:22:29 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 HumanB::HumanB(std::string name) {
     this->name = name;
     this->weapon = NULL;
+    std::cout << "HumanB constructed with name " << name << std::endl;
 }
 
 void HumanB::attack() {
@@ -26,4 +27,5 @@ void HumanB::attack() {
 
 void HumanB::setWeapon(Weapon &weapon) {
     this->weapon = &weapon;
+    std::cout << "HumanB equipped with " << weapon.getType() << std::endl;
 }

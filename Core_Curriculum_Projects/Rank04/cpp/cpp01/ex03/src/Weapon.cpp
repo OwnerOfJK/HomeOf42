@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:13:29 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/12 18:25:07 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/15 17:15:35 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ const std::string &Weapon::getType() {
     return type;
 }
 
-void Weapon::setType(std::string name) {
-    type = name;
+void Weapon::setType(std::string weapon_name) {
+    type = weapon_name;
 }
