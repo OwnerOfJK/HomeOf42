@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 20:52:17 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/13 20:52:18 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:39:30 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 class Fixed {
 private:
-    int _fixedPointValue;
-    static const int _fractionalBits = 8;
+    int fixedPointValue;
+    static const int fractionalBits = 8;
 
 public:
     Fixed();                          // Default constructor

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 20:52:53 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/13 20:52:54 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:03:51 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ public:
     Fixed operator--(int);  // Post-decrement
 
     // Static member functions
-    static Fixed &min(Fixed &a, Fixed &b);
-    static const Fixed &min(const Fixed &a, const Fixed &b);
-    static Fixed &max(Fixed &a, Fixed &b);
-    static const Fixed &max(const Fixed &a, const Fixed &b);
+    static Fixed &min(Fixed &first, Fixed &second);
+    static const Fixed &min(const Fixed &first, const Fixed &second);
+    static Fixed &max(Fixed &first, Fixed &second);
+    static const Fixed &max(const Fixed &first, const Fixed &second);
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
