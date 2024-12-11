@@ -6,13 +6,14 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:18:29 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 18:43:08 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 19:56:46 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Animal.hpp"
 
 Animal::Animal() {
+    this->type = "Animal";
     std::cout << "Animal Constructor called!" << std::endl;
 }
 

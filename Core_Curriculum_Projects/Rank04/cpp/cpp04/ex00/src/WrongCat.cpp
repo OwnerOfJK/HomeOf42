@@ -6,18 +6,18 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:47:43 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 18:48:06 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 19:59:59 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/WrongCat.hpp"
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat() : WrongAnimal() {
     this->type = "WrongCat";
     std::cout << "WrongCat Constructor called!" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &src) {
+WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src) {
     *this = src;
     std::cout << "WrongCat Copy Constructor called!" << std::endl;
 }

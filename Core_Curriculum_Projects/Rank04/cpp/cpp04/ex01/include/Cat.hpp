@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:53:05 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 19:03:15 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:52:24 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class Cat : public Animal {
     Cat &operator=(const Cat &rhs);
     ~Cat();
     void makeSound() const;
+    // void setIdea(const std::string &idea);
+    // const std::string &getIdea(int index) const;
 
     private:
     Brain *cat_brain;

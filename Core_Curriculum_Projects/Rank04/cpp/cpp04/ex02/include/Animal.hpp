@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:53:09 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 18:53:10 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:19:31 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Animal {
     Animal &operator=(const Animal &rhs);
     virtual ~Animal();
     const std::string &getType() const;
-    virtual void makeSound() const = 0;
+    virtual void makeSound() const = 0; // = 0 specifies that this function has to be overriden.
 
     protected:
     std::string type;

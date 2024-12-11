@@ -6,13 +6,13 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:23:19 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 19:09:55 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:52:09 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : Animal() {
     this->type = "Cat";
     this->cat_brain = new Brain();
     std::cout << "Cat Constructor called!" << std::endl;
@@ -41,3 +41,12 @@ Cat::~Cat() {
 void Cat::makeSound() const {
     std::cout << "Meow Meow!" << std::endl;
 }
+
+// void Cat::setIdea(const std::string &idea)
+// {
+//     this->cat_brain->setIdea(idea);
+// }
+
+// const std::string &Cat::getIdea(int index) const {
+//     return(this->cat_brain->getIdea(index));
+// }

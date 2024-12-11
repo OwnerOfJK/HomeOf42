@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:23:53 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 18:52:00 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:14:48 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main()
     const Animal* meta = new Animal();
     const Animal* dog = new Dog();
     const Animal* cat = new Cat();
+    std::cout << meta->getType() << " " << std::endl;
     std::cout << dog->getType() << " " << std::endl;
     std::cout << cat->getType() << " " << std::endl;
     cat->makeSound();

@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 19:04:00 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 19:06:42 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:52:28 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Brain {
     Brain &operator=(const Brain &rhs);
     ~Brain();
     // void setIdea(const std::string &idea);
-    // const std::string &getIdea() const;
+    // const std::string &getIdea(int index) const;
 
     private:
     std::string ideas[100];

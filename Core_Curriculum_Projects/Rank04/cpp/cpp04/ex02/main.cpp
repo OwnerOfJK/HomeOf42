@@ -6,7 +6,7 @@
 /*   By: jkaller <jkaller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:23:53 by jkaller           #+#    #+#             */
-/*   Updated: 2024/09/15 19:14:48 by jkaller          ###   ########.fr       */
+/*   Updated: 2024/12/11 20:13:44 by jkaller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main() {
     Dog* copiedDog = new Dog(*originalDog);
     delete originalDog;
     copiedDog->makeSound(); // This should work if it's a deep copy
+    delete copiedDog;
 
     // Delete all animals
     for (int i = 0; i < arraySize; i++) {
@@ -45,7 +46,7 @@ int main() {
     delete i;
 
     // This line would now cause a compilation error:
-    // Animal a;
+    //Animal a;
 
     return 0;
 }
