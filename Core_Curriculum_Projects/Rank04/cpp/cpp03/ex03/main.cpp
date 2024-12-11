@@ -28,5 +28,10 @@ int main() {
     diamond.guardGate();
     diamond.highFivesGuys();
 
+    DiamondTrap dt1;
+    DiamondTrap dt2("Diamond");
+    dt1.whoAmI();
+    dt2.whoAmI();
+
     return 0;
 }

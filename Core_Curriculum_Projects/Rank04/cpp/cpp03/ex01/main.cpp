@@ -12,4 +12,6 @@ int main() {
     ScavTrap playerC("Robot");
     playerC.attack("Jeff");
     playerC.guardGate();
+
+    ScavTrap playerD;
 }

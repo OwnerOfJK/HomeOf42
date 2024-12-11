@@ -18,4 +18,6 @@ int main() {
     FragTrap playerE("Will");
     playerD.highFivesGuys();
     playerE = playerD;
+
+    FragTrap playerX;
 }
