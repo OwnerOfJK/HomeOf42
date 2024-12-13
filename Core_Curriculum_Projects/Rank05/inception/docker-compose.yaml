@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      - GREETING="Hello from Docker!"
+    volumes:
+      - ./app/test_file.txt:/test_file.txt
+
+  logging:
+    build:
+      context: ./logs
+      dockerfile: Dockerfile
+    environment:
+      - LOG_INTERVAL=5
+    volumes:
+      - ./logs/log_file.txt:/log_file.txt
