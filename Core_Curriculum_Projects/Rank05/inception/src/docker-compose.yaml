@@ -1,3 +1,7 @@
+networks:
+  inception:
+    name: inception
+
 services:
   nginx:
     build: ./requirements/nginx/.
@@ -6,9 +10,12 @@ services:
       - wordpress
       - mariadb
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
-      - ./web:/var/www/html
+      - ../../../data/web:/var/www/html
+    networks:
+      - inception
+    restart: always
 
   wordpress:
     build: ./requirements/wordpress/.
@@ -16,10 +23,16 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - ./web:/var/www/html
+      - ../../data/web:/var/www/html
+    networks:
+      - inception
+    restart: always
 
   mariadb:
     build: ./requirements/mariadb/.
     container_name: mariadb
     volumes:
-      - ./db:/var/lib/mysql
+      - ../../data/db:/var/lib/mysql
+    networks:
+      - inception
+    restart: always

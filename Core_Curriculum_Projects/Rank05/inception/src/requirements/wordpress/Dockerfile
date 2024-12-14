@@ -13,3 +13,4 @@ RUN chmod +x init_wp.sh
 # copy the script to the container and make it executable.
 
 CMD ["./init_wp.sh"]
+#CMD ["php-fpm8.2", "-F"]
