@@ -1,4 +1,4 @@
-.PHONY: build up down delete
+.PHONY: build up down delete_containers delete_images delete_all_running
 
 build:
 	cd src && docker compose up --build
@@ -14,3 +14,6 @@ delete_images:
 
 delete_containers:
 	cd src && docker container prune
+
+delete_all_running:
+	cd src && docker rm -f mariadb wp-php server-nginx
