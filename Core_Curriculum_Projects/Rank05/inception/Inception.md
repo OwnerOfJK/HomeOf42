@@ -121,6 +121,56 @@ Why?
 2. **Local Development Convenience**: Edit WordPress files and instantly reflect changes in both the Nginx and PHP containers without needing to rebuild or restart the containers.
 3. **Persistence of Data**: If the containers are stopped or removed, any changes made to the files inside the container would be lost, but by mounting the /var/www/html directory to your local machine, the files are stored outside the container.
 
+## TLS (Transport Layer Security)
+
+TLS is the successor to SSL (Secure Sockets Layer) and provides privacy and data integrity between two communicating applications. When we say "NGINX with TLSv1.3 only", we're saying our web server will only accept connections using this secure protocol version.
+
+When you visit a website using HTTPS, your browser and the server establish a secure connection. This connection is encrypted using SSL/TLS protocols.
+
+An SSL certificate is a digital certificate that authenticates the identity of a website and enables encrypted connections.
+
+In production, certificates are typically signed by trusted Certificate Authorities (CAs).
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+-keyout /etc/nginx/ssl/nginx.key \
+-out /etc/nginx/ssl/nginx.crt \
+-subj "/C=DE/ST=Berlin/L=Berlin/O=42/OU=42/CN=jkaller.42.fr"
+```
+
+Creates:
+1. A private key (nginx.key)
+2. A self-signed certificate (nginx.crt)
+3. Valid for 365 days
+4. With specified details about location and organization
+
+### Why HTTPS (TLS)
+
+**Without Encryption (HTTP)**
+
+```
+User["User"] -->|"Hello123"| Internet["Internet"]
+Internet -->|"Hello123"| Website["Website"]
+```
+
+1. Your data travels in plain text
+    - Anyone between you and the website (ISP, hackers on public WiFi, etc.) can:
+    - Read your passwords
+    - See what pages you're visiting
+    - Intercept and modify the data
+    - Potentially inject malicious content
+
+**With Encryption (HTTPS/TLS)**
+
+```
+User["User"] -->|"Hello123"| Internet["Internet"]
+Internet -->|"x8#mK9$p"| Website["Website"]
+```
+
+1. Your data is encrypted before being sent
+    - Even if intercepted, it appears as gibberish
+    - Only your browser and the website server can decrypt it
+
 ## References
 1. wordpress + nginx: https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 2. mariadb + wordpress: https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
