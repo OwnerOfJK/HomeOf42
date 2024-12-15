@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bullseye
 
 RUN apt update && apt upgrade && apt install -y nginx openssl
 
@@ -9,7 +9,7 @@ RUN mkdir -p /etc/nginx/ssl && \
     -out /etc/nginx/ssl/nginx.crt \
     -subj "/C=DE/ST=Berlin/L=Berlin/O=42/OU=42/CN=jkaller.42.fr"
 
-COPY default /etc/nginx/sites-available/default
+COPY ./config/default /etc/nginx/sites-available/default
 # Here we overwrite the default configuration file with our own configuration file.
 
 CMD ["nginx", "-g", "daemon off;"]

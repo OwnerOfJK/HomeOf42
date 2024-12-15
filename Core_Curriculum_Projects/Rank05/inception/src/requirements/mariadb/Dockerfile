@@ -1,14 +1,22 @@
-FROM debian:latest
+FROM debian:bullseye
 
-RUN apt update && apt upgrade && apt install -y mariadb-server
+RUN apt update && apt upgrade -y && apt install -y mariadb-server
 
-COPY 50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-# Here we overwrite the default configuration file with our own configuration file.
+# Create necessary directories and set permissions
+RUN mkdir -p /var/run/mysqld \
+    && chown -R mysql:mysql /var/run/mysqld \
+    && chmod 777 /var/run/mysqld \
+    && mkdir -p /var/lib/mysql \
+    && chown -R mysql:mysql /var/lib/mysql
 
-COPY init.sql /etc/mysql/init.sql
-COPY init_db.sh .
+RUN mkdir workdir
+WORKDIR /workdir
 
-RUN mkdir /run/mysqld && chmod +x init_db.sh
+# Copy configurations
+COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+
+# Copy and make init script executable
+COPY ./script/init_db.sh .
+RUN chmod +x init_db.sh 
 
 CMD ["./init_db.sh"]
-# mysqld: starts the MariaDB server.

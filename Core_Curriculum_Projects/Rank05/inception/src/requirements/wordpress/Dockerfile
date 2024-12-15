@@ -1,16 +1,21 @@
-FROM debian:latest
+FROM debian:bullseye
 
-RUN apt update && apt upgrade && apt install -y php-fpm php-mysqli curl
-# php-fpm: PHP FastCGI Process Manager.
-# php-mysqli: MySQLi extension for PHP. so that we can access mariadb.
-# curl: to download and install wordpress site.
+RUN apt update && apt upgrade -y && \
+    apt install -y \
+    php7.4-fpm \
+    php7.4-mysqli \
+    php7.4-mysql \
+    mariadb-client \
+    curl
 
-COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
-# Here we overwrite the default configuration file with our own configuration file.
+# Create the necessary directory for PHP-FPM
+RUN mkdir -p /run/php
 
-COPY init_wp.sh .
+# Copy the configuration file for PHP-FPM
+COPY ./config/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+
+# Copy the initialization script and make it executable
+COPY ./script/init_wp.sh .
 RUN chmod +x init_wp.sh
-# copy the script to the container and make it executable.
 
 CMD ["./init_wp.sh"]
-#CMD ["php-fpm8.2", "-F"]

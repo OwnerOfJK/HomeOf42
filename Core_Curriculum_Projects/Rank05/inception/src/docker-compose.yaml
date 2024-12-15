@@ -10,7 +10,6 @@ services:
       - wordpress
       - mariadb
     ports:
-      - "80:80"
       - "443:443"
     volumes:
       - ./web:/var/www/html
@@ -23,6 +22,8 @@ services:
     container_name: wp-php
     depends_on:
       - mariadb
+    env_file:
+      - .env
     volumes:
       - ./web:/var/www/html
     networks:
@@ -32,6 +33,8 @@ services:
   mariadb:
     build: ./requirements/mariadb/.
     container_name: mariadb
+    env_file:
+      - .env
     volumes:
       - ./db:/var/lib/mysql
     networks:

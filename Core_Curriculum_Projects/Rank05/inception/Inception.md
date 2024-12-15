@@ -171,6 +171,19 @@ Internet -->|"x8#mK9$p"| Website["Website"]
     - Even if intercepted, it appears as gibberish
     - Only your browser and the website server can decrypt it
 
+
+## Interacting with the DB
+
+1. `docker exec -it wp-php /bin/bash`
+2. `find / -name "wp-cli.phar" 2>/dev/null`
+3. `./wp-cli.phar user list --allow-root`
+
 ## References
 1. wordpress + nginx: https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 2. mariadb + wordpress: https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
+
+
+
+Things to do:
+1. add db and web to data folder
+2. fix the issue so that you can up and down the containers without having to rebuild them (issue related to init_db.sh)
