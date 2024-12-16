@@ -1,4 +1,4 @@
-.PHONY: build up down delete_containers delete_images delete_all_running clean setup
+.PHONY: build up down delete_containers delete_images delete_volumes delete_networks clean setup prepare_eval
 
 setup:
 	@if ! grep -q "jkaller.42.fr" /etc/hosts; then \
@@ -20,10 +20,20 @@ down:
 	cd src && docker compose down
 
 delete_images:
-	cd src && docker image prune -a
+	cd src && docker image rm -f $(docker image ls -aq)
 
 delete_containers:
-	cd src && docker container prune
+	cd src && docker container rm -f $(docker container ls -aq)
 
-delete_all_running:
-	cd src && docker rm -f mariadb wp-php server-nginx
+delete_volumes:
+	cd src && docker volume rm -f $(docker volume ls -q)
+
+delete_networks:
+	cd src && docker network rm $(docker network ls -q | grep -v 'bridge\|host\|none')
+
+prepare_eval:
+	make clean
+	make delete_images
+	make delete_containers
+	make delete_volumes
+	make delete_networks
