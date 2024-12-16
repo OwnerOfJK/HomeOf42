@@ -210,11 +210,3 @@ Settings->Discussion: require people to log in to comment. Log in with akaller.
 ## References
 1. wordpress + nginx: https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 2. mariadb + wordpress: https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
-
-
-
-Things to do:
-1. add db and web to data folder
-9. verify that after rebooting the vm, and caling docker compose again the web and db are still functioning and changes still there.
-
-

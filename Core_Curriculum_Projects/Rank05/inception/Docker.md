@@ -47,6 +47,3 @@
 
 ## **In Essence**
 Docker creates a middle layer between your host system and your app, offering isolation and portability without the overhead of a full virtual machine. It ensures your application runs in a consistent, efficient, and secure environment.
-
-## **Startup**
-1. Dockerfile: In order to cre
