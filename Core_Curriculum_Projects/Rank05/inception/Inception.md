@@ -207,6 +207,12 @@ docker exec -it mariadb mysql -u wpuser -p (log in as user)
 Comments:
 Settings->Discussion: require people to log in to comment. Log in with akaller.
 
+For evaluation:
+docker image rm -f $(docker image ls -aq)
+docker container rm -f $(docker container ls -aq)
+docker volume rm -f $(docker volume ls -q)
+docker network rm $(docker network ls -q)
+
 ## References
 1. wordpress + nginx: https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 2. mariadb + wordpress: https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
