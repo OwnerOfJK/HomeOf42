@@ -9,8 +9,8 @@ RUN mkdir -p /var/run/mysqld \
     && mkdir -p /var/lib/mysql \
     && chown -R mysql:mysql /var/lib/mysql
 
-RUN mkdir workdir
-WORKDIR /workdir
+# RUN mkdir workdir
+# WORKDIR /workdir
 
 # Copy configurations
 COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf

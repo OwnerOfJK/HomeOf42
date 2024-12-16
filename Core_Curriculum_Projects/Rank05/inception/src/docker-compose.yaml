@@ -2,6 +2,18 @@ networks:
   inception:
     name: inception
 
+volumes:
+  web:
+    driver_opts:
+      device: /Users/johnkaller/Desktop/inception/data/wordpress
+      type: none
+      o: bind
+  db:
+    driver_opts:
+      device: /Users/johnkaller/Desktop/inception/data/db
+      type: none
+      o: bind
+
 services:
   nginx:
     build: ./requirements/nginx/.
@@ -12,7 +24,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ./web:/var/www/html
+      - web:/var/www/html
     networks:
       - inception
     restart: always
@@ -25,7 +37,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./web:/var/www/html
+      - web:/var/www/html
     networks:
       - inception
     restart: always
@@ -36,7 +48,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./db:/var/lib/mysql
+      - db:/var/lib/mysql
     networks:
       - inception
     restart: always
+

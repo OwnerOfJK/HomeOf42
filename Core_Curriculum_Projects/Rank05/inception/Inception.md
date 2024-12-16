@@ -178,6 +178,35 @@ Internet -->|"x8#mK9$p"| Website["Website"]
 2. `find / -name "wp-cli.phar" 2>/dev/null`
 3. `./wp-cli.phar user list --allow-root`
 
+
+```
+    # Test basic connection using environment variables
+    mysql -h$WORDPRESS_DB_HOST -u$WORDPRESS_DB_USER -p$PASSWORD
+
+    # Inside MySQL prompt, try these commands:
+    SHOW DATABASES;
+    USE wordpress;
+    SHOW TABLES;
+    SELECT * FROM wp_users;
+```
+
+### Helpful scripts
+
+```
+docker network ls
+docker network inspect inception
+docker compose ps (has to be within the docker-compose.yaml file directory)
+docker volume ls
+docker volume inspect web
+docker volume inspect db
+docker exec -it mariadb mysql -u root (this should fail)
+docker exec -it mariadb mysql -u root -p (requires password)
+docker exec -it mariadb mysql -u wpuser -p (log in as user)
+```
+
+Comments:
+Settings->Discussion: require people to log in to comment. Log in with akaller.
+
 ## References
 1. wordpress + nginx: https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 2. mariadb + wordpress: https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
@@ -186,4 +215,6 @@ Internet -->|"x8#mK9$p"| Website["Website"]
 
 Things to do:
 1. add db and web to data folder
-2. fix the issue so that you can up and down the containers without having to rebuild them (issue related to init_db.sh)
+9. verify that after rebooting the vm, and caling docker compose again the web and db are still functioning and changes still there.
+
+
