@@ -7,8 +7,8 @@ setup:
 	fi
 
 clean:
-	rm -rf src/db/*
-	rm -rf src/web/*
+	rm -rf /home/jkaller/data/db/*
+	rm -rf /home/jkaller/data/web/*
 
 build: setup
 	cd src && docker compose up --build

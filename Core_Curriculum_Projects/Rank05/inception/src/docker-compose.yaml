@@ -5,12 +5,12 @@ networks:
 volumes:
   web:
     driver_opts:
-      device: /Users/johnkaller/Desktop/inception/data/wordpress
+      device: /home/jkaller/data/web
       type: none
       o: bind
   db:
     driver_opts:
-      device: /Users/johnkaller/Desktop/inception/data/db
+      device: /home/jkaller/data/db
       type: none
       o: bind
 
