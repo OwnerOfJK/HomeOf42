@@ -20,16 +20,16 @@ down:
 	cd src && docker compose down
 
 delete_images:
-	cd src && docker image rm -f $(docker image ls -aq)
+	cd src && if [ "$(docker image ls -aq)" ]; then docker image rm -f $(docker image ls -aq); else echo "No images to delete."; fi
 
 delete_containers:
-	cd src && docker container rm -f $(docker container ls -aq)
+	cd src && if [ "$(docker container ls -aq)" ]; then docker container rm -f $(docker container ls -aq); else echo "No containers to delete."; fi
 
 delete_volumes:
-	cd src && docker volume rm -f $(docker volume ls -q)
+	cd src && if [ "$(docker volume ls -q)" ]; then docker volume rm -f $(docker volume ls -q); else echo "No volumes to delete."; fi
 
 delete_networks:
-	cd src && docker network rm $(docker network ls -q | grep -v 'bridge\|host\|none')
+	cd src && if [ "$(docker network ls -q | grep -v 'bridge\|host\|none')" ]; then docker network rm $(docker network ls -q | grep -v 'bridge\|host\|none'); else echo "No custom networks to delete."; fi
 
 prepare_eval:
 	make clean
