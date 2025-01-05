@@ -7,3 +7,6 @@
 [submodule "Core_Curriculum_Projects/Rank01/libft_v2"]
 	path = Core_Curriculum_Projects/Rank01/libft_v2
 	url = https://github.com/OwnerOfJK/libft.git
+[submodule "Core_Curriculum_Projects/Rank05/Webserv"]
+	path = Core_Curriculum_Projects/Rank05/Webserv
+	url = https://github.com/bejasch/Webserv.git
