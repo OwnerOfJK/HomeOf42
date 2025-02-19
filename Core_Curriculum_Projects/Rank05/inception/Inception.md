@@ -32,7 +32,7 @@ In this project:
 In order to allow the wordpress site and the nginx server to communicate so that the server can actually server the site we need to change the config files.
 
 ### Wordpress PHP
-1. The config file **relevant to us** is located at: `/etc/php/8.2/fpm/pool.d/www.conf`
+1. The config file **relevant to us** is located at: `/etc/php/7.4/fpm/pool.d/www.conf`
     - Role: It is a PHP-FPM (FastCGI Process Manager) pool configuration file. This file configures a pool of PHP-FPM worker processes. A pool is a set of processes that handle PHP script execution for a specific application or virtual host (e.g., your WordPress site).
 
 `docker cp wp-php:/etc/php/8.2/fpm/pool.d/www.conf ./requirements/wordpress/.`
