@@ -10,3 +10,6 @@
 [submodule "Core_Curriculum_Projects/Rank05/Webserv"]
 	path = Core_Curriculum_Projects/Rank05/Webserv
 	url = https://github.com/bejasch/Webserv.git
+[submodule "Core_Curriculum_Projects/Rank06/ft_transcendence"]
+	path = Core_Curriculum_Projects/Rank06/ft_transcendence
+	url = https://github.com/cubernetes/ft_transcendence.git
