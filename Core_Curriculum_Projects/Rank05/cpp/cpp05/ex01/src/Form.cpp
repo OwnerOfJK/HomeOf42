@@ -51,7 +51,6 @@ void Form::beSigned(const Bureaucrat &b) {
     _signStatus = true;
 }
 
-// Overload operator<< for Form
 std::ostream& operator<<(std::ostream &os, const Form &form) {
     os << "Form: " << form.getName() << ", Signed: " << (form.getSignStatus() ? "Yes" : "No")
        << ", Grade required to sign: " << form.getGradeSign()
