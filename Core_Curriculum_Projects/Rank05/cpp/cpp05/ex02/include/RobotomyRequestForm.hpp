@@ -1,5 +1,5 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef RobotomyRequestForm_HPP
+#define RobotomyRequestForm_HPP
 
 #include "AForm.hpp"
 #include <fstream>

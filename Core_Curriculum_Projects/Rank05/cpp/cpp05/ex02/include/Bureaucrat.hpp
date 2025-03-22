@@ -1,5 +1,5 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef Bureaucrat_HPP
+#define Bureaucrat_HPP
 
 #include <string>
 #include <iostream>
