@@ -15,16 +15,21 @@ NAME = bureaucrat
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp src/Bureaucrat.cpp src/Form.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRCS = main.cpp src/Bureaucrat.cpp src/AForm.cpp src/ShrubberyCreationForm.cpp src/PresidentialPardonForm.cpp src/RobotomyRequestForm.cpp
+OBJ_DIR = obj
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(dir $@) 
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
