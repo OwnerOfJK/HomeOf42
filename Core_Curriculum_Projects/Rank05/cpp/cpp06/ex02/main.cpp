@@ -20,6 +20,7 @@ Base *generate() {
 
 void identify(Base *p) {
     // Attempt to cast the pointer to each derived class using dynamic_cast.
+    //A dynamic cast of a pointer is either the type or NULL.
     if (dynamic_cast<A *>(p) != NULL) {
         std::cout << "A" << std::endl;
     } else if (dynamic_cast<B *>(p) != NULL) {
@@ -33,6 +34,7 @@ void identify(Base *p) {
 
 void identify(Base& p)
 {
+    //A dynamic cast of a reference is either the object or an exception.
 	Base a;
 	Base b;
 	Base c;

@@ -10,10 +10,12 @@ int main() {
 
     // Serialize the pointer
     uintptr_t serializedData = Serializer::serialize(&data);
+    std::cout << "Original address: " << &data << std::endl;
     std::cout << "Serialized Data address: " << serializedData << std::endl;
 
     // Deserialize the pointer
     Data* deserializedData = Serializer::deserialize(serializedData);
+    std::cout << "Deserialized Return value: " << deserializedData << std::endl;
     std::cout << "Deserialized Data value: " << deserializedData->value << std::endl;
 
     return 0;

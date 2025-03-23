@@ -121,6 +121,7 @@ void ScalarConverter::printChar(double value) {
 }
 
 void ScalarConverter::printSpecialValue(const std::string& input) {
+    //In C++, pseudo-literals are string representations of specific floating-point values that correspond to special constants. 
     std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
     if (input == "nanf")
