@@ -30,12 +30,12 @@ class Span {
         size_t getCount() { return _count; };
 
         template<typename InputIterator>
-        void addRange(InputIterator begin, InputIterator end) {
-            for (InputIterator it = begin; it != end; ++it) {
-                if (_count >= _max)
-                    throw std::runtime_error("Span is full, cannot add more numbers.");
-                _data[_count++] = *it;
-            }
+        void addNumbers(InputIterator begin, InputIterator end) {
+            size_t range = std::distance(begin, end);
+            if (_count + range > _max)
+                throw std::runtime_error("Not enough space to add the range.");
+            std::copy(begin, end, _data + _count);
+            _count += range;
         }
 };
 

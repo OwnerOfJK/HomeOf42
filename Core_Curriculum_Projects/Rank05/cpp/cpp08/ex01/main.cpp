@@ -2,7 +2,8 @@
 
 int main()
 {
-    {    Span sp = Span(5);
+    {
+        Span sp = Span(5);
         sp.addNumber(6);
         sp.addNumber(3);
         sp.addNumber(17);
@@ -26,12 +27,13 @@ int main()
         }
     }
 
-    {    std::vector<size_t> numbers;
+    {
+        std::vector<size_t> numbers;
         for (size_t i = 0; i < 50000; ++i)
             numbers.push_back(i);
         Span span(50000);
         std::cout << "There are " << span.getCount() << " numbers in the Span of length: " << span.getMax() << std::endl;
-        span.addRange(numbers.begin(), numbers.end());
+        span.addNumbers(numbers.begin(), numbers.end());
         std::cout << "There are " << span.getCount() << " numbers in the Span of length: " << span.getMax() << std::endl;
     }
     
