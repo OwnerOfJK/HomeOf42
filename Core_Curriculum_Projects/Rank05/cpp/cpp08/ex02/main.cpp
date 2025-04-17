@@ -18,12 +18,32 @@ void testMutantStack() {
     mstack.push(737);
     mstack.push(0);
 
-    std::cout << "Contents:" << std::endl;
+    std::cout << "➡️ Forward iteration using iterator:" << std::endl;
     for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it) {
-        std::cout << *it << std::endl;
+        std::cout << *it << " ";
     }
+    std::cout << std::endl;
 
-    std::stack<int> s(mstack); // Copy construction should work fine
+    std::cout << "🔁 Reverse iteration using reverse_iterator:" << std::endl;
+    for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
+        std::cout << *rit << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "✅ Const forward iteration using const_iterator:" << std::endl;
+    const MutantStack<int> constMstack = mstack;
+    for (MutantStack<int>::const_iterator cit = constMstack.begin(); cit != constMstack.end(); ++cit) {
+        std::cout << *cit << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "🔄 Const reverse iteration using const_reverse_iterator:" << std::endl;
+    for (MutantStack<int>::const_reverse_iterator crit = constMstack.rbegin(); crit != constMstack.rend(); ++crit) {
+        std::cout << *crit << " ";
+    }
+    std::cout << std::endl;
+
+    std::stack<int> s(mstack); // Copy constructor should work fine
 }
 
 void testList() {
