@@ -35,6 +35,7 @@ int main()
         std::cout << "There are " << span.getCount() << " numbers in the Span of length: " << span.getMax() << std::endl;
         span.addNumbers(numbers.begin(), numbers.end());
         std::cout << "There are " << span.getCount() << " numbers in the Span of length: " << span.getMax() << std::endl;
+        std::cout << "The number at index 200 is: " << span.getNumber(200) << std::endl;
     }
     
     return (0);

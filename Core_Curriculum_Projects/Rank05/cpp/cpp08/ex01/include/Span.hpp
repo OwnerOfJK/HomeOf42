@@ -28,6 +28,7 @@ class Span {
 
         size_t getMax() { return _max; };
         size_t getCount() { return _count; };
+        size_t getNumber(size_t idx) { return _data[idx]; }
 
         template<typename InputIterator>
         void addNumbers(InputIterator begin, InputIterator end) {
