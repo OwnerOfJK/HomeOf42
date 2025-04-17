@@ -69,16 +69,10 @@ size_t Span::longestSpan() {
     if (_count < 2)
         throw std::runtime_error("Less than 2 elements in the Span.");
 
-    size_t min = _data[0];
-    size_t max = _data[0];
+    size_t* min_ptr = std::min_element(_data, _data + _count);
+    size_t* max_ptr = std::max_element(_data, _data + _count);
 
-    for (size_t i = 0; i < _count; i++) {
-        if (min > _data[i])
-            min = _data[i];
-        if (max < _data[i])
-            max = _data[i];
-    }
-    return (max - min);
+    return *max_ptr - *min_ptr;
 }
 
 size_t* Span::begin() {
