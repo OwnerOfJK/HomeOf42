@@ -31,7 +31,14 @@ class BitcoinExchange {
         void addToDataBase(std::string date, double value, bool isInput);
         void printInputValues();
 
-
+        void printMap(std::multimap<Date, double> &m) const
+        {
+            std::multimap<Date, double>::const_iterator it;
+            std::cout << "Key\tValue" << std::endl;
+            for (it = m.begin(); it != m.end(); ++it) {
+                std::cout << it->first << "\t" << it->second << std::endl;
+            }
+        }
 };
 
 #endif
