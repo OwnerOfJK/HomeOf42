@@ -6,7 +6,7 @@
 #include <map>
 #include <string>
 #include <sstream>
-
+#include <cmath>
 
 #include "Utils.hpp"
 

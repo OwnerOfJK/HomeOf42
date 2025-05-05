@@ -144,9 +144,13 @@ void BitcoinExchange::printInputValues()
         const Date& inputDate = it->first;
         double inputValue = it->second;
         std::map<Date, double>::const_iterator dbIt = dataBase.find(inputDate);
+        if (dbIt == dataBase.end()) {
+            continue;
+        }
         double dataBaseValue = dbIt->second;
+        double result = std::ceil((inputValue * dataBaseValue) * 100.0) / 100.0;
         std::cout << inputDate << " => " << inputValue
-                  << " = " << inputValue * dataBaseValue << std::endl;
+                  << " = " << result << std::endl;
     }
     std::cout << "All values computed...\n" << std::endl;
 }
