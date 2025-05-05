@@ -18,7 +18,7 @@ class BitcoinExchange {
             double day;
         };
         std::map<Date, double> dataBase;
-        std::map<Date, double> inputFile;
+        std::multimap<Date, double> inputFile;
 
     public:
         BitcoinExchange();
