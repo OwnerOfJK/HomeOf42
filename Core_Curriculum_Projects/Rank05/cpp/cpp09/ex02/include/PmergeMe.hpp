@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 class PmergeMe {
     private:
         struct node {
-            int  size;
-            int *arr;
+            std::vector<int> arr;
             node *left;
             node *right;
         };

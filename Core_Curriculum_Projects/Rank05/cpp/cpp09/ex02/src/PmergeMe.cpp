@@ -1,18 +1,17 @@
 #include "../include/PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {
-    tree = nullptr;
+    tree = NULL;
     std::cout << "Default Constructor Called" << std::endl;
 }
 
 PmergeMe::PmergeMe(int *unsorted_arr, int size) {
     node* new_tree = new node;
-    new_tree->size = size;
-    new_tree->arr = new int[size];
-    std::copy(unsorted_arr, unsorted_arr + size, new_tree->arr);
+    new_tree->arr.resize(size);
+    std::copy(unsorted_arr, unsorted_arr + size, new_tree->arr.begin());
     this->tree = new_tree;
-    tree->left = nullptr;
-    tree->right = nullptr;
+    tree->left = NULL;
+    tree->right = NULL;
     std::cout << "Input Constructor Called" << std::endl;
 }
 
@@ -35,17 +34,11 @@ PmergeMe::~PmergeMe() {
     std::cout << "Destructor Called" << std::endl;
 }
 
-node* PmergeMe::copy_tree(node *tree) {
-    if (tree == nullptr) {
-        return nullptr;
-    }
+PmergeMe::node* PmergeMe::copy_tree(PmergeMe::node *tree) {
+    if (!tree) return NULL;
 
     node* new_node = new node;
-    new_node->size = tree->size;
-    new_node->arr = new int[tree->size];
-    std::copy(tree->arr, tree->arr + tree->size, new_node->arr);
-
-    // Recursively copy left and right subtrees
+    new_node->arr = std::vector<int>(tree->arr);
     new_node->left = copy_tree(tree->left);
     new_node->right = copy_tree(tree->right);
 
