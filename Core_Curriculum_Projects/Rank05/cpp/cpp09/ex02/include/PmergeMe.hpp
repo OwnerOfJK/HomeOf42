@@ -20,6 +20,10 @@ class PmergeMe {
         PmergeMe(const PmergeMe &src);
         PmergeMe &operator=(const PmergeMe &src);
         ~PmergeMe();
+
+        // Utils
+        node *copy_tree(node *tree);
+        void destroy_tree(node *tree);
 };
 
 #endif
