@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < argc; i++) {
         arr[i] = atoi(argv[i]);
     }
-    PmergeMe(arr, argc -1);
+    PmergeMe mergeInsertion(arr, argc -1);
+    mergeInsertion.sort_tree();
     return 0;
 }
