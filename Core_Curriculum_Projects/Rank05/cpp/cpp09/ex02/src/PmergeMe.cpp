@@ -30,6 +30,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
 }
 
 PmergeMe::~PmergeMe() {
+    print_tree(tree);
     destroy_tree(tree);
     std::cout << "Destructor Called" << std::endl;
 }
@@ -53,6 +54,19 @@ void PmergeMe::destroy_tree(node *tree) {
     delete tree;
 }
 
+void PmergeMe::print_tree(node *tree) {
+    if (!tree) return;
+
+    // Recursively print left and right subtrees
+    print_tree(tree->left);
+    print_tree(tree->right);
+
+    // Print contents of this node's vector
+    for (std::vector<int>::iterator it = tree->arr.begin(); it != tree->arr.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
 
 void PmergeMe::sort_tree() {
     mergeSort(this->tree);
