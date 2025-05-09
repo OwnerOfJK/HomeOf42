@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug PmergeMe",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ex02/PmergeMe",
+            "args": ["4", "3", "2", "1", "5"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/ex02",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+    ]
+}
