@@ -38,6 +38,8 @@ class PmergeMe {
         node *copy_tree(node *tree);
         void destroy_tree(node *tree);
         void print_tree(node *tree);
+        void print_vector(std::vector<int> &vector);
+        node *create_node(int size);
 };
 
 #endif

@@ -6,12 +6,8 @@ PmergeMe::PmergeMe() {
 }
 
 PmergeMe::PmergeMe(int *unsorted_arr, int size) {
-    node* new_tree = new node;
-    new_tree->arr.resize(size);
-    std::copy(unsorted_arr, unsorted_arr + size, new_tree->arr.begin());
-    this->tree = new_tree;
-    tree->left = NULL;
-    tree->right = NULL;
+    this->tree = create_node(size);
+    std::copy(unsorted_arr, unsorted_arr + size, tree->arr.begin());
     std::cout << "Input Constructor Called" << std::endl;
 }
 
@@ -30,7 +26,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
 }
 
 PmergeMe::~PmergeMe() {
-    print_tree(tree);
+    // print_tree(tree);
     destroy_tree(tree);
     std::cout << "Destructor Called" << std::endl;
 }
@@ -46,12 +42,26 @@ PmergeMe::node* PmergeMe::copy_tree(PmergeMe::node *tree) {
     return new_node;
 }
 
+PmergeMe::node* PmergeMe::create_node(int size) {
+    node* new_node = new node;
+    new_node->arr.resize(size);
+    new_node->left = NULL;
+    new_node->right = NULL;
+
+    return new_node;
+}
+
 void PmergeMe::destroy_tree(node *tree) {
     if (!tree) return;
     destroy_tree(tree->left);
     destroy_tree(tree->right);
     tree->arr.clear();
     delete tree;
+}
+
+void PmergeMe::print_vector(std::vector<int> &vector){
+    for (size_t i = 0; i < vector.size(); i++)
+        std::cout << "Vector at index: " << i << " is valued: " << vector[i] << std::endl;
 }
 
 void PmergeMe::print_tree(node *tree) {
@@ -61,11 +71,7 @@ void PmergeMe::print_tree(node *tree) {
     print_tree(tree->left);
     print_tree(tree->right);
 
-    // Print contents of this node's vector
-    for (std::vector<int>::iterator it = tree->arr.begin(); it != tree->arr.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    print_vector(tree->arr);
 }
 
 void PmergeMe::sort_tree() {
@@ -76,12 +82,26 @@ void PmergeMe::mergeSort(node *tree) {
     if (!tree) return;
     int size = tree->arr.size();
     if (size <= 1) return;
-    tree->left->arr.resize(size / 2);
-    tree->right->arr.resize(size - size / 2);
-    std::copy(tree->arr.begin(), tree->arr.begin() + size / 2, tree->left->arr.begin());
-    std::copy(tree->arr.begin() + size / 2 + 1, tree->arr.end() + size / 2, tree->right->arr.begin());
+
+    // Correctly split the array
+    int left_size = size / 2;
+    int right_size = size - left_size;
+
+    // Allocate child nodes
+    tree->left = create_node(left_size);
+    print_vector(tree->left->arr);
+    tree->right = create_node(right_size);
+
+    // Correct copy ranges
+    std::copy(tree->arr.begin(), tree->arr.begin() + left_size, tree->left->arr.begin());
+    print_vector(tree->left->arr);
+    std::copy(tree->arr.begin() + left_size, tree->arr.end(), tree->right->arr.begin());
+
+    // Recurse
     mergeSort(tree->left);
     mergeSort(tree->right);
+
+    // Merge sorted halves
     merge(tree->left, tree->right, tree);
 }
 
