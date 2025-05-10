@@ -26,7 +26,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
 }
 
 PmergeMe::~PmergeMe() {
-    // print_tree(tree);
+    print_vector(tree->arr);
     destroy_tree(tree);
     std::cout << "Destructor Called" << std::endl;
 }
@@ -67,7 +67,6 @@ void PmergeMe::print_vector(std::vector<int> &vector){
 void PmergeMe::print_tree(node *tree) {
     if (!tree) return;
 
-    // Recursively print left and right subtrees
     print_tree(tree->left);
     print_tree(tree->right);
 
@@ -83,21 +82,15 @@ void PmergeMe::mergeSort(node *tree) {
     int size = tree->arr.size();
     if (size <= 1) return;
 
-    // Correctly split the array
     int left_size = size / 2;
     int right_size = size - left_size;
 
-    // Allocate child nodes
     tree->left = create_node(left_size);
-    print_vector(tree->left->arr);
     tree->right = create_node(right_size);
-
-    // Correct copy ranges
+    
     std::copy(tree->arr.begin(), tree->arr.begin() + left_size, tree->left->arr.begin());
-    print_vector(tree->left->arr);
     std::copy(tree->arr.begin() + left_size, tree->arr.end(), tree->right->arr.begin());
 
-    // Recurse
     mergeSort(tree->left);
     mergeSort(tree->right);
 

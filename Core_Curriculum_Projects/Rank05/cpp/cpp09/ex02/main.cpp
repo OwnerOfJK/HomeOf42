@@ -6,9 +6,10 @@ int main(int argc, char **argv) {
         std::cout << "Not enough arguments" << std::endl;
     int arr[1000];
     for (int i = 1; i < argc; i++) {
-        arr[i] = atoi(argv[i]);
+        arr[i - 1] = atoi(argv[i]);
     }
-    PmergeMe mergeInsertion(arr, argc -1);
+    PmergeMe mergeInsertion(arr, argc - 1);
+
     mergeInsertion.sort_tree();
     return 0;
 }
