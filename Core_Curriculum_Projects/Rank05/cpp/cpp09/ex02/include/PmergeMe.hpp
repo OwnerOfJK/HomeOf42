@@ -7,12 +7,9 @@
 
 class PmergeMe {
     private:
-        struct node {
-            std::vector<int> arr;
-            node *left;
-            node *right;
-        };
-        node *tree;
+        std::vector<int>    mainChain;
+        double              timeToSort;
+    
     public:
         // Constructing / Destructing
         PmergeMe();
@@ -20,26 +17,14 @@ class PmergeMe {
         PmergeMe(const PmergeMe &src);
         PmergeMe &operator=(const PmergeMe &src);
         ~PmergeMe();
-
+        
         // Core
-        void sort_tree();
-        //this function recursively splits the parameter array into two.
-        //returns the head of the tree
-        //recursive until the size of the arr is 1
-        void mergeSort(node *tree);
-        //will operater on subarrays with size 1
-        //look at value in each subarray, order them and put them back into the head
-        //called inside the mergeSort
-        //compare most left element of each subarray and put them one by one into the head
-        void merge(node *left_node, node *right_node, node *parent);
-
-
+        void mergeInsertionSort();
+        std::vector<int> recursiveMergeInsertion(std::vector<int> input);
+    
         // Utils
-        node *copy_tree(node *tree);
-        void destroy_tree(node *tree);
-        void print_tree(node *tree);
-        void print_vector(std::vector<int> &vector);
-        node *create_node(int size);
-};
+        void print_vector(const std::vector<int> &vec);
+    };
+    
 
 #endif

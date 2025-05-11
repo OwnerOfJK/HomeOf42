@@ -1,131 +1,83 @@
 #include "../include/PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {
-    tree = NULL;
-    std::cout << "Default Constructor Called" << std::endl;
+    // std::cout << "Default Constructor Called" << std::endl;
 }
 
 PmergeMe::PmergeMe(int *unsorted_arr, int size) {
-    this->tree = create_node(size);
-    std::copy(unsorted_arr, unsorted_arr + size, tree->arr.begin());
-    std::cout << "Input Constructor Called" << std::endl;
+    mainChain.assign(unsorted_arr, unsorted_arr + size);
+    std::cout << "\nMerge Insertion Sort:" << std::endl;
+    // std::cout << "Input Constructor Called" << std::endl;
 }
 
-PmergeMe::PmergeMe(const PmergeMe &src) {
-    tree = copy_tree(src.tree);
-    std::cout << "Copy Constructor Called" << std::endl;
+PmergeMe::PmergeMe(const PmergeMe &src) : mainChain(src.mainChain) {
+    // std::cout << "Copy Constructor Called" << std::endl;
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
     if (this != &src) {
-        destroy_tree(tree);
-        tree = copy_tree(src.tree);
+        mainChain = src.mainChain;
     }
-    std::cout << "Assignment Operator Called" << std::endl;
+    // std::cout << "Assignment Operator Called" << std::endl;
     return *this;
 }
 
 PmergeMe::~PmergeMe() {
-    print_vector(tree->arr);
-    destroy_tree(tree);
-    std::cout << "Destructor Called" << std::endl;
+    std::cout << "Sorted Output:\n";
+    print_vector(mainChain);
+    std::cout << "Time taken to sort the array: " << timeToSort << " milliseconds" << std::endl;
+    // std::cout << "Destructor Called" << std::endl;
 }
 
-PmergeMe::node* PmergeMe::copy_tree(PmergeMe::node *tree) {
-    if (!tree) return NULL;
-
-    node* new_node = new node;
-    new_node->arr = std::vector<int>(tree->arr);
-    new_node->left = copy_tree(tree->left);
-    new_node->right = copy_tree(tree->right);
-
-    return new_node;
-}
-
-PmergeMe::node* PmergeMe::create_node(int size) {
-    node* new_node = new node;
-    new_node->arr.resize(size);
-    new_node->left = NULL;
-    new_node->right = NULL;
-
-    return new_node;
-}
-
-void PmergeMe::destroy_tree(node *tree) {
-    if (!tree) return;
-    destroy_tree(tree->left);
-    destroy_tree(tree->right);
-    tree->arr.clear();
-    delete tree;
-}
-
-void PmergeMe::print_vector(std::vector<int> &vector){
+void PmergeMe::print_vector(const std::vector<int> &vector){
+    if (vector.size() > 100) {
+        std::cout << "Array is too large to display." << std::endl;
+        return;
+    }
+    std::cout << "{";
     for (size_t i = 0; i < vector.size(); i++)
-        std::cout << "Vector at index: " << i << " is valued: " << vector[i] << std::endl;
+        std::cout << " " << vector[i];
+    std::cout << " }";
+    std::cout << std::endl;
 }
 
-void PmergeMe::print_tree(node *tree) {
-    if (!tree) return;
-
-    print_tree(tree->left);
-    print_tree(tree->right);
-
-    print_vector(tree->arr);
+void PmergeMe::mergeInsertionSort() {
+    clock_t start = clock();
+    mainChain = recursiveMergeInsertion(mainChain);
+    clock_t end = clock();
+    timeToSort = static_cast<double>(end - start) * 100 / CLOCKS_PER_SEC;
 }
 
-void PmergeMe::sort_tree() {
-    mergeSort(this->tree);
-}
+std::vector<int> PmergeMe::recursiveMergeInsertion(std::vector<int> input) {
+    if (input.size() <= 1)
+        return input;
 
-void PmergeMe::mergeSort(node *tree) {
-    if (!tree) return;
-    int size = tree->arr.size();
-    if (size <= 1) return;
+    std::vector<int> pendChain;
+    std::vector<int> mainChain;
 
-    int left_size = size / 2;
-    int right_size = size - left_size;
-
-    tree->left = create_node(left_size);
-    tree->right = create_node(right_size);
-    
-    std::copy(tree->arr.begin(), tree->arr.begin() + left_size, tree->left->arr.begin());
-    std::copy(tree->arr.begin() + left_size, tree->arr.end(), tree->right->arr.begin());
-
-    mergeSort(tree->left);
-    mergeSort(tree->right);
-
-    // Merge sorted halves
-    merge(tree->left, tree->right, tree);
-}
-
-void PmergeMe::merge(node *left_node, node *right_node, node *parent) {
-    int left_size = left_node->arr.size();
-    int right_size = right_node->arr.size();
-    int i = 0;
-    int l = 0;
-    int r = 0;
-
-    while (l < left_size && r < right_size)
-    {
-        if (left_node->arr[l] < right_node->arr[r]) {
-            parent->arr[i] = left_node->arr[l];
-            i++;
-            l++;
-        }
-        else {
-            parent->arr[i] = right_node->arr[r];
-            i++;
-            r++;
+    // Split into pairs and sort each
+    for (size_t i = 0; i + 1 < input.size(); i += 2) {
+        if (input[i] < input[i + 1]) {
+            pendChain.push_back(input[i]);
+            mainChain.push_back(input[i + 1]);
+        } else {
+            pendChain.push_back(input[i + 1]);
+            mainChain.push_back(input[i]);
         }
     }
-    while(l < left_size) {
-        parent->arr[i] = left_node->arr[l];
-        i++;
-        l++;
+
+    // If odd number of elements, add the last to main
+    if (input.size() % 2 == 1)
+        mainChain.push_back(input.back());
+
+    // Recursively sort the main chain
+    mainChain = recursiveMergeInsertion(mainChain);
+
+    // Insert pending values into main chain
+    for (size_t i = 0; i < pendChain.size(); ++i) {
+        auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pendChain[i]);
+        mainChain.insert(pos, pendChain[i]);
     }
-    while(r < right_size) {
-        parent->arr[i] = right_node->arr[r];
-        i++;
-        r++;
-    }
+
+    return mainChain;
 }
