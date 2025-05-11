@@ -1,9 +1,9 @@
 NAME = PmergeMe
 
 CXX = c++ -g
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.cpp src/PmergeMe.cpp
+SRCS = main.cpp src/PmergeMe.cpp src/MergeSort.cpp
 OBJ_DIR = obj
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
