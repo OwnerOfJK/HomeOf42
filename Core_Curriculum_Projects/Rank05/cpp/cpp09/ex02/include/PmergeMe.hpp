@@ -4,14 +4,18 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <list>
 
 #include "Utils.hpp"
 
 class PmergeMe {
     private:
-        std::vector<int>    mainChain;
-        double              timeToSort;
-    
+        std::vector<int>    mainChainVector;
+        double              timeToSortVector;
+        
+        std::list<int>      mainChainList;
+        double              timeToSortList;
+
     public:
         // Constructing / Destructing
         PmergeMe();
@@ -20,9 +24,15 @@ class PmergeMe {
         PmergeMe &operator=(const PmergeMe &src);
         ~PmergeMe();
         
-        // Core
-        void mergeInsertionSort();
-        std::vector<int> recursiveMergeInsertion(std::vector<int> input);
+        // Core - Vector
+        void mergeInsertionSortVector();
+        std::vector<int> recursiveMergeInsertionVector(std::vector<int> input);
+        std::vector<size_t> initJacobsVector(size_t size);
+
+        // Core - List
+        void mergeInsertionSortList();
+        std::list<int> recursiveMergeInsertionList(std::list<int> input);
+        std::list<size_t> initJacobsList(size_t size);
 };
     
 
