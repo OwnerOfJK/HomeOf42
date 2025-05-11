@@ -3,7 +3,11 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 
-void print_vector(const std::vector<int> &vector);
+void printVec(const std::vector<int> &vector);
+void printList(const std::list<int> &lst);
+std::string isSortedV(const std::vector<int> &vector);
+std::string isSortedL(const std::list<int> &lst);
 
 #endif
