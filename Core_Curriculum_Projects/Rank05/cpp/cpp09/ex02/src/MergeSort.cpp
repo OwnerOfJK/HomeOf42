@@ -63,18 +63,6 @@ void MergeSort::destroy_tree(node *tree) {
     delete tree;
 }
 
-void MergeSort::print_vector(std::vector<int> &vector){
-    if (vector.size() > 100) {
-        std::cout << "Array is too large to display." << std::endl;
-        return;
-    }
-    std::cout << "{";
-    for (size_t i = 0; i < vector.size(); i++)
-        std::cout << " " << vector[i];
-    std::cout << " }";
-    std::cout << std::endl;
-}
-
 void MergeSort::print_tree(node *tree) {
     if (!tree) return;
 

@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <vector>
 
+#include "Utils.hpp"
+
 class PmergeMe {
     private:
         std::vector<int>    mainChain;
@@ -21,10 +23,7 @@ class PmergeMe {
         // Core
         void mergeInsertionSort();
         std::vector<int> recursiveMergeInsertion(std::vector<int> input);
-    
-        // Utils
-        void print_vector(const std::vector<int> &vec);
-    };
+};
     
 
 #endif
