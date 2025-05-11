@@ -1,106 +1,75 @@
 #include "../include/MergeSort.hpp"
-#include <ctime>
 
-MergeSort::MergeSort() {
-    tree = NULL;
-    // std::cout << "Default Constructor Called" << std::endl;
-}
+// ==== Constructors / Destructor ====
+
+MergeSort::MergeSort() : treeVec(NULL), treeList(NULL), timeVec(0), timeList(0) {}
 
 MergeSort::MergeSort(int *unsorted_arr, int size) {
-    // std::cout << "Input Constructor Called" << std::endl;
-    this->tree = create_node(size);
-    std::copy(unsorted_arr, unsorted_arr + size, tree->arr.begin());
+    treeVec = createNodeVec(size);
+    std::copy(unsorted_arr, unsorted_arr + size, treeVec->arr.begin());
+
+    treeList = createNodeList();
+    std::copy(unsorted_arr, unsorted_arr + size, std::back_inserter(treeList->arr));
 }
 
 MergeSort::MergeSort(const MergeSort &src) {
-    tree = copy_tree(src.tree);
-    std::cout << "Copy Constructor Called" << std::endl;
+    treeVec = copyVec(src.treeVec);
+    treeList = copyList(src.treeList);
 }
 
 MergeSort &MergeSort::operator=(const MergeSort &src) {
     if (this != &src) {
-        destroy_tree(tree);
-        tree = copy_tree(src.tree);
+        destroyVec(treeVec);
+        destroyList(treeList);
+        treeVec = copyVec(src.treeVec);
+        treeList = copyList(src.treeList);
     }
-    // std::cout << "Assignment Operator Called" << std::endl;
     return *this;
 }
 
 MergeSort::~MergeSort() {
-    std::cout << "\nMerge Sort:" << std::endl;
-    std::cout << "Ordered number array:" << std::endl;
-    print_vector(tree->arr);
-    std::cout << "Time taken to sort the array: " << timeToSort << " milliseconds" << std::endl;
-    destroy_tree(tree);
-    // std::cout << "Destructor Called" << std::endl;
+    std::cout << "\nMerge Sort (Vector):\n";
+    printVec(treeVec->arr);
+    std::cout << "Time: " << timeVec << " ms\n";
+    std::cout << "Result: " << isSortedV(treeVec->arr) << std::endl;
+
+    std::cout << "\nMerge Sort (List):\n";
+    printList(treeList->arr);
+    std::cout << "Time: " << timeList << " ms\n";
+    std::cout << "Result: " << isSortedL(treeList->arr) << std::endl;
+
+    destroyVec(treeVec);
+    destroyList(treeList);
 }
 
-MergeSort::node* MergeSort::copy_tree(MergeSort::node *tree) {
-    if (!tree) return NULL;
+// ==== Vector Sorting ====
 
-    node* new_node = new node;
-    new_node->arr = std::vector<int>(tree->arr);
-    new_node->left = copy_tree(tree->left);
-    new_node->right = copy_tree(tree->right);
-
-    return new_node;
-}
-
-MergeSort::node* MergeSort::create_node(int size) {
-    node* new_node = new node;
-    new_node->arr.resize(size);
-    new_node->left = NULL;
-    new_node->right = NULL;
-
-    return new_node;
-}
-
-void MergeSort::destroy_tree(node *tree) {
-    if (!tree) return;
-    destroy_tree(tree->left);
-    destroy_tree(tree->right);
-    tree->arr.clear();
-    delete tree;
-}
-
-void MergeSort::print_tree(node *tree) {
-    if (!tree) return;
-
-    print_tree(tree->left);
-    print_tree(tree->right);
-
-    print_vector(tree->arr);
-}
-
-void MergeSort::sortNumbers() {
+void MergeSort::sortVector() {
     clock_t start = clock();
-    mergeSort(this->tree);
+    mergeSortVector(treeVec);
     clock_t end = clock();
-    timeToSort = static_cast<double>(end - start) * 100 / CLOCKS_PER_SEC;
+    timeVec = static_cast<double>(end - start) * 1000 / CLOCKS_PER_SEC;
 }
 
-void MergeSort::mergeSort(node *tree) {
-    if (!tree) return;
+void MergeSort::mergeSortVector(nodeVec *tree) {
+    if (!tree || tree->arr.size() <= 1) return;
+
     int size = tree->arr.size();
-    if (size <= 1) return;
+    int mid = size / 2;
 
-    int left_size = size / 2;
-    int right_size = size - left_size;
+    tree->left = createNodeVec(mid);
+    tree->right = createNodeVec(size - mid);
 
-    tree->left = create_node(left_size);
-    tree->right = create_node(right_size);
-    
-    std::copy(tree->arr.begin(), tree->arr.begin() + left_size, tree->left->arr.begin());
-    std::copy(tree->arr.begin() + left_size, tree->arr.end(), tree->right->arr.begin());
+    std::copy(tree->arr.begin(), tree->arr.begin() + mid, tree->left->arr.begin());
+    std::copy(tree->arr.begin() + mid, tree->arr.end(), tree->right->arr.begin());
 
-    mergeSort(tree->left);
-    mergeSort(tree->right);
+    mergeSortVector(tree->left);
+    mergeSortVector(tree->right);
 
-    // Merge sorted halves
-    merge(tree->left, tree->right, tree);
+    mergeVector(tree->left, tree->right, tree);
 }
 
-void MergeSort::merge(node *left_node, node *right_node, node *parent) {
+void MergeSort::mergeVector(nodeVec *left_node, nodeVec *right_node, nodeVec *parent) {
     int left_size = left_node->arr.size();
     int right_size = right_node->arr.size();
     int i = 0;
@@ -131,3 +100,103 @@ void MergeSort::merge(node *left_node, node *right_node, node *parent) {
         r++;
     }
 }
+
+// ==== List Sorting ====
+
+void MergeSort::sortList() {
+    clock_t start = clock();
+    mergeSortList(treeList);
+    clock_t end = clock();
+    timeList = static_cast<double>(end - start) * 1000 / CLOCKS_PER_SEC;
+}
+
+void MergeSort::mergeSortList(nodeList *tree) {
+    if (!tree || tree->arr.size() <= 1) return;
+
+    int size = tree->arr.size();
+    int mid = size / 2;
+
+    tree->left = createNodeList();
+    tree->right = createNodeList();
+
+    std::list<int>::iterator it = tree->arr.begin();
+    for (int i = 0; i < mid; ++i, ++it)
+        tree->left->arr.push_back(*it);
+    for (; it != tree->arr.end(); ++it)
+        tree->right->arr.push_back(*it);
+
+    mergeSortList(tree->left);
+    mergeSortList(tree->right);
+
+    mergeList(tree->left, tree->right, tree);
+}
+
+void MergeSort::mergeList(nodeList *left, nodeList *right, nodeList *parent) {
+    std::list<int>::iterator itL = left->arr.begin();
+    std::list<int>::iterator itR = right->arr.begin();
+    parent->arr.clear();
+
+    while (itL != left->arr.end() && itR != right->arr.end()) {
+        if (*itL < *itR) {
+            parent->arr.push_back(*itL++);
+        } else {
+            parent->arr.push_back(*itR++);
+        }
+    }
+
+    while (itL != left->arr.end()) {
+        parent->arr.push_back(*itL++);
+    }
+
+    while (itR != right->arr.end()) {
+        parent->arr.push_back(*itR++);
+    }
+}
+
+// ==== Utility Methods ====
+
+MergeSort::nodeVec* MergeSort::createNodeVec(int size) {
+    nodeVec *n = new nodeVec;
+    n->arr.resize(size);
+    n->left = n->right = NULL;
+    return n;
+}
+
+MergeSort::nodeList* MergeSort::createNodeList() {
+    nodeList *n = new nodeList;
+    n->left = n->right = NULL;
+    return n;
+}
+
+MergeSort::nodeVec* MergeSort::copyVec(nodeVec *tree) {
+    if (!tree) return NULL;
+    nodeVec *n = new nodeVec;
+    n->arr = tree->arr;
+    n->left = copyVec(tree->left);
+    n->right = copyVec(tree->right);
+    return n;
+}
+
+MergeSort::nodeList* MergeSort::copyList(nodeList *tree) {
+    if (!tree) return NULL;
+    nodeList *n = new nodeList;
+    n->arr = tree->arr;
+    n->left = copyList(tree->left);
+    n->right = copyList(tree->right);
+    return n;
+}
+
+void MergeSort::destroyVec(nodeVec *tree) {
+    if (!tree) return;
+    destroyVec(tree->left);
+    destroyVec(tree->right);
+    delete tree;
+}
+
+void MergeSort::destroyList(nodeList *tree) {
+    if (!tree) return;
+    destroyList(tree->left);
+    destroyList(tree->right);
+    delete tree;
+}
+

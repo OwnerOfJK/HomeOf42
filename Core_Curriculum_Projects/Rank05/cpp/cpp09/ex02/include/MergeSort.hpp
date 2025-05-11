@@ -9,15 +9,24 @@
 
 class MergeSort {
     private:
-        struct node {
+        struct nodeVec {
             std::vector<int> arr;
-            node *left;
-            node *right;
+            nodeVec *left;
+            nodeVec *right;
         };
-        node *tree;
-        double timeToSort;
+        struct nodeList {
+            std::list<int> arr;
+            nodeList *left;
+            nodeList *right;
+        };
+
+        nodeVec *treeVec;
+        nodeList *treeList;
+        double timeVec;
+        double timeList;
+
     public:
-        // Constructing / Destructing
+        // Constructors / Destructors
         MergeSort();
         MergeSort(int *unsorted_arr, int size);
         MergeSort(const MergeSort &src);
@@ -25,15 +34,27 @@ class MergeSort {
         ~MergeSort();
 
         // Core
-        void sortNumbers();
-        void mergeSort(node *tree);
-        void merge(node *left_node, node *right_node, node *parent);
+        void sortVector();
+        void sortList();
+
+    private:
+        // Vector
+        void mergeSortVector(nodeVec *tree);
+        void mergeVector(nodeVec *left_node, nodeVec *right_node, nodeVec *parent);
+
+        // List
+        void mergeSortList(nodeList *tree);
+        void mergeList(nodeList *left_node, nodeList *right_node, nodeList *parent);
 
         // Utils
-        node *copy_tree(node *tree);
-        void destroy_tree(node *tree);
-        void print_tree(node *tree);
-        node *create_node(int size);
+        nodeVec *createNodeVec(int size);
+        nodeList *createNodeList();
+
+        nodeVec *copyVec(nodeVec *tree);
+        nodeList *copyList(nodeList *tree);
+
+        void destroyVec(nodeVec *tree);
+        void destroyList(nodeList *tree);
 };
 
 #endif
