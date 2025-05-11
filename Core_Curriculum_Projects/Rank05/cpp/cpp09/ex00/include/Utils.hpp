@@ -4,10 +4,6 @@
 #include <string>
 #include <sstream>
 
-inline bool stringToInt(const std::string& str, double& out) {
-    std::istringstream iss(str);
-    iss >> out;
-    return !iss.fail() && iss.eof();
-}
+inline bool stringToInt(const std::string& str, double& out);
 
 #endif
