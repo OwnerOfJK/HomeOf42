@@ -79,27 +79,16 @@ std::vector<int> PmergeMe::recursiveMergeInsertionVector(std::vector<int> input)
         size_t idx = jacobIndices[j];
         if (idx == 0) continue;
 
+        //Insert into mainChain using binary search
         int y = pendChain[idx];
-        int bound = pairs[idx].second;
-
-        // Find position to insert y before bound
-        std::vector<int>::iterator it = mainChainVector.begin();
-        while (it != mainChainVector.end() && *it != bound)
-            ++it;
-
-        std::vector<int>::iterator insertPos = mainChainVector.begin();
-        while (insertPos != it && *insertPos < y)
-            ++insertPos;
-
-        mainChainVector.insert(insertPos, y);
+        std::vector<int>::iterator it = std::lower_bound(mainChainVector.begin(), mainChainVector.end(), y);
+        mainChainVector.insert(it, y);
     }
 
-    // If odd, insert last unpaired element
+    // If odd, insert last unpaired element using binary search
     if (hasOdd) {
         int last = input.back();
-        std::vector<int>::iterator it = mainChainVector.begin();
-        while (it != mainChainVector.end() && *it < last)
-            ++it;
+        std::vector<int>::iterator it = std::lower_bound(mainChainVector.begin(), mainChainVector.end(), last);
         mainChainVector.insert(it, last);
     }
 
