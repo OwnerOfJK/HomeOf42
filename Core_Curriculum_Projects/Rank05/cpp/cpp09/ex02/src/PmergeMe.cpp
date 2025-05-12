@@ -69,15 +69,11 @@ std::vector<int> PmergeMe::recursiveMergeInsertionVector(std::vector<int> input)
     // Recursively sort main chain
     mainChainVector = recursiveMergeInsertionVector(mainChainVector);
 
-    // Insert first pend element at the beginning
-    if (!pendChain.empty())
-        mainChainVector.insert(mainChainVector.begin(), pendChain[0]);
-
     // Insert rest using Jacobsthal order
     std::vector<size_t> jacobIndices = initJacobsVector(pendChain.size());
     for (size_t j = 0; j < jacobIndices.size(); ++j) {
         size_t idx = jacobIndices[j];
-        if (idx == 0) continue;
+        if (idx >= pendChain.size()) continue;
 
         //Insert into mainChain using binary search
         int y = pendChain[idx];
@@ -122,7 +118,9 @@ std::vector<size_t> PmergeMe::initJacobsVector(size_t size) {
         }
     }
 
-    // Fill in remaining indices not covered by Jacobsthal pattern
+    if (!used[0])
+        result.insert(result.begin(), 0);
+
     for (size_t i = 1; i < size; ++i) {
         if (!used[i])
             result.push_back(i);
@@ -172,14 +170,10 @@ std::list<int> PmergeMe::recursiveMergeInsertionList(std::list<int> input) {
 
     mainChain = recursiveMergeInsertionList(mainChain);
 
-    if (!pendChain.empty())
-        mainChain.push_front(pendChain.front());
-
     std::list<size_t> jacobIndices = initJacobsList(pendChain.size());
     for (std::list<size_t>::iterator idxIt = jacobIndices.begin(); idxIt != jacobIndices.end(); ++idxIt) {
         size_t idx = *idxIt;
-        if (idx == 0 || idx >= pendChain.size())
-            continue;
+        if (idx >= pendChain.size()) continue;
 
         std::list<int>::iterator pend = pendChain.begin();
         std::advance(pend, idx);
@@ -187,13 +181,10 @@ std::list<int> PmergeMe::recursiveMergeInsertionList(std::list<int> input) {
 
         std::list<std::pair<int, int> >::iterator pair = pairs.begin();
         std::advance(pair, idx);
-        int bound = pair->second;
-
-        std::list<int>::iterator boundIt = std::find(mainChain.begin(), mainChain.end(), bound);
+        
         std::list<int>::iterator insertPos = mainChain.begin();
-        while (insertPos != boundIt && *insertPos < y)
+        while (insertPos != mainChain.end() && *insertPos < y)
             ++insertPos;
-
         mainChain.insert(insertPos, y);
     }
 
@@ -233,6 +224,9 @@ std::list<size_t> PmergeMe::initJacobsList(size_t size) {
             }
         }
     }
+
+    if (!used[0])
+        result.insert(result.begin(), 0);
 
     for (size_t i = 1; i < size; ++i) {
         if (!used[i])
