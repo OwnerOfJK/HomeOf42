@@ -31,12 +31,12 @@ MergeSort::~MergeSort() {
     std::cout << "\nMerge Sort (Vector):\n";
     printVec(treeVec->arr);
     std::cout << "Time: " << timeVec << " ms\n";
-    std::cout << "Result: " << isSortedV(treeVec->arr) << std::endl;
+    std::cout << "Result with " <<  treeVec->arr.size() << " numbers: " << isSortedV(treeVec->arr) << std::endl;
 
     std::cout << "\nMerge Sort (List):\n";
     printList(treeList->arr);
     std::cout << "Time: " << timeList << " ms\n";
-    std::cout << "Result: " << isSortedL(treeList->arr) << std::endl;
+    std::cout << "Result with " <<  treeList->arr.size() << " numbers: " << isSortedL(treeList->arr) << std::endl;
 
     destroyVec(treeVec);
     destroyList(treeList);

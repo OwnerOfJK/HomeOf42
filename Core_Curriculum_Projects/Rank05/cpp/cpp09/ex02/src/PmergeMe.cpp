@@ -25,12 +25,12 @@ PmergeMe::~PmergeMe() {
     std::cout << "\nMergeInsertion(Ford Johnson) Sort (Vector):\n";
     printVec(mainChainVector);
     std::cout << "Time: " << timeToSortVector << " ms\n";
-    std::cout << "Result: " << isSortedV(mainChainVector) << std::endl;
+    std::cout << "Result with " <<  mainChainVector.size() << " numbers: " << isSortedV(mainChainVector) << std::endl;
 
     std::cout << "\nMergeInsertion(Ford Johnson) Sort (List):\n";
     printList(mainChainList);
     std::cout << "Time: " << timeToSortList << " ms\n";
-    std::cout << "Result: " << isSortedL(mainChainList) << std::endl;
+    std::cout << "Result with " <<  mainChainList.size() << " numbers: " << isSortedL(mainChainList) << std::endl;
     // std::cout << "Destructor Called" << std::endl;
 }
 

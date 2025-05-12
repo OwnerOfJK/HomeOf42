@@ -16,7 +16,7 @@ void testSort(int *arr, int size) {
     double sortDurationV = static_cast<double>(endV - startV) * 1000 / CLOCKS_PER_SEC;
     printVec(vecArray);
     std::cout << "Time: " << sortDurationV << " ms\n";
-    std::cout << "Result: " << isSortedV(vecArray) << std::endl;
+    std::cout << "Result with " <<  vecArray.size() << " numbers: " << isSortedV(vecArray) << std::endl;
 
 
     std::cout << "\nstd::sort (List):\n";
@@ -27,7 +27,7 @@ void testSort(int *arr, int size) {
     double sortDurationL = static_cast<double>(endL - startL) * 1000 / CLOCKS_PER_SEC;
     printList(listArray);
     std::cout << "Time: " << sortDurationL << " ms\n";
-    std::cout << "Result: " << isSortedL(listArray) << std::endl;
+    std::cout << "Result with " <<  listArray.size() << " numbers: " << isSortedL(listArray) << std::endl;
 }
 
 //to test use ./PmergeMe $(shuf -i 0-10000 -n 100)
@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
         std::cout << "Not enough arguments" << std::endl;
         return 0;
     }
-    int arr[argc + 1];
+    int arr[1000];
     for (int i = 1; i < argc; i++) {
         arr[i - 1] = atoi(argv[i]);
     }
