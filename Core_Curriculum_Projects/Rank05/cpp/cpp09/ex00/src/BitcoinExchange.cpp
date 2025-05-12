@@ -143,13 +143,19 @@ void BitcoinExchange::printInputValues()
     for (it = inputFile.begin(); it != inputFile.end(); ++it) {
         const Date& inputDate = it->first;
         double inputValue = it->second;
-        std::map<Date, double>::const_iterator dbIt = dataBase.find(inputDate);
-        if (dbIt == dataBase.end()) {
-            continue;
+
+        std::map<Date, double>::const_iterator dbIt = dataBase.lower_bound(inputDate);
+        if (dbIt == dataBase.end() || dbIt->first != inputDate) {
+            if (dbIt == dataBase.begin()) {
+                std::cerr << "Error: no data available for date => " << inputDate << std::endl;
+                continue;
+            }
+            --dbIt;
         }
+
         double dataBaseValue = dbIt->second;
         double result = std::ceil((inputValue * dataBaseValue) * 100.0) / 100.0;
-        std::cout << inputDate << " => " << inputValue
+        std::cout << dbIt->first << " => " << inputValue
                   << " = " << result << std::endl;
     }
     std::cout << "All values computed...\n" << std::endl;
@@ -164,4 +170,7 @@ void BitcoinExchange::printMap(std::multimap<Date, double> &m) const
     }
 }
 
-
+std::ostream &operator<<(std::ostream &os, const BitcoinExchange::Date &date) {
+    os << date.year << "-" << date.month << "-" << date.day;
+    return os;
+}

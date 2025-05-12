@@ -11,7 +11,7 @@
 #include "Utils.hpp"
 
 class BitcoinExchange {
-    private:
+    public:
         struct Date {
             double year;
             double month;
@@ -37,10 +37,6 @@ class BitcoinExchange {
             bool operator!=(const Date &other) const {
                 return !(*this == other);
             }
-            friend std::ostream &operator<<(std::ostream &os, const Date &date) {
-                os << date.year << "-" << date.month << "-" << date.day;
-                return os;
-            }
         };
         std::map<Date, double> dataBase;
         std::multimap<Date, double> inputFile;
@@ -57,5 +53,7 @@ class BitcoinExchange {
         void printInputValues();
         void printMap(std::multimap<Date, double> &m) const;
 };
+
+std::ostream &operator<<(std::ostream &os, const BitcoinExchange::Date &date);
 
 #endif
