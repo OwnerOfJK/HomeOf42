@@ -174,3 +174,26 @@ std::ostream &operator<<(std::ostream &os, const BitcoinExchange::Date &date) {
     os << date.year << "-" << date.month << "-" << date.day;
     return os;
 }
+
+BitcoinExchange::Date::Date(double y, double m, double d) : year(y), month(m), day(d) {};
+
+bool BitcoinExchange::Date::operator<(const Date &other) const {
+    if (year != other.year)
+        return year < other.year;
+    if (month != other.month)
+        return month < other.month;
+    return day < other.day;
+}
+bool BitcoinExchange::Date::operator>(const Date &other) const {
+    if (year != other.year)
+        return year > other.year;
+    if (month != other.month)
+        return month > other.month;
+    return day > other.day;
+}
+bool BitcoinExchange::Date::operator==(const Date &other) const {
+    return year == other.year && month == other.month && day == other.day;
+}
+bool BitcoinExchange::Date::operator!=(const Date &other) const {
+    return !(*this == other);
+}
